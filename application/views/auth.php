@@ -28,7 +28,7 @@
     <div class="card-body login-card-body">
       <p class="login-box-msg">Login JogjaBay</p>
 
-      <form action="<?php echo base_url('login/aksi_login'); ?>" method="post">
+      <form action="<?php echo base_url('auth/auth-process'); ?>" method="post">
         <div class="input-group mb-3">
           <input name="username" type="text" class="form-control" placeholder="Username" required="">
           <div class="input-group-append">

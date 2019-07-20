@@ -1,12 +1,28 @@
 <?php
 class Auth extends CI_Controller{
  
-    function __construct(){
+    public function __construct(){
         parent::__construct();		
         $this->load->model('M_auth');
     }
-    function index(){
+    public function index(){
         $this->load->view('auth');
+    }
+    public function auth_process()
+    {
+        $username = $this->input->post('username');
+        $password = $this->input->post('password');
+        $data_session = array(
+            'id' => 1,
+            'username' => $username,
+            'password' => $username,
+            'status' => TRUE,
+            'level' => $username
+        );
+        
+        $this->session->set_userdata($data_session);
+        
+        redirect(base_url($this->session->userdata('level')));
     }
     function aksi_login(){
         $username = $this->input->post('username');
@@ -80,6 +96,6 @@ class Auth extends CI_Controller{
     }
     function logout(){
         $this->session->sess_destroy();
-        redirect(base_url('login'));
+        redirect(base_url('auth'));
     }
 }
