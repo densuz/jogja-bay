@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Elearning | Log in</title>
+  <title>(SPK) Sistem Penilaian Karyawan JogjaBay| Log in</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -21,12 +21,12 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href=""><b>Sistem</b><br>Penilaian Karyawan</a>
+    <a href=""><b>Sistem</b><br>Penilaian&nbspKaryawan</a>
   </div>
   <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body">
-      <p class="login-box-msg">Login Jogja Bay</p>
+      <p class="login-box-msg">Login JogjaBay</p>
 
       <form action="<?php echo base_url('login/aksi_login'); ?>" method="post">
         <div class="input-group mb-3">
@@ -58,7 +58,7 @@
 <!-- /.login-box -->
 
 <!-- jQuery -->
-<script src="themes/adminlte/adminlte.io/themes/dev/adminlte/   plugins/jquery/jquery.min.js"></script>
+<script src="themes/adminlte/adminlte.io/themes/dev/adminlte/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="themes/adminlte/adminlte.io/themes/dev/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- iCheck -->
