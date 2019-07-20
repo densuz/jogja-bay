@@ -1,10 +1,17 @@
-# ukhwah-store
+# (SPK) Sistem Penilaian Karyawan JogjaBay
 
 *******************
-# login admin
-    - link        : {url}
-    - username    : admin
-    - password    : admin
+# login MANAJER
+    - link        : {url}/auth
+    - username    : manajer
+    - password    : manajer
+*******************
+
+*******************
+# login HRD
+    - link        : {url}/auth
+    - username    : hrd
+    - password    : hrd
 *******************
 
 # cara install:
