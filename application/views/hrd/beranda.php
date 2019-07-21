@@ -1,5 +1,8 @@
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
+    <div class="bg-success" style="padding: 20px 30px; z-index: 999999; font-size: 16px; font-weight: 600;">
+      <a href="" style="color: rgba(255, 255, 255, 0.9); display: inline-block; margin-right: 10px; text-decoration: none;"><b>Info !</b> Selamat Datang di Sistem Penilaian Karyawan JogjaBay</a>
+    </div>
     <!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid">

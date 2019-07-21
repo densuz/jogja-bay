@@ -17,5 +17,105 @@
             $this->render_pages();
         }
         /* ==================== End Menu Beranda ==================== */
+        
+        /* ==================== Start Menu Master Data: karyawan ==================== */
+        public function karyawan()
+        {
+            $this->content['rows']= [];
+            $this->view = $this->session->userdata('level') .'/karyawan';
+            $this->render_pages();
+        }
+        public function form_add_karyawan()
+        {
+
+        }
+        public function form_edit_karyawan()
+        {
+
+        }
+        public function store_karyawan()
+        {
+
+        }
+        public function update_karyawan()
+        {
+
+        }
+        /* ==================== End Menu Master Data: karyawan ==================== */
+
+        /* ==================== Start Menu Master Data: manajer ==================== */
+        public function manajer()
+        {
+            $this->content['rows']= [];
+            $this->view = $this->session->userdata('level') .'/manajer';
+            $this->render_pages();
+        }
+        public function form_add_manajer()
+        {
+
+        }
+        public function form_edit_manajer()
+        {
+            
+        }
+        public function store_manajer()
+        {
+
+        }
+        public function update_manajer()
+        {
+
+        }
+        /* ==================== End Menu Master Data: manajer ==================== */
+
+        /* ==================== Start Menu Master Data: kategori ==================== */
+        public function kategori()
+        {
+            $this->content['rows']= [];
+            $this->view = $this->session->userdata('level') .'/kategori';
+            $this->render_pages();
+        }
+        public function form_add_kategori()
+        {
+
+        }
+        public function form_edit_kategori()
+        {
+            
+        }
+        public function store_kategori()
+        {
+
+        }
+        public function update_kategori()
+        {
+
+        }
+        /* ==================== End Menu Master Data: kategori ==================== */
+
+        /* ==================== Start Menu Master Data: divisi ==================== */
+        public function divisi()
+        {
+            $this->content['rows']= [];
+            $this->view = $this->session->userdata('level') .'/divisi';
+            $this->render_pages();
+        }
+        public function form_add_divisi()
+        {
+
+        }
+        public function form_edit_divisi()
+        {
+            
+        }
+        public function store_divisi()
+        {
+
+        }
+        public function update_divisi()
+        {
+
+        }
+        /* ==================== End Menu Master Data: divisi ==================== */
     }
     
