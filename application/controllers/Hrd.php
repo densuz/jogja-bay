@@ -48,7 +48,7 @@
         /* ==================== Start Menu Master Data: manajer ==================== */
         public function manajer()
         {
-            $this->content['rows']= [];
+            $this->content['rows']= $this->M_hrd->show_manajer();
             $this->view = $this->session->userdata('level') .'/manajer';
             $this->render_pages();
         }
@@ -73,25 +73,41 @@
         /* ==================== Start Menu Master Data: kategori ==================== */
         public function kategori()
         {
-            $this->content['rows']= [];
+            $this->content['rows']= $this->M_hrd->show_kategori();
             $this->view = $this->session->userdata('level') .'/kategori';
             $this->render_pages();
         }
-        public function form_add_kategori()
+        public function form_kategori()
         {
-
-        }
-        public function form_edit_kategori()
-        {
+            if ( ! empty($this->uri->segment(3)) ) {
+                $row= $this->M_hrd->show_kategori( $this->uri->segment(3) );
+                $this->data->html= '
+                    <form action="'.base_url( $this->session->userdata('level') ).'/store-kategori" id="dataStore">
+                        <div class="form-group">
+                            <label>Nama Divisi :</label>
+                            <input value="'.$row->nama_kategori.'" name="nama_kategori" type="text" class="form-control" required="" placeholder="Masukan nama divisi">
+                        </div>
+                        <input value="'.$row->id_kategori.'" name="id" type="hidden" >
+                        <button type="submit" class="btn btn-primary">Publish</button>
+                    </form>
+                ';
+            } else {
+                $this->data->html= '
+                    <form action="'.base_url( $this->session->userdata('level') ).'/store-kategori" id="dataStore">
+                        <div class="form-group">
+                            <label>Nama Kategori :</label>
+                            <input name="nama_kategori" type="text" class="form-control" required="" placeholder="Masukan nama kategori">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Publish</button>
+                    </form>
+                ';
+            }
             
+            echo json_encode($this->data);
         }
         public function store_kategori()
         {
-
-        }
-        public function update_kategori()
-        {
-
+            echo $this->store_data('kategori');
         }
         /* ==================== End Menu Master Data: kategori ==================== */
 
@@ -132,9 +148,17 @@
         }
         public function store_divisi()
         {
+            echo $this->store_data('divisi');
+        }
+        /* ==================== End Menu Master Data: divisi ==================== */
+        
+        /* ==================== Start Data Store ==================== */
+        public function store_data($sub_prefix)
+        {
+            $funct = 'store_'.$sub_prefix; 
             if ( ! empty($this->input->post('id')) ) {
                 $this->M_hrd->post= $this->input->post();
-                if ( $this->M_hrd->store_divisi($this->input->post('id')) ) {
+                if ( $this->M_hrd->$funct($this->input->post('id')) ) {
                     $this->data->stats  = TRUE;  
                     $this->data->msg    = 'Data berhasil diubah';  
                 } else {
@@ -143,7 +167,7 @@
                 }
             } else {
                 $this->M_hrd->post= $this->input->post();
-                if ( $this->M_hrd->store_divisi() ) {
+                if ( $this->M_hrd->$funct() ) {
                     $this->data->stats  = TRUE;  
                     $this->data->msg    = 'Data berhasil disimpan';  
                 } else {
@@ -152,8 +176,8 @@
                 }
             }
             
-            echo json_encode($this->data);
+            return json_encode($this->data);
         }
-        /* ==================== End Menu Master Data: divisi ==================== */
+        /* ==================== End Data Store ==================== */
     }
     
