@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 20, 2019 at 02:24 PM
+-- Generation Time: Jul 22, 2019 at 03:47 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -33,9 +33,23 @@ CREATE TABLE `biodata` (
   `id_kategori` int(11) DEFAULT NULL,
   `nama` varchar(100) DEFAULT NULL,
   `tgl_lahir` date DEFAULT NULL,
+  `jk` enum('L','P') DEFAULT NULL,
   `alamat` text,
   `id_divisi` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `biodata`
+--
+
+INSERT INTO `biodata` (`id_biodata`, `id_kategori`, `nama`, `tgl_lahir`, `jk`, `alamat`, `id_divisi`) VALUES
+(1, NULL, 'Hrd JogjaBay', '1990-07-01', 'P', 'Jogja', NULL),
+(2, NULL, 'Juairia Lestari', '1991-07-01', 'P', 'Banda Aceh', NULL),
+(3, NULL, 'Novita', '1995-07-22', 'P', 'Banda Aceh', 3),
+(4, NULL, 'Nila', '1994-07-22', 'P', 'Banda aceh', 2),
+(5, NULL, 'Fitri', '1993-07-22', 'P', 'Banda aceh', 4),
+(6, NULL, 'Dian', '1990-07-22', 'P', 'Banda aceh', 4),
+(7, NULL, 'Ari', '1992-07-22', 'L', 'Banda aceh', 2);
 
 -- --------------------------------------------------------
 
@@ -69,9 +83,21 @@ CREATE TABLE `bobot_kriteria` (
 
 CREATE TABLE `divisi` (
   `id_divisi` int(11) NOT NULL,
-  `id_biodata` int(11) DEFAULT NULL,
   `nama_divisi` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `divisi`
+--
+
+INSERT INTO `divisi` (`id_divisi`, `nama_divisi`) VALUES
+(1, 'Security'),
+(2, 'Kasir'),
+(3, 'Staff Logistik & Purchasing'),
+(4, 'Pramuniaga'),
+(5, 'Chief Security'),
+(6, 'Part Timer'),
+(7, 'Magang');
 
 -- --------------------------------------------------------
 
@@ -85,6 +111,16 @@ CREATE TABLE `kategori` (
   `nama_kategori` varchar(100) DEFAULT NULL,
   `id_penilaian` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `kategori`
+--
+
+INSERT INTO `kategori` (`id_kategori`, `id_bobot_kriteria`, `nama_kategori`, `id_penilaian`) VALUES
+(1, NULL, 'Attitude', NULL),
+(2, NULL, 'Grooming', NULL),
+(3, NULL, 'Kinerja', NULL),
+(4, NULL, 'Integritas', NULL);
 
 -- --------------------------------------------------------
 
@@ -141,9 +177,24 @@ CREATE TABLE `penilaian` (
 
 CREATE TABLE `user` (
   `id_user` int(11) NOT NULL,
-  `user_name` int(11) DEFAULT NULL,
-  `password` varchar(100) DEFAULT NULL
+  `user_name` varchar(100) DEFAULT NULL,
+  `password` varchar(100) DEFAULT NULL,
+  `level` enum('karyawan','manajer','hrd') DEFAULT NULL,
+  `id_biodata` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id_user`, `user_name`, `password`, `level`, `id_biodata`) VALUES
+(1, 'hrd', 'hrd', 'hrd', 1),
+(2, 'manajer', 'manajer', 'manajer', 2),
+(4, 'karyawan1', 'karyawan', 'karyawan', 3),
+(5, 'karyawan2', 'karyawan', 'karyawan', 4),
+(6, 'karyawan3', 'karyawan', 'karyawan', 5),
+(7, 'karyawan4', 'karyawan', 'karyawan', 6),
+(8, 'karyawan5', 'karyawan', 'karyawan', 7);
 
 --
 -- Indexes for dumped tables
@@ -196,6 +247,34 @@ ALTER TABLE `penilaian`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id_user`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `biodata`
+--
+ALTER TABLE `biodata`
+  MODIFY `id_biodata` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `divisi`
+--
+ALTER TABLE `divisi`
+  MODIFY `id_divisi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `kategori`
+--
+ALTER TABLE `kategori`
+  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
