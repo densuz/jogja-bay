@@ -80,6 +80,13 @@
   $(function () {
     $("#example1").DataTable();
   });
+  /* for refresh Data Table */
+  function refreshTable() {
+    $('#example1').each(function() {
+        dt = $(this).dataTable();
+        dt.fnDraw();
+    })
+  }
   function getTinymce(){
     // bootstrap WYSIHTML5 - text editor
     $('#mytextarea').wysihtml5({
@@ -123,7 +130,7 @@
           } else {
             alert( data.msg );
           }
-          // console.log(data);
+          console.log(data);
         },
         cache: false,
         contentType: false,

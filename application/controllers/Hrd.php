@@ -10,6 +10,7 @@
                 redirect(base_url("auth"));
             }
             $this->data = new stdClass();
+            $this->load->model(['M_hrd']);
         }
         /* ==================== Start Menu Beranda ==================== */
         public function index()
@@ -104,10 +105,10 @@
         public function form_add_divisi()
         {
             $this->data->html= '
-                <form action="'.base_url( $this->session->userdata('level') ).'/store-divisi">
+                <form action="'.base_url( $this->session->userdata('level') ).'/store-divisi" id="addNew">
                     <div class="form-group">
                         <label>Nama Divisi :</label>
-                        <input type="text" class="form-control" required="" placeholder="Masukan nama divisi">
+                        <input name="nama_divisi" type="text" class="form-control" required="" placeholder="Masukan nama divisi">
                     </div>
                     <button type="submit" class="btn btn-primary">Publish</button>
                 </form>
@@ -120,6 +121,15 @@
         }
         public function store_divisi()
         {
+            $this->M_hrd->post= $this->input->post();
+            if ( $this->M_hrd->store_divisi() ) {
+                $this->data->stats  = TRUE;  
+                $this->data->msg    = 'Data berhasil disimpan';  
+            } else {
+                $this->data->stats  = FALSE;  
+                $this->data->msg    = 'Data gagal disimpan';
+            }
+            echo json_encode($this->data);
         }
         public function update_divisi()
         {
