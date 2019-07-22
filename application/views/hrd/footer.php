@@ -93,9 +93,9 @@
     var title= $(this).attr('title');
     $.get($(this).attr('href'), function(data){
       $('#myModal .modal-title').html( title );
-      $('#myModal .modal-body').html(data);
+      $('#myModal .modal-body').html(data.html);
       $('#myModal').modal('show');
-    },'html');
+    },'json');
   });
   
   /* call Form Edit Data */
@@ -104,9 +104,9 @@
     var title= $(this).attr('title');
     $.get($(this).attr('href'), function(data){
       $('#myModal .modal-title').html( title );
-      $('#myModal .modal-body').html(data);
+      $('#myModal .modal-body').html(data.html);
       $('#myModal').modal('show');
-    },'html');
+    },'json');
   });
   
   $(document).on('submit', 'form#addNew', function(e) {

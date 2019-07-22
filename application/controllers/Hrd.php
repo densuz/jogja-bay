@@ -8,7 +8,8 @@
             /* jika level bukan manajer makan user tidak berhak mengakses halaman ini */
             if($this->session->userdata('status') !=1  && $this->session->userdata('level') != "hrd"){
                 redirect(base_url("auth"));
-            }		
+            }
+            $this->data = new stdClass();
         }
         /* ==================== Start Menu Beranda ==================== */
         public function index()
@@ -102,7 +103,16 @@
         }
         public function form_add_divisi()
         {
-
+            $this->data->html= '
+                <form action="'.base_url( $this->session->userdata('level') ).'/store-divisi">
+                    <div class="form-group">
+                        <label>Nama Divisi :</label>
+                        <input type="text" class="form-control" required="" placeholder="Masukan nama divisi">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Publish</button>
+                </form>
+            ';
+            echo json_encode($this->data); 
         }
         public function form_edit_divisi()
         {
@@ -110,7 +120,6 @@
         }
         public function store_divisi()
         {
-
         }
         public function update_divisi()
         {

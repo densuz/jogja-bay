@@ -23,7 +23,7 @@
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              <a href="<?php echo base_url( $this->session->userdata('level') ) ?>/store-divisi" class="btn btn-default float-right form-add-new" title="Tambah Informasi Divisi"><i class="fa fa-plus"></i> Add New</a>
+              <a href="<?php echo base_url( $this->session->userdata('level') ) ?>/form-add-divisi" class="btn btn-default float-right form-add-new" title="Tambah Informasi Divisi"><i class="fa fa-plus"></i> Add New</a>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
