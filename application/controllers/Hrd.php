@@ -98,42 +98,61 @@
         /* ==================== Start Menu Master Data: divisi ==================== */
         public function divisi()
         {
-            $this->content['rows']= [];
+            $this->content['rows']= $this->M_hrd->show_divisi();
             $this->view = $this->session->userdata('level') .'/divisi';
             $this->render_pages();
         }
-        public function form_add_divisi()
+        public function form_divisi()
         {
-            $this->data->html= '
-                <form action="'.base_url( $this->session->userdata('level') ).'/store-divisi" id="addNew">
-                    <div class="form-group">
-                        <label>Nama Divisi :</label>
-                        <input name="nama_divisi" type="text" class="form-control" required="" placeholder="Masukan nama divisi">
-                    </div>
-                    <button type="submit" class="btn btn-primary">Publish</button>
-                </form>
-            ';
-            echo json_encode($this->data); 
-        }
-        public function form_edit_divisi()
-        {
+            if ( ! empty($this->uri->segment(3)) ) {
+                $row= $this->M_hrd->show_divisi( $this->uri->segment(3) );
+                $this->data->html= '
+                    <form action="'.base_url( $this->session->userdata('level') ).'/store-divisi" id="dataStore">
+                        <div class="form-group">
+                            <label>Nama Divisi :</label>
+                            <input value="'.$row->nama_divisi.'" name="nama_divisi" type="text" class="form-control" required="" placeholder="Masukan nama divisi">
+                        </div>
+                        <input value="'.$row->id_divisi.'" name="id" type="hidden" >
+                        <button type="submit" class="btn btn-primary">Publish</button>
+                    </form>
+                ';
+            } else {
+                $this->data->html= '
+                    <form action="'.base_url( $this->session->userdata('level') ).'/store-divisi" id="dataStore">
+                        <div class="form-group">
+                            <label>Nama Divisi :</label>
+                            <input name="nama_divisi" type="text" class="form-control" required="" placeholder="Masukan nama divisi">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Publish</button>
+                    </form>
+                ';
+            }
             
+            echo json_encode($this->data);
         }
         public function store_divisi()
         {
-            $this->M_hrd->post= $this->input->post();
-            if ( $this->M_hrd->store_divisi() ) {
-                $this->data->stats  = TRUE;  
-                $this->data->msg    = 'Data berhasil disimpan';  
+            if ( ! empty($this->input->post('id')) ) {
+                $this->M_hrd->post= $this->input->post();
+                if ( $this->M_hrd->store_divisi($this->input->post('id')) ) {
+                    $this->data->stats  = TRUE;  
+                    $this->data->msg    = 'Data berhasil diubah';  
+                } else {
+                    $this->data->stats  = FALSE;  
+                    $this->data->msg    = 'Data gagal diubah';
+                }
             } else {
-                $this->data->stats  = FALSE;  
-                $this->data->msg    = 'Data gagal disimpan';
+                $this->M_hrd->post= $this->input->post();
+                if ( $this->M_hrd->store_divisi() ) {
+                    $this->data->stats  = TRUE;  
+                    $this->data->msg    = 'Data berhasil disimpan';  
+                } else {
+                    $this->data->stats  = FALSE;  
+                    $this->data->msg    = 'Data gagal disimpan';
+                }
             }
+            
             echo json_encode($this->data);
-        }
-        public function update_divisi()
-        {
-
         }
         /* ==================== End Menu Master Data: divisi ==================== */
     }

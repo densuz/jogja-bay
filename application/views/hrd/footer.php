@@ -94,8 +94,8 @@
     })
   }
 
-  /* call Form Tambah Data */
-  $(document).on('click', '.form-add-new', function(e){
+  /* call Form */
+  $(document).on('click', '.form-load', function(e){
     e.preventDefault();
     var title= $(this).attr('title');
     $.get($(this).attr('href'), function(data){
@@ -105,18 +105,7 @@
     },'json');
   });
   
-  /* call Form Edit Data */
-  $(document).on('click', '.form-edit', function(e){
-    e.preventDefault();
-    var title= $(this).attr('title');
-    $.get($(this).attr('href'), function(data){
-      $('#myModal .modal-title').html( title );
-      $('#myModal .modal-body').html(data.html);
-      $('#myModal').modal('show');
-    },'json');
-  });
-  
-  $(document).on('submit', 'form#addNew', function(e) {
+  $(document).on('submit', 'form#dataStore', function(e) {
     e.preventDefault();    
     var formData = new FormData(this);
     $.ajax({
@@ -137,14 +126,6 @@
         processData: false,
         dataType: 'json'
     });
-  });
-  $('.edit').on('click', function(e){
-    e.preventDefault(); 
-    $.get( $(this).attr('href'), function(data){
-      $('#myModal .modal-title').html('Edit Informasi Template');
-      $('#myModal .modal-body').html(data);
-      $('#myModal').modal('show');
-    } ,'html');
   });
   
   $('.delete').on('click', function(e){
