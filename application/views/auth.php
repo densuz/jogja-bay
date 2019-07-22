@@ -27,7 +27,17 @@
   <div class="card">
     <div class="card-body login-card-body">
       <p class="login-box-msg">Login JogjaBay</p>
-
+      <?php
+        if ( ! empty($this->session->flashdata('msg')) ) {
+          # code...
+          echo '
+            <div class="alert alert-warning alert-dismissible">
+                <h5><i class="icon fa fa-warning"></i> Alert!</h5>
+                '.$this->session->flashdata('msg').'
+            </div>
+          ';
+        }
+      ?>
       <form action="<?php echo base_url('auth/auth-process'); ?>" method="post">
         <div class="input-group mb-3">
           <input name="username" type="text" class="form-control" placeholder="Username" required="">

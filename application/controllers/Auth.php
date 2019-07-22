@@ -12,88 +12,32 @@ class Auth extends CI_Controller{
     {
         $username = $this->input->post('username');
         $password = $this->input->post('password');
-        $data_session = array(
-            'id' => 1,
-            'username' => $username,
-            'password' => $username,
-            'status' => TRUE,
-            'level' => $username
+        $where = array(
+            'user_name' => $username,
+            'password' => $password
         );
         
-        $this->session->set_userdata($data_session);
-        
-        redirect(base_url($this->session->userdata('level')));
-    }
-    function aksi_login(){
-        $username = $this->input->post('username');
-        $password = $this->input->post('password');
-        
-        $where_admin = array(
-            'admin_username' => $username,
-            'admin_password' => $password
-        );
-        $where_guru = array(
-            'guru_username' => $username,
-            'guru_password' => $password
-        );
-        $where_siswa = array(
-            'siswa_username' => $username,
-            'siswa_password' => $password
-        );
-        $cek_admin  = $this->m_login->cek_login("admin",$where_admin)->num_rows();
-        $cek_guru   = $this->m_login->cek_login("guru",$where_guru)->num_rows();
-        $cek_siswa  = $this->m_login->cek_login("siswa",$where_siswa)->num_rows();
-        
-        if ( $cek_admin > 0 ) {
+        if ( $this->M_auth->auth_check("user",$where)->num_rows() > 0 ) {
             # code...
-            $row  = $this->m_login->cek_login("admin",$where_admin)->row();
+            $row  = $this->M_auth->auth_check("user",$where)->row();
             $data_session = array(
-                'id' => $row->admin_id,
+                'id' => $row->id_user,
                 'nama' => $username,
-                'status' => "login",
-                'level' => 'admin'
+                'status' => TRUE,
+                'level' => $row->level,
             );
             
             $this->session->set_userdata($data_session);
             
-            redirect(base_url("admin/beranda"));
+            redirect(base_url($this->session->userdata('level')));
         }
-        
-        elseif ( $cek_guru > 0 ) {
-            # code...
-            $row   = $this->m_login->cek_login("guru",$where_guru)->row();
-            $data_session = array(
-                'id' => $row->guru_id,
-                'nama' => $username,
-                'status' => "login",
-                'level' => 'guru'
-            );
-            
-            $this->session->set_userdata($data_session);
-            
-            redirect(base_url("admin/beranda"));
-        }
-        
-        elseif ( $cek_siswa > 0 ) {
-            # code...
-            $row  = $this->m_login->cek_login("siswa",$where_siswa)->row();
-            $data_session = array(
-                'id' => $row->siswa_id,
-                'nama' => $username,
-                'status' => "login",
-                'level' => 'siswa'
-            );
-        
-            $this->session->set_userdata($data_session);
-        
-            redirect(base_url("admin/beranda"));
-        }
-        else{
-            // login error
-            // redirect(base_url("login-error"));
-            $this->load->view('login_error');
+        else {
+            # jika user tidak ditemukan
+            $this->session->set_flashdata('msg', 'Maaf! Username atau Password anda salah!');
+            redirect(base_url('auth'));
         }
     }
+    
     function logout(){
         $this->session->sess_destroy();
         redirect(base_url('auth'));
