@@ -2,11 +2,43 @@
 class M_hrd extends CI_Model{
     public $post = null;
     /* ==================== Start Menu Master Data: Manajer ==================== */
-    public function show_manajer()
+    public function show_manajer($id=NULL)
     {
-        $this->db->from('user');
-        return $this->db->get();
+        if ( ! empty($id) ) {
+            $this->db->select("
+                *,
+                IF(biodata.jk='L', 'Laki-Laki' , 'Perempuan') AS jenis_kelamin                
+            ");
+            $this->db->from('user');
+            $this->db->join('biodata', 'biodata.id_biodata = user.id_biodata');
+            $this->db->where('user.level','manajer');
+            $this->db->where('user.id_user',$id);
+            return $this->db->get()->row();
+        } else {
+            $this->db->select("
+                *,
+                IF(biodata.jk='L', 'Laki-Laki' , 'Perempuan') AS jenis_kelamin                
+            ");
+            $this->db->from('user');
+            $this->db->join('biodata', 'biodata.id_biodata = user.id_biodata');
+            $this->db->where('user.level','manajer');
+            return $this->db->get()->result_object();
+        }   
     }
+    public function store_manajer($id=NULL){
+        if ( ! empty($id) ) {
+            if ( $this->store_user($id) ) {
+                return $this->store_biodata($id);
+            } else {
+                $this->session->set_flashdata('msg', 'Maaf username sudah digunakan' );
+                return FALSE;
+            }
+            
+        } else {		
+            return $this->store_biodata();
+        }
+        
+	}
     /* ==================== End Menu Master Data: Manajer ==================== */
 
     /* ==================== Start Menu Master Data: Kategori ==================== */
@@ -68,4 +100,84 @@ class M_hrd extends CI_Model{
         
 	}	
     /* ==================== End Menu Master Data: Divisi ==================== */
+
+    /* ==================== Start Store Biodata ==================== */
+    protected function store_biodata($id=NULL)
+    {
+        if ( ! empty($id) ) {
+            $table='biodata';
+            $data= [
+                'nama' => $this->post['nama'],
+                'tgl_lahir' => $this->post['tgl_lahir'],
+                'jk' => $this->post['jk'],
+                'alamat' => $this->post['alamat'],
+            ];  
+            $where=[
+                'id_biodata' => $this->post['id_biodata'],
+            ];  
+            return $this->db->update($table,$data,$where);
+        } else {
+            $table='biodata';
+            $data= [
+                'nama' => $this->post['nama'],
+                'tgl_lahir' => $this->post['tgl_lahir'],
+                'jk' => $this->post['jk'],
+                'alamat' => $this->post['alamat'],
+            ];		
+            return $this->db->insert($table,$data);
+        }
+    }
+    /* ==================== End Store Biodata ==================== */
+
+    /* ==================== Start Store User ==================== */
+    protected function store_user($id=NULL)
+    {
+
+        if ( ! empty($id) ) {
+            $table='user';
+            $data=[
+                'user_name' => $this->post['user_name'],
+                'level' => $this->post['level'],
+            ];
+
+            # jika password tidak kosong
+            if ( ! empty($this->post['password']) )
+                $data['password'] =  $this->post['password'];
+
+            $where=[
+                'id_user' => $id,
+            ];
+
+            if ( $this->cek_user($id) ) {
+                $this->db->update($table,$data,$where);
+                return TRUE;
+            } else {
+                return FALSE;
+            }
+              
+        } else {
+            $table='user';
+            $data= [
+                'user_name' => $this->post['nama_divisi'],
+            ];		
+            return $this->db->insert($table,$data);
+        }
+        
+    }
+    protected function cek_user($id=NULL)
+    {
+        $where= [
+            'user_name'=> $this->post['user_name']
+        ];
+        if ( ! empty($id) ) {
+            $this->db->where('id_user !=',$id);
+            $this->db->where($where);
+            return ($this->db->get('user')->num_rows() > 0 )? FALSE : TRUE ;
+        } else {
+            $this->db->where($where);
+            return ($this->db->get('user')->num_rows() > 0 )? FALSE : TRUE ;
+        }
+                
+    }
+    /* ==================== End Store User ==================== */
 }
