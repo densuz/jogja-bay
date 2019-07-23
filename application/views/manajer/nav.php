@@ -12,7 +12,7 @@
 
     <!-- Right navbar links -->
     <div class="navbar-nav ml-auto">
-      <a href="<?php echo base_url( $this->session->userdata('level') .'/form-edit-profil/' .$this->session->userdata('id') ) ?>" class="btn btn-default mr-2 edit-admin">Profil</a>
+      <a href="<?php echo base_url( $this->session->userdata('level') .'/form-manajer/' .$this->session->userdata('id') ) ?>" class="btn btn-default mr-2 form-load">Profil</a>
       <a href="<?php echo base_url('auth/logout'); ?>" class="btn btn-default">Logout</a>
       
       <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#">
@@ -47,22 +47,21 @@
               </p>
             </a>
           </li>
-          <li class="nav-item has-treeview <?php echo ($this->uri->segment(2)=='kategori')  ? 'menu-open' : null ?>">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fa fa-user"></i>
+          <li class="nav-item">
+            <a href="<?php echo base_url( $this->session->userdata('level') ) ?>" class="nav-link <?php echo ( $this->uri->segment(2)=='kuisioner' ) ? 'active' : null ?>">
+              <i class="nav-icon fa fa-user-circle-o"></i>
               <p>
-                Master Data
-                <i class="right fa fa-angle-left"></i>
+                Kuisioner
               </p>
             </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="<?php echo base_url( $this->session->userdata('level') .'/kategori') ?>" class="nav-link <?php echo ($this->uri->segment(2)=='kategori') ? 'active' : null ?>">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Kategori</p>
-                </a>
-              </li>
-            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="<?php echo base_url( $this->session->userdata('level') ) ?>" class="nav-link <?php echo ( $this->uri->segment(2)=='presensi' ) ? 'active' : null ?>">
+              <i class="nav-icon fa fa-user-circle-o"></i>
+              <p>
+                Presensi
+              </p>
+            </a>
           </li>
         </ul>
       </nav>

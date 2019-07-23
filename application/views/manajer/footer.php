@@ -16,8 +16,8 @@
 
 
   <!-- The Modal -->
-  <div class="modal fade" id="myModalEditAdmin">
-    <div class="modal-dialog modal-dialog-centered">
+  <div class="modal fade" id="myModal">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
       <div class="modal-content">
       
         <!-- Modal Header -->
@@ -40,6 +40,10 @@
     </div>
   </div>
   <!-- /.modal -->
+
+<!-- DataTables -->
+<script src="<?php echo base_url()?>/themes/adminlte/adminlte.io/themes/dev/adminlte/plugins/datatables/jquery.dataTables.js"></script>
+<script src="<?php echo base_url()?>/themes/adminlte/adminlte.io/themes/dev/adminlte/plugins/datatables/dataTables.bootstrap4.js"></script>
 <!-- jQuery UI 1.11.4 -->
 <script src="<?php echo base_url()?>/themes/adminlte/code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
@@ -72,22 +76,66 @@
 <!-- AdminLTE App -->
 <script src="<?php echo base_url()?>/themes/adminlte/adminlte.io/themes/dev/adminlte/dist/js/adminlte.js"></script>
 <script>
+  /* call Data Table */
+  $(function () {
+    $("#example1").DataTable();
+  });
+  /* for refresh Data Table */
+  function refreshTable() {
+    $('#example1').each(function() {
+        dt = $(this).dataTable();
+        dt.fnDraw();
+    })
+  }
   function getTinymce(){
     // bootstrap WYSIHTML5 - text editor
     $('#mytextarea').wysihtml5({
       toolbar: { fa: true }
     })
   }
-  $('.edit-admin').on('click', function(e){
+
+  /* call Form */
+  $(document).on('click', '.form-load', function(e){
     e.preventDefault();
-    $.get( $(this).attr('href'), function(data){
-      $('#myModalEditAdmin .modal-title').html('Edit Informasi admin');
-      $('#myModalEditAdmin .modal-body').html(data);
-      $('#myModalEditAdmin').modal('show');
-    } ,'html');
+    var title= $(this).attr('title');
+    $.get($(this).attr('href'), function(data){
+      $('#myModal .modal-title').html( title );
+      $('#myModal .modal-body').html(data.html);
+      $('#myModal').modal('show');
+    },'json');
   });
   
-  $(document).on('submit','form#edit-admin',function(e){
+  $(document).on('submit', 'form#dataStore', function(e) {
+    e.preventDefault();    
+    var formData = new FormData(this);
+    $.ajax({
+        url: $(this).attr("action"),
+        type: 'POST',
+        data: formData,
+        success: function (data) {
+          if ( data.stats==1 ) {
+            alert( data.msg )
+            location.reload()
+          } else {
+            alert( data.msg );
+          }
+          console.log(data);
+        },
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: 'json'
+    });
+  });
+  
+  $('.delete').on('click', function(e){
+    e.preventDefault(); 
+    $.get( $(this).attr('href'), function(data){
+      alert( (data.stats=='1') ? data.msg : data.msg )
+      location.reload()
+    } ,'json');
+  });
+  $(document).on('submit','form#edit',function(e){
     e.preventDefault();    
     var formData = new FormData(this);
     $.ajax({

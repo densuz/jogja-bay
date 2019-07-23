@@ -20,6 +20,51 @@
         }
         /* ==================== End Menu Beranda ==================== */
         
+        /* ==================== Start Informasi Profil ==================== */
+        public function form_hrd()
+        {
+            $row= $this->M_hrd->show_hrd( $this->uri->segment(3) );
+            $this->data->html= '
+                <form action="'.base_url( $this->session->userdata('level') ).'/store-hrd" id="dataStore">
+                    <div class="form-group">
+                        <label>Nama :</label>
+                        <input value="'.$row->nama.'" name="nama" type="text" class="form-control" required="" placeholder="Masukan nama divisi">
+                    </div>
+                    <div class="form-group">
+                        <label>Tanggal Lahir :</label>
+                        <input value="'.$row->tgl_lahir.'" name="tgl_lahir" type="date" class="form-control" required="" placeholder="Masukan nama divisi">
+                    </div>
+                    <div class="form-group">
+                        <label>Jenis Kelamin :</label>
+                        '.$this->jenis_kelamin($row->jk).'
+                    </div>
+                    <div class="form-group">
+                        <label>Alamat :</label>
+                        <textarea name="alamat" class="form-control" rows="5" placeholder="Masukan alamat disini" required="">'.$row->alamat.'</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Username :</label>
+                        <input readonly value="'.$row->user_name.'" name="user_name" type="text" class="form-control" required="" placeholder="Masukan username">
+                    </div>
+                    <div class="form-group">
+                        <label>Password :</label>
+                        <input value="" name="password" type="password" class="form-control" placeholder="**********">
+                    </div>
+                    <input value="'.$row->id_biodata.'" name="id_biodata" type="hidden" >
+                    <input value="'.$row->id_user.'" name="id" type="hidden" >
+                    <input value="'.$row->level.'" name="level" type="hidden" >
+                    <button type="submit" class="btn btn-primary">Publish</button>
+                </form>
+            ';
+            
+            echo json_encode($this->data);
+        }
+        public function store_hrd()
+        {
+            echo $this->store_data('hrd');
+        } 
+        /* ==================== End Informasi Profil ==================== */
+
         /* ==================== Start Menu Master Data: karyawan ==================== */
         public function karyawan()
         {
@@ -237,6 +282,63 @@
         }
         /* ==================== End Menu Master Data: kategori ==================== */
 
+        /* ==================== Start Menu Master Data: Kriteria ==================== */
+        public function kriteria()
+        {
+            $this->content['rows']= $this->M_hrd->show_kriteria();
+            $this->view = $this->session->userdata('level') .'/kriteria';
+            $this->render_pages();
+        }
+        public function form_kriteria()
+        {
+            if ( ! empty($this->uri->segment(3)) ) {
+                $row= $this->M_hrd->show_kriteria( $this->uri->segment(3) );
+                $this->data->html= '
+                    <form action="'.base_url( $this->session->userdata('level') ).'/store-kriteria" id="dataStore">
+                        <div class="form-group">
+                            <label>Nama Kriteria :</label>
+                            <input value="'.$row->nama_kriteria.'" name="nama_kriteria" type="text" class="form-control" required="" placeholder="Masukan nama divisi">
+                        </div>
+                        <div class="form-group">
+                            <label>Bobot :</label>
+                            <input value="'.$row->bobot_kriteria.'" step="0.01" name="bobot" type="number" class="form-control" required="" placeholder="ex: 0,5">
+                        </div>
+                        <div class="form-group">
+                            <label>Pilih Kategori Kriteria :</label>
+                            <select name="id_kategori" class="form-control" required="">'.$this->option_kategori($row->id_kategori).'</select>
+                        </div>
+                        <input value="'.$row->id_kriteria.'" name="id" type="hidden" >
+                        <button type="submit" class="btn btn-primary">Publish</button>
+                    </form>
+                ';
+            } else {
+                $this->data->html= '
+                    <form action="'.base_url( $this->session->userdata('level') ).'/store-kriteria" id="dataStore">
+                        <div class="form-group">
+                            <label>Nama Kriteria :</label>
+                            <input name="nama_kriteria" type="text" class="form-control" required="" placeholder="Masukan nama kriteria">
+                        </div>
+                        <div class="form-group">
+                            <label>Bobot :</label>
+                            <input step="0.01" name="bobot" type="number" class="form-control" required="" placeholder="ex: 0,5">
+                        </div>
+                        <div class="form-group">
+                            <label>Pilih Kategori Kriteria :</label>
+                            <select name="id_kategori" class="form-control" required="">'.$this->option_kategori().'</select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Publish</button>
+                    </form>
+                ';
+            }
+            
+            echo json_encode($this->data);
+        }
+        public function store_kriteria()
+        {
+            echo $this->store_data('kriteria');
+        }
+        /* ==================== End Menu Master Data: Kriteria ==================== */
+
         /* ==================== Start Menu Master Data: divisi ==================== */
         public function divisi()
         {
@@ -318,7 +420,7 @@
         }
         /* ==================== End Data Store ==================== */
         
-        /* ==================== Start Jenis Kelamin ==================== */
+        /* ==================== Start Select Option Pilih Divisi ==================== */
         public function option_divisi($selected=NULL)
         {
             $this->data->html= '';
@@ -331,7 +433,22 @@
 
             return $this->data->html;
         }
-        /* ==================== End Jenis Kelamin ==================== */
+        /* ==================== End Select Option Pilih Divisi ==================== */
+
+        /* ==================== Start Select Option Pilih Kategori Kriteria ==================== */
+        public function option_kategori($selected=NULL)
+        {
+            $this->data->html= '';
+            $this->data->html.= '<option value="" '.(! empty($selected) ? 'selected' : 'selected disabled' ).'> -- Pilih Kategori Kriteria -- </option>';            
+            foreach ($this->M_hrd->show_kategori() as $key => $value) {
+                $this->data->html .= '
+                    <option '.( empty($id)? (($selected==$value->id_kategori)? 'selected' : NULL) : NULL ).' value="'.$value->id_kategori.'">'.$value->nama_kategori.'
+                ';
+            }
+
+            return $this->data->html;
+        }
+        /* ==================== End Select Option Pilih Kategori Kriteria ==================== */
 
         /* ==================== Start Jenis Kelamin ==================== */
         public function jenis_kelamin($selected=NULL)

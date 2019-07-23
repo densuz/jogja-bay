@@ -1,6 +1,43 @@
 <?php 
 class M_hrd extends CI_Model{
     public $post = null;
+    /* ==================== Start Informasi Profil ==================== */
+    public function show_hrd($id=NULL)
+    {
+        $this->db->select("
+            *,
+            IF(biodata.jk='L', 'Laki-Laki' , 'Perempuan') AS jenis_kelamin                
+        ");
+        $this->db->from('user');
+        $this->db->join('biodata', 'biodata.id_biodata = user.id_biodata');
+        $this->db->where('user.level','hrd');
+        $this->db->where('user.id_user',$id);
+        $this->db->order_by('biodata.nama', 'ASC');
+        return $this->db->get()->row();
+    }
+    public function store_hrd($id=NULL){
+        if ( ! empty($id) ) {
+            if ( $this->store_user($id) ) {
+                return $this->store_biodata($id);
+            } else {
+                $this->session->set_flashdata('msg', 'Maaf username sudah digunakan' );
+                return FALSE;
+            }
+            
+        } else {
+            if ( $this->cek_user() ) {
+                $this->store_biodata();
+                $this->store_user();
+                return TRUE;
+            } else {
+                $this->session->set_flashdata('msg', 'Maaf username sudah digunakan' );
+                return TRUE;
+            }
+        }
+        
+	}
+    /* ==================== End Informasi Profil ==================== */
+
     /* ==================== Start Menu Master Data: Karyawan ==================== */
     public function show_karyawan($id=NULL)
     {
@@ -130,6 +167,53 @@ class M_hrd extends CI_Model{
         
 	}	
     /* ==================== End Menu Master Data: Kategori ==================== */
+
+    /* ==================== Start Menu Master Data: Kriteria ==================== */
+	public function show_kriteria($id=NULL){
+        if ( ! empty($id) ) {
+            $this->db->select("
+                *,
+                kriteria.bobot AS bobot_kriteria                
+            ");
+            $this->db->from('kriteria');
+            $this->db->join('kategori', 'kategori.id_kategori = kriteria.id_kategori');
+            $this->db->where('id_kriteria',$id);
+            return $this->db->get_where()->row();
+        } else {
+            $this->db->select("
+                *,
+                kriteria.bobot AS bobot_kriteria                
+            ");
+            $this->db->from('kriteria');
+            $this->db->join('kategori', 'kategori.id_kategori = kriteria.id_kategori');
+            $this->db->order_by('kriteria.nama_kriteria', 'ASC');
+            return $this->db->get()->result_object();
+        }
+	}
+	public function store_kriteria($id=NULL){
+        if ( ! empty($id) ) {
+            $table='kriteria';
+            $data=[
+                'nama_kriteria' => $this->post['nama_kriteria'],
+                'bobot' => $this->post['bobot'],
+                'id_kategori' => $this->post['id_kategori'],
+            ];  
+            $where=[
+                'id_kriteria' => $id,
+            ];  
+            return $this->db->update($table,$data,$where);
+        } else {
+            $table='kriteria';
+            $data= [
+                'nama_kriteria' => $this->post['nama_kriteria'],
+                'bobot' => $this->post['bobot'],
+                'id_kategori' => $this->post['id_kategori'],
+            ];		
+            return $this->db->insert($table,$data);
+        }
+        
+	}	
+    /* ==================== End Menu Master Data: Kriteria ==================== */
 
     /* ==================== Start Menu Master Data: Divisi ==================== */
 	public function show_divisi($id=NULL){
