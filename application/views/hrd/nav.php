@@ -88,7 +88,7 @@
               </li>
             </ul>
           </li>
-          <li class="nav-item has-treeview <?php echo ($this->uri->segment(2)=='karyawan' || $this->uri->segment(2)=='manajer' || $this->uri->segment(2)=='kategori' || $this->uri->segment(2)=='kriteria' || $this->uri->segment(2)=='divisi')  ? 'menu-open' : null ?>">
+          <li class="nav-item has-treeview <?php echo ($this->uri->segment(2)=='penilaian' || $this->uri->segment(2)=='hasil-akhir')  ? 'menu-open' : null ?>">
             <a href="#" class="nav-link">
               <i class="nav-icon fa fa-user"></i>
               <p>
@@ -98,19 +98,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?php echo base_url( $this->session->userdata('level') ) ?>/manajer" class="nav-link <?php echo ($this->uri->segment(2)=='manajer') ? 'active' : null ?>">
+                <a href="<?php echo base_url( $this->session->userdata('level') ) ?>/penilaian" class="nav-link <?php echo ($this->uri->segment(2)=='penilaian') ? 'active' : null ?>">
                   <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Kuisioner</p>
+                  <p>Penilaian</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo base_url( $this->session->userdata('level') ) ?>/manajer" class="nav-link <?php echo ($this->uri->segment(2)=='manajer') ? 'active' : null ?>">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Presensi</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="<?php echo base_url( $this->session->userdata('level') ) ?>/manajer" class="nav-link <?php echo ($this->uri->segment(2)=='manajer') ? 'active' : null ?>">
+                <a href="<?php echo base_url( $this->session->userdata('level') ) ?>/hasil-akhir" class="nav-link <?php echo ($this->uri->segment(2)=='hasil-akhir') ? 'active' : null ?>">
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>Hasil Akhir</p>
                 </a>
