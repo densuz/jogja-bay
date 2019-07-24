@@ -470,6 +470,17 @@
             return $this->data->html;
         }
         /* ==================== End Jenis Kelamin ==================== */
+
+        /* ==================== Start Laporan: penilaian ==================== */
+        public function penilaian()
+        {
+            $this->content['karyawan']= $this->M_hrd->show_karyawan();
+            $this->content['kriteria']= $this->M_hrd->show_kriteria();
+            $this->content['penilaian']= $this->M_hrd->show_penilaian();
+            $this->view = $this->session->userdata('level') .'/penilaian';
+            $this->render_pages();
+        }
+        /* ==================== End Laporan: penilaian ==================== */
         
     }
     

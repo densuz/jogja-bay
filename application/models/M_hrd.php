@@ -340,4 +340,11 @@ class M_hrd extends CI_Model{
                 
     }
     /* ==================== End Store User ==================== */
+
+    /* ==================== Start Laporan: Penilaian ==================== */
+    public function show_penilaian()
+    {
+        return $this->db->get('penilaian')->result_object();
+    }
+    /* ==================== End Laporan: Penilaian ==================== */
 }
