@@ -23,7 +23,7 @@
     <div class="row">
       <div class="col-12">
         <div class="card">
-          <form action="<?php echo base_url( $this->session->userdata('level') ) ?>store-penilaian" method="post" id="dataStore">
+          <form action="<?php echo base_url( $this->session->userdata('level') ) ?>/store-penilaian" method="post" id="dataStore">
               <!-- /.card-header -->
               <div class="card-body">
               <div class="table-responsive">
