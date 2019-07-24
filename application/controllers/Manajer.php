@@ -25,7 +25,7 @@
         {
             $row= $this->M_manajer->show_manajer( $this->uri->segment(3) );
             $this->data->html= '
-                <form action="'.base_url( $this->session->userdata('level') ).'/store-manajer" id="dataStore">
+                <form action="'.base_url( $this->session->userdata('level') ).'/store-manajer" class="data-store">
                     <div class="form-group">
                         <label>Nama :</label>
                         <input value="'.$row->nama.'" name="nama" type="text" class="form-control" required="" placeholder="Masukan nama divisi">

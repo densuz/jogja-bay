@@ -105,7 +105,7 @@
     },'json');
   });
   
-  $(document).on('submit', 'form#dataStore', function(e) {
+  $(document).on('submit', 'form.data-store', function(e) {
     e.preventDefault();    
     var formData = new FormData(this);
     $.ajax({
