@@ -1,6 +1,6 @@
 <div class="content-wrapper">
   <div class="bg-success" style="padding: 20px 30px; z-index: 999999; font-size: 16px; font-weight: 600;">
-    <a href="" style="color: rgba(255, 255, 255, 0.9); display: inline-block; margin-right: 10px; text-decoration: none;"><b>Info !</b> Belum Pernah Ada Penilaian</a>
+    <a href="" style="color: rgba(255, 255, 255, 0.9); display: inline-block; margin-right: 10px; text-decoration: none;"><b>Info Histori Penilaian !</b> Belum Pernah Ada Penilaian</a>
   </div>
   <!-- Content Header (Page header) -->
   <section class="content-header">
@@ -23,7 +23,7 @@
     <div class="row">
       <div class="col-12">
         <div class="card">
-          <form action="result.php" method="post">
+          <form action="<?php echo base_url( $this->session->userdata('level') ) ?>store-penilaian" method="post" id="dataStore">
               <!-- /.card-header -->
               <div class="card-body">
               <div class="table-responsive">

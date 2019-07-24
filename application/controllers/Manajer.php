@@ -134,6 +134,10 @@
             $this->view = $this->session->userdata('level') .'/penilaian';
             $this->render_pages();
         }
+        public function store_penilaian()
+        {
+            echo $this->store_data('penilaian');
+        }
         /* ==================== End Menu Penilaian ==================== */
 
 

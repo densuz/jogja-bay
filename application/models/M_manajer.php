@@ -86,6 +86,22 @@ class M_manajer extends CI_Model{
             $this->db->order_by('kriteria.nama_kriteria', 'ASC');
             return $this->db->get()->result_object();
         }
+    }
+    public function store_penilaian(){
+        $table='penilaian';
+        $data=[];
+        foreach ($this->post['id_user'] as $key => $value) {
+            foreach ($this->post['id_kriteria_' .$value] as $key_sub => $value_sub) {
+                $data[]= [
+                    'id_user'=> $value,
+                    'id_kriteria'=> $key_sub,
+                    'nilai'=> $value_sub,
+                    'tanggal'=> date('Y-m-d')
+                ]; 
+            }
+        }
+        $this->db->insert_batch($table,$data);
+        return TRUE;
 	}
     /* ==================== End Penilaian ==================== */
 
