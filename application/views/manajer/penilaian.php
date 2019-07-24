@@ -57,7 +57,7 @@
                                 foreach ($kriteria as $key_sub => $value_sub) {
                                   $form_sub .= '
                                     <td>
-                                        <input required="" value="" type="number" name="id_kriteria_'.$value->id_user.[$value_sub->id_kriteria].'" placeholder="0.1 s.d 1" step="0.1" min="0.1" max="1" class="form-control" >
+                                        <input required="" value="" type="number" name="id_kriteria_'.$value->id_user.'['.$value_sub->id_kriteria.']" placeholder="0.1 s.d 1" step="0.1" min="0.1" max="1" class="form-control" >
                                     </td>
                                   ';
                                 }
