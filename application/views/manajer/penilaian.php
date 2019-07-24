@@ -26,6 +26,10 @@
                       </thead>
                       <tbody>
                           <?php
+                            echo "<pre>";
+                            print_r($karyawan);
+                            print_r($kriteria);
+                            echo "</pre>";
                               $data =[
                                   [
                                       'id_user'       => 1,

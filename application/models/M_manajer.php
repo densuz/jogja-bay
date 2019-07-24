@@ -37,6 +37,57 @@ class M_manajer extends CI_Model{
         
 	}
     /* ==================== End Informasi Profil ==================== */
+    
+    /* ==================== End Penilaian ==================== */
+    public function show_karyawan($id=NULL)
+    {
+        if ( ! empty($id) ) {
+            $this->db->select("
+                *,
+                IF(biodata.jk='L', 'Laki-Laki' , 'Perempuan') AS jenis_kelamin                
+            ");
+            $this->db->from('user');
+            $this->db->join('biodata', 'biodata.id_biodata = user.id_biodata');
+            $this->db->join('divisi', 'divisi.id_divisi = biodata.id_divisi');
+            $this->db->where('user.level','karyawan');
+            $this->db->where('user.id_user',$id);
+            $this->db->order_by('biodata.nama', 'ASC');
+            return $this->db->get()->row();
+        } else {
+            $this->db->select("
+                *,
+                IF(biodata.jk='L', 'Laki-Laki' , 'Perempuan') AS jenis_kelamin                
+            ");
+            $this->db->from('user');
+            $this->db->join('biodata', 'biodata.id_biodata = user.id_biodata');
+            $this->db->join('divisi', 'divisi.id_divisi = biodata.id_divisi');
+            $this->db->where('user.level','karyawan');
+            $this->db->order_by('biodata.nama', 'ASC');
+            return $this->db->get()->result_object();
+        }
+    }
+    public function show_kriteria($id=NULL){
+        if ( ! empty($id) ) {
+            $this->db->select("
+                *,
+                kriteria.bobot AS bobot_kriteria                
+            ");
+            $this->db->from('kriteria');
+            $this->db->join('kategori', 'kategori.id_kategori = kriteria.id_kategori');
+            $this->db->where('id_kriteria',$id);
+            return $this->db->get_where()->row();
+        } else {
+            $this->db->select("
+                *,
+                kriteria.bobot AS bobot_kriteria                
+            ");
+            $this->db->from('kriteria');
+            $this->db->join('kategori', 'kategori.id_kategori = kriteria.id_kategori');
+            $this->db->order_by('kriteria.nama_kriteria', 'ASC');
+            return $this->db->get()->result_object();
+        }
+	}
+    /* ==================== End Penilaian ==================== */
 
     /* ==================== Start Store Biodata ==================== */
     protected function store_biodata($id=NULL)
