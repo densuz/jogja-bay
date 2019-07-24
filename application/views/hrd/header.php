@@ -13,7 +13,7 @@
   <!-- Ionicons -->
   <link rel="stylesheet" href="<?php echo base_url()?>/themes/adminlte/code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="<?php echo base_url()?>/themes/adminlte/adminlte.io/themes/dev/adminlte/dist/css/adminlte.min.css?v=0.1">
+  <link rel="stylesheet" href="<?php echo base_url()?>/themes/adminlte/adminlte.io/themes/dev/adminlte/dist/css/adminlte.min.css?v=0.2">
   <!-- iCheck -->
   <link rel="stylesheet" href="<?php echo base_url()?>/themes/adminlte/adminlte.io/themes/dev/adminlte/plugins/iCheck/flat/blue.css">
   <!-- Morris chart -->
