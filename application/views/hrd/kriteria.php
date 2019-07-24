@@ -27,46 +27,48 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <table id="example1" class="table table-bordered table-striped">
-                <thead>
-                <tr>
-                  <th>No</th>
-                  <th>Nama Kriteria</th>
-                  <th>Bobot</th>
-                  <th>Kategori</th>
-                  <th></th>
-                </tr>
-                </thead>
-                <tbody>
-                <?php
-                  $no= 1;
-                  foreach ($rows as $key => $value) {
-                    echo "
-                      <tr>
-                        <td>{$no}</td>
-                        <td>{$value->nama_kriteria}</td>
-                        <td>{$value->bobot_kriteria}</td>
-                        <td>{$value->nama_kategori}</td>
-                        <td>
-                          <div class='btn-group'>
-                            <button type='button' class='btn btn-default'>Action</button>
-                            <button type='button' class='btn btn-default dropdown-toggle' data-toggle='dropdown' aria-expanded='false'>
-                              <span class='caret'></span>
-                              <span class='sr-only'>Toggle Dropdown</span>
-                            </button>
-                            <div class='dropdown-menu' role='menu' x-placement='top-start' style='position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(67px, -165px, 0px);'>
-                              <a class='dropdown-item form-load' href='".base_url( $this->session->userdata('level') .'/form-kriteria/' .$value->id_kriteria)."' title='Edit Informasi Kriteria'>Edit</a>
+              <div class="table-responsive">
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                    <th>No</th>
+                    <th>Nama Kriteria</th>
+                    <th>Bobot</th>
+                    <th>Kategori</th>
+                    <th></th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <?php
+                    $no= 1;
+                    foreach ($rows as $key => $value) {
+                      echo "
+                        <tr>
+                          <td>{$no}</td>
+                          <td>{$value->nama_kriteria}</td>
+                          <td>{$value->bobot_kriteria}</td>
+                          <td>{$value->nama_kategori}</td>
+                          <td>
+                            <div class='btn-group'>
+                              <button type='button' class='btn btn-default'>Action</button>
+                              <button type='button' class='btn btn-default dropdown-toggle' data-toggle='dropdown' aria-expanded='false'>
+                                <span class='caret'></span>
+                                <span class='sr-only'>Toggle Dropdown</span>
+                              </button>
+                              <div class='dropdown-menu' role='menu' x-placement='top-start' style='position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(67px, -165px, 0px);'>
+                                <a class='dropdown-item form-load' href='".base_url( $this->session->userdata('level') .'/form-kriteria/' .$value->id_kriteria)."' title='Edit Informasi Kriteria'>Edit</a>
+                              </div>
                             </div>
-                          </div>
-                        </td>
-                      </tr>
-                    ";
-                    $no++;
-                  }
-                ?>
-                
-                </tbody>
-              </table>
+                          </td>
+                        </tr>
+                      ";
+                      $no++;
+                    }
+                  ?>
+                  
+                  </tbody>
+                </table>
+              </div>
             </div>
             <!-- /.card-body -->
           </div>
