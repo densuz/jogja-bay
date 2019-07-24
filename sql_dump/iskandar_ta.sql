@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 22, 2019 at 03:47 PM
+-- Generation Time: Jul 24, 2019 at 02:36 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -30,7 +30,6 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `biodata` (
   `id_biodata` int(11) NOT NULL,
-  `id_kategori` int(11) DEFAULT NULL,
   `nama` varchar(100) DEFAULT NULL,
   `tgl_lahir` date DEFAULT NULL,
   `jk` enum('L','P') DEFAULT NULL,
@@ -42,38 +41,14 @@ CREATE TABLE `biodata` (
 -- Dumping data for table `biodata`
 --
 
-INSERT INTO `biodata` (`id_biodata`, `id_kategori`, `nama`, `tgl_lahir`, `jk`, `alamat`, `id_divisi`) VALUES
-(1, NULL, 'Hrd JogjaBay', '1990-07-01', 'P', 'Jogja', NULL),
-(2, NULL, 'Juairia Lestari', '1991-07-01', 'P', 'Banda Aceh', NULL),
-(3, NULL, 'Novita', '1995-07-22', 'P', 'Banda Aceh', 3),
-(4, NULL, 'Nila', '1994-07-22', 'P', 'Banda aceh', 2),
-(5, NULL, 'Fitri', '1993-07-22', 'P', 'Banda aceh', 4),
-(6, NULL, 'Dian', '1990-07-22', 'P', 'Banda aceh', 4),
-(7, NULL, 'Ari', '1992-07-22', 'L', 'Banda aceh', 2);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `bobotsaw`
---
-
-CREATE TABLE `bobotsaw` (
-  `id_bobot_saw` int(11) NOT NULL,
-  `kriteria` varchar(100) DEFAULT NULL,
-  `bobot` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `bobot_kriteria`
---
-
-CREATE TABLE `bobot_kriteria` (
-  `id_bobot_kriteria` int(11) NOT NULL,
-  `id_bobot_saw` int(11) DEFAULT NULL,
-  `id_penilaian` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+INSERT INTO `biodata` (`id_biodata`, `nama`, `tgl_lahir`, `jk`, `alamat`, `id_divisi`) VALUES
+(1, 'Hrd JogjaBay', '1990-07-01', 'L', 'Jogja', NULL),
+(2, 'Juairia Lestari', '1991-07-01', 'P', 'Banda Aceh', NULL),
+(3, 'Novita', '1995-07-22', 'P', 'Banda Aceh', 3),
+(4, 'Nila', '1994-07-22', 'P', 'Banda aceh', 2),
+(5, 'Fitri', '1993-07-22', 'P', 'Banda aceh', 4),
+(6, 'Dian', '1990-07-22', 'P', 'Banda aceh', 4),
+(7, 'Ari', '1992-07-22', 'L', 'Banda aceh', 2);
 
 -- --------------------------------------------------------
 
@@ -107,34 +82,47 @@ INSERT INTO `divisi` (`id_divisi`, `nama_divisi`) VALUES
 
 CREATE TABLE `kategori` (
   `id_kategori` int(11) NOT NULL,
-  `id_bobot_kriteria` int(11) DEFAULT NULL,
   `nama_kategori` varchar(100) DEFAULT NULL,
-  `id_penilaian` int(11) DEFAULT NULL
+  `bobot` float DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `kategori`
 --
 
-INSERT INTO `kategori` (`id_kategori`, `id_bobot_kriteria`, `nama_kategori`, `id_penilaian`) VALUES
-(1, NULL, 'Attitude', NULL),
-(2, NULL, 'Grooming', NULL),
-(3, NULL, 'Kinerja', NULL),
-(4, NULL, 'Integritas', NULL);
+INSERT INTO `kategori` (`id_kategori`, `nama_kategori`, `bobot`) VALUES
+(1, 'Attitude', NULL),
+(2, 'Grooming', NULL),
+(3, 'Kinerja', NULL),
+(4, 'Integritas', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `manajer`
+-- Table structure for table `kriteria`
 --
 
-CREATE TABLE `manajer` (
-  `id_manajer` int(11) NOT NULL,
-  `id_penilaian` int(11) DEFAULT NULL,
-  `username` varchar(20) DEFAULT NULL,
-  `password` varchar(20) DEFAULT NULL,
-  `nama` varchar(20) DEFAULT NULL
+CREATE TABLE `kriteria` (
+  `id_kriteria` int(11) NOT NULL,
+  `nama_kriteria` varchar(100) DEFAULT NULL,
+  `bobot` float DEFAULT NULL,
+  `id_kategori` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `kriteria`
+--
+
+INSERT INTO `kriteria` (`id_kriteria`, `nama_kriteria`, `bobot`, `id_kategori`) VALUES
+(1, 'Ketelitian', 0.5, 3),
+(2, 'Service excellent', 0.7, 3),
+(3, 'Personal Selling', 0.6, 3),
+(4, 'Kerjasama Tim', 0.4, 3),
+(5, 'Kedisiplinan', 0.2, 4),
+(6, 'Kejujuran', 0.3, 4),
+(7, 'Inisiatif', 0.1, 4),
+(8, 'Attitude', 0.8, 1),
+(9, 'Grooming', 0.9, 2);
 
 -- --------------------------------------------------------
 
@@ -207,12 +195,6 @@ ALTER TABLE `biodata`
   ADD PRIMARY KEY (`id_biodata`);
 
 --
--- Indexes for table `bobotsaw`
---
-ALTER TABLE `bobotsaw`
-  ADD PRIMARY KEY (`id_bobot_saw`);
-
---
 -- Indexes for table `divisi`
 --
 ALTER TABLE `divisi`
@@ -225,10 +207,10 @@ ALTER TABLE `kategori`
   ADD PRIMARY KEY (`id_kategori`);
 
 --
--- Indexes for table `manajer`
+-- Indexes for table `kriteria`
 --
-ALTER TABLE `manajer`
-  ADD PRIMARY KEY (`id_manajer`);
+ALTER TABLE `kriteria`
+  ADD PRIMARY KEY (`id_kriteria`);
 
 --
 -- Indexes for table `nilai_akhir`
@@ -269,6 +251,12 @@ ALTER TABLE `divisi`
 --
 ALTER TABLE `kategori`
   MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `kriteria`
+--
+ALTER TABLE `kriteria`
+  MODIFY `id_kriteria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `user`
