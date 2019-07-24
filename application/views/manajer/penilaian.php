@@ -13,15 +13,15 @@
                           <tr>
                               <th>Name</th>
                               <th>Divisi</th>
-                              <th>Attitude</th>
-                              <th>Grooming</th>
-                              <th>Ketelitian</th>
-                              <th>Service Excellent</th>
-                              <th>Personal Selling</th>
-                              <th>Kerjasama Tim</th>
-                              <th>Kedisiplinan</th>
-                              <th>Kejujuran</th>
-                              <th>Inisiatif</th>
+                              <th style="min-width: 120px">Attitude</th>
+                              <th style="min-width: 120px">Grooming</th>
+                              <th style="min-width: 120px">Ketelitian</th>
+                              <th style="min-width: 120px">Service Excellent</th>
+                              <th style="min-width: 120px">Personal Selling</th>
+                              <th style="min-width: 120px">Kerjasama Tim</th>
+                              <th style="min-width: 120px">Kedisiplinan</th>
+                              <th style="min-width: 120px">Kejujuran</th>
+                              <th style="min-width: 120px">Inisiatif</th>
                           </tr>
                       </thead>
                       <tbody>
