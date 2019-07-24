@@ -52,39 +52,21 @@
                                       'nama_divisi'   => 'Logistik',
                                   ],
                               ];
-                              foreach ($data as $key => $value) {
+                              foreach ($karyawan as $key => $value) {
+                                $form_sub= '';
+                                foreach ($kriteria as $key_sub => $value_sub) {
+                                  $form_sub .= '
+                                    <td>
+                                        <input required="" value="" type="number" name="id_kriteria_'.$value->id_user.[$value_sub->id_kriteria].'" placeholder="0.1 s.d 1" step="0.1" min="0.1" max="1" class="form-control" >
+                                    </td>
+                                  ';
+                                }
                                   echo '
                                       <tr>
-                                          <input class="id_user" name="id_user[]" type="hidden" value="'.$value['id_user'].'">
-                                          <td>Karyawan 1</td>
-                                          <td>Pramuniaga</td>
-                                          <td>
-                                              <input required="" value="0.5" type="number" name="id_kriteria_'.$value['id_user'].'[1]" placeholder="0.1 s.d 1" step="0.1" min="0.1" max="1" class="form-control" >
-                                          </td>
-                                          <td>
-                                              <input required="" value="0.5" type="number" name="id_kriteria_'.$value['id_user'].'[2]" placeholder="0.1 s.d 1" step="0.1" min="0.1" max="1" class="form-control" >
-                                          </td>
-                                          <td>
-                                              <input required="" value="0.5" type="number" name="id_kriteria_'.$value['id_user'].'[3]" placeholder="0.1 s.d 1" step="0.1" min="0.1" max="1" class="form-control" >
-                                          </td>
-                                          <td>
-                                              <input required="" value="0.5" type="number" name="id_kriteria_'.$value['id_user'].'[4]" placeholder="0.1 s.d 1" step="0.1" min="0.1" max="1" class="form-control" >
-                                          </td>
-                                          <td>
-                                              <input required="" value="0.5" type="number" name="id_kriteria_'.$value['id_user'].'[5]" placeholder="0.1 s.d 1" step="0.1" min="0.1" max="1" class="form-control" >
-                                          </td>
-                                          <td>
-                                              <input required="" value="0.5" type="number" name="id_kriteria_'.$value['id_user'].'[6]" placeholder="0.1 s.d 1" step="0.1" min="0.1" max="1" class="form-control" >
-                                          </td>
-                                          <td>
-                                              <input required="" value="0.5" type="number" name="id_kriteria_'.$value['id_user'].'[7]" placeholder="0.1 s.d 1" step="0.1" min="0.1" max="1" class="form-control" >
-                                          </td>
-                                          <td>
-                                              <input required="" value="0.5" type="number" name="id_kriteria_'.$value['id_user'].'[8]" placeholder="0.1 s.d 1" step="0.1" min="0.1" max="1" class="form-control" >
-                                          </td>
-                                          <td>
-                                              <input required="" value="0.5" type="number" name="id_kriteria_'.$value['id_user'].'[9]" placeholder="0.1 s.d 1" step="0.1" min="0.1" max="1" class="form-control" >
-                                          </td>
+                                          <input class="id_user" name="id_user[]" type="hidden" value="'.$value->id_user.'">
+                                          <td>'.$value->nama.'</td>
+                                          <td>'.$value->nama_divisi.'</td>
+                                          '.$form_sub.'
                                       </tr>
                                   ';
                               }
