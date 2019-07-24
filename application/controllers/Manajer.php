@@ -125,5 +125,15 @@
             return $this->data->html;
         }
         /* ==================== End Jenis Kelamin ==================== */
+
+        /* ==================== Start Menu Penilaian ==================== */
+        public function penilaian()
+        {
+            $this->view = $this->session->userdata('level') .'/penilaian';
+            $this->render_pages();
+        }
+        /* ==================== End Menu Penilaian ==================== */
+
+
     }
     
