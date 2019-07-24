@@ -96,7 +96,7 @@ class M_manajer extends CI_Model{
                     'id_user'=> $value,
                     'id_kriteria'=> $key_sub,
                     'nilai'=> $value_sub,
-                    'tanggal'=> date('Y-m-d')
+                    'tanggal'=> date('Y-m-d h:i:s')
                 ]; 
             }
         }
