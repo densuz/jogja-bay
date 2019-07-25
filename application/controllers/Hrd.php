@@ -483,5 +483,13 @@
         }
         /* ==================== End Laporan: penilaian ==================== */
         
+        /* ==================== Start Laporan: Hasil Akhir ==================== */
+        public function hasil_akhir()
+        {
+            $this->view = $this->session->userdata('level') .'/hasil_akhir';
+            $this->render_pages();
+        }
+        /* ==================== End Laporan: Hasil Akhir ==================== */
+        
     }
     

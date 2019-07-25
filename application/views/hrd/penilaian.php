@@ -31,101 +31,99 @@
     <div class="row">
       <div class="col-12">
         <div class="card">
-          <form action="<?php echo base_url( $this->session->userdata('level') ) ?>/store-penilaian" method="post" class="data-store">
-              <!-- /.card-header -->
-              <div class="card-body">
-              <div class="table-responsive">
-                  <table id="example1" class="table table-bordered table-striped">
-                      <thead>
-                          <tr>
-                              <th>No</th>
-                              <th>Name</th>
-                              <th>Divisi</th>
-                              <th>Tanggal&nbspPenilaian</th>
-                              <?php
-                                $thead= '';
-                                foreach ($kriteria as $key => $value) {
-                                  $thead .= '
-                                    <th>'.$value->nama_kriteria.'</th>
-                                  ';
-                                }
-                                echo $thead;
-                              ?>
-                          </tr>
-                      </thead>
-                      <tbody>
-                          <?php
-                            $no= 1;
-                            foreach ($karyawan as $key => $value) {
-                              // $count_duplicate= count($duplicate);
-                              // $next_td= '';
-                              // foreach ($duplicate as $key_duplicate => $value_duplicate) {
-                              //   if ( $key_duplicate==0 ) {
-                              //     $next_td .= '<td>'.$value_duplicate->tanggal_mod.'</td>';
-                              //     foreach ($kriteria as $key_kriteria => $value_kriteria) {
-                              //       foreach ($penilaian as $key_penilaian => $value_penilaian) {
-                              //         if ( ($value_penilaian->id_user==$value->id_user) && ($value_penilaian->id_kriteria==$value_kriteria->id_kriteria) && $value_penilaian->tanggal==$value_duplicate->tanggal )
-                              //         $next_td .= '<td>'.$value_penilaian->nilai.'</td>';
-                              //       }
-                              //     }
-                              //     $next_td .= '</tr>';
-                                  
-                              //   } else {
-                              //     $next_td .= '<tr>';
-                              //     $next_td .= '<td>'.$value_duplicate->tanggal_mod.'</td>';
-                              //     foreach ($kriteria as $key_kriteria => $value_kriteria) {
-                              //       foreach ($penilaian as $key_penilaian => $value_penilaian) {
-                              //         if ( ($value_penilaian->id_user==$value->id_user) && ($value_penilaian->id_kriteria==$value_kriteria->id_kriteria) && $value_penilaian->tanggal==$value_duplicate->tanggal )
-                              //         $next_td .= '<td>'.$value_penilaian->nilai.'</td>';
-                              //       }
-                              //     }
-                              //     $next_td .= '</tr>';
-                              //   }
-                                
-                              // }
-                              // echo '
-                              //   <tr>
-                              //     <td rowspan="'.$count_duplicate.'">'.$no.'</td>
-                              //     <td rowspan="'.$count_duplicate.'">'.$value->nama.'</td>
-                              //     <td rowspan="'.$count_duplicate.'">'.$value->nama_divisi.'</td>
-                              //     '.$next_td.'
-                              // ';
-                              // $no++;
-
-                              $next_td= '';
-                              foreach ($duplicate as $key_duplicate => $value_duplicate) {
-                                $next_td .= '<tr>';
-                                $next_td .= '<td>'.$no.'</td>';
-                                $next_td .= '<td>'.$value->nama.'</td>';
-                                $next_td .= '<td>'.$value->nama_divisi.'</td>';
-                                $next_td .= '<td>'.$value_duplicate->tanggal_mod.'</td>';
-                                foreach ($kriteria as $key_kriteria => $value_kriteria) {
-                                  foreach ($penilaian as $key_penilaian => $value_penilaian) {
-                                    if ( ($value_penilaian->id_user==$value->id_user) && ($value_penilaian->id_kriteria==$value_kriteria->id_kriteria) && $value_penilaian->tanggal==$value_duplicate->tanggal )
-                                    $next_td .= '<td>'.$value_penilaian->nilai.'</td>';
-                                  }
-                                }
-                                $next_td .= '</tr>';
-                                $no++;
-                              }
-                              echo $next_td;
-                            }
-                          ?>
-                      </tbody>
-                      <tfoot>
-                        <tr>
+          <!-- /.card-header -->
+          <div class="card-body">
+          <div class="table-responsive">
+              <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                      <tr>
                           <th>No</th>
                           <th>Name</th>
                           <th>Divisi</th>
                           <th>Tanggal&nbspPenilaian</th>
-                          <?php echo $thead; ?>
-                        </tr>
-                      </tfoot>
-                  </table>
-              </div>
-              </div>
-              <!-- /.card-body -->
-          </form>
+                          <?php
+                            $thead= '';
+                            foreach ($kriteria as $key => $value) {
+                              $thead .= '
+                                <th>'.$value->nama_kriteria.'</th>
+                              ';
+                            }
+                            echo $thead;
+                          ?>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <?php
+                        $no= 1;
+                        foreach ($karyawan as $key => $value) {
+                          // $count_duplicate= count($duplicate);
+                          // $next_td= '';
+                          // foreach ($duplicate as $key_duplicate => $value_duplicate) {
+                          //   if ( $key_duplicate==0 ) {
+                          //     $next_td .= '<td>'.$value_duplicate->tanggal_mod.'</td>';
+                          //     foreach ($kriteria as $key_kriteria => $value_kriteria) {
+                          //       foreach ($penilaian as $key_penilaian => $value_penilaian) {
+                          //         if ( ($value_penilaian->id_user==$value->id_user) && ($value_penilaian->id_kriteria==$value_kriteria->id_kriteria) && $value_penilaian->tanggal==$value_duplicate->tanggal )
+                          //         $next_td .= '<td>'.$value_penilaian->nilai.'</td>';
+                          //       }
+                          //     }
+                          //     $next_td .= '</tr>';
+                              
+                          //   } else {
+                          //     $next_td .= '<tr>';
+                          //     $next_td .= '<td>'.$value_duplicate->tanggal_mod.'</td>';
+                          //     foreach ($kriteria as $key_kriteria => $value_kriteria) {
+                          //       foreach ($penilaian as $key_penilaian => $value_penilaian) {
+                          //         if ( ($value_penilaian->id_user==$value->id_user) && ($value_penilaian->id_kriteria==$value_kriteria->id_kriteria) && $value_penilaian->tanggal==$value_duplicate->tanggal )
+                          //         $next_td .= '<td>'.$value_penilaian->nilai.'</td>';
+                          //       }
+                          //     }
+                          //     $next_td .= '</tr>';
+                          //   }
+                            
+                          // }
+                          // echo '
+                          //   <tr>
+                          //     <td rowspan="'.$count_duplicate.'">'.$no.'</td>
+                          //     <td rowspan="'.$count_duplicate.'">'.$value->nama.'</td>
+                          //     <td rowspan="'.$count_duplicate.'">'.$value->nama_divisi.'</td>
+                          //     '.$next_td.'
+                          // ';
+                          // $no++;
+
+                          $next_td= '';
+                          foreach ($duplicate as $key_duplicate => $value_duplicate) {
+                            $next_td .= '<tr>';
+                            $next_td .= '<td>'.$no.'</td>';
+                            $next_td .= '<td>'.$value->nama.'</td>';
+                            $next_td .= '<td>'.$value->nama_divisi.'</td>';
+                            $next_td .= '<td>'.$value_duplicate->tanggal_mod.'</td>';
+                            foreach ($kriteria as $key_kriteria => $value_kriteria) {
+                              foreach ($penilaian as $key_penilaian => $value_penilaian) {
+                                if ( ($value_penilaian->id_user==$value->id_user) && ($value_penilaian->id_kriteria==$value_kriteria->id_kriteria) && $value_penilaian->tanggal==$value_duplicate->tanggal )
+                                $next_td .= '<td>'.$value_penilaian->nilai.'</td>';
+                              }
+                            }
+                            $next_td .= '</tr>';
+                            $no++;
+                          }
+                          echo $next_td;
+                        }
+                      ?>
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <th>No</th>
+                      <th>Name</th>
+                      <th>Divisi</th>
+                      <th>Tanggal&nbspPenilaian</th>
+                      <?php echo $thead; ?>
+                    </tr>
+                  </tfoot>
+              </table>
+          </div>
+          </div>
+          <!-- /.card-body -->
         </div>
         <!-- /.card -->
       </div>
