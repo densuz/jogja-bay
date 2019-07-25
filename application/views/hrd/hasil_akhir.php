@@ -58,6 +58,7 @@
                               <th rowspan='2'>Name</th>
                               <th rowspan='2'>Divisi</th>
                               {$th_tahun}
+                              <th rowspan='2'>&nbsp</th>
                             </tr>
                             <tr>
                               {$th_bulan}
