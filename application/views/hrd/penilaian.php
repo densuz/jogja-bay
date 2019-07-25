@@ -1,18 +1,18 @@
 <div class="content-wrapper">
-  <div class="bg-success" style="padding: 20px 30px; z-index: 999999; font-size: 16px; font-weight: 600;">
+  <!-- <div class="bg-success" style="padding: 20px 30px; z-index: 999999; font-size: 16px; font-weight: 600;">
     <a href="" style="color: rgba(255, 255, 255, 0.9); display: inline-block; margin-right: 10px; text-decoration: none;"><b>Info Histori Penilaian !</b> Belum Pernah Ada Penilaian</a>
-  </div>
+  </div> -->
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Penilaian Karyawan</h1>
+          <h1>Laporan Penilaian Karyawan</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="<?php echo base_url( $this->session->userdata('level') ) ?>">Beranda</a></li>
-            <li class="breadcrumb-item active">Penilaian Karyawan</li>
+            <li class="breadcrumb-item active">Laporan Penilaian Karyawan</li>
           </ol>
         </div>
       </div>
@@ -91,7 +91,7 @@
                               //     '.$next_td.'
                               // ';
                               // $no++;
-                              
+
                               $next_td= '';
                               foreach ($duplicate as $key_duplicate => $value_duplicate) {
                                 $next_td .= '<tr>';
