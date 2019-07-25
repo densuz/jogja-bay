@@ -36,14 +36,7 @@
               <div class="card-body">
               <div class="table-responsive">
                   <table id="example1X" class="table table-bordered table-striped">
-                      <thead>
-                        <tr>
-                          <th rowspan="4">No</th>
-                          <th rowspan="4">Name</th>
-                          <th rowspan="4">Divisi</th>
-                          <th colspan="<?php echo count($bulan_penilaian) ?>">Tahun</th>
-                        </tr>
-
+                      <thead class="text-center">
                         <?php
                           $th_tahun= '';
                           $tr_bulan= '';
@@ -57,11 +50,19 @@
                               $th_bulan .= "<th>{$value_bulan->bulan_penilaian}</th>";
                             }
                             $th_tahun .= "<th colspan='{$col_tahun}'>{$value->tahun_penilaian}</th>";
-                            $tr_bulan .= "<tr><th colspan='{$col_tahun}'>Bulan</th></tr>";
                           }
-                          echo "<tr>{$th_tahun}</tr>";
-                          echo "{$tr_bulan}";
-                          echo "<tr>{$th_bulan}</tr>";
+
+                          echo "
+                            <tr>
+                              <th rowspan='2'>No</th>
+                              <th rowspan='2'>Name</th>
+                              <th rowspan='2'>Divisi</th>
+                              {$th_tahun}
+                            </tr>
+                            <tr>
+                              {$th_bulan}
+                            </tr>
+                          ";
                         ?>
                       </thead>
                       <tbody>
