@@ -61,7 +61,7 @@
                               $next_td= '';
                               foreach ($duplicate as $key_duplicate => $value_duplicate) {
                                 if ( $key_duplicate==0 ) {
-                                  $next_td .= '<td>'.$duplicate->tanggal_indo.'</td>';
+                                  $next_td .= '<td>'.$value_duplicate->tanggal_indo.'</td>';
                                   foreach ($kriteria as $key_kriteria => $value_kriteria) {
                                     foreach ($penilaian as $key_penilaian => $value_penilaian) {
                                       if ( ($value_penilaian->id_user==$value->id_user) && ($value_penilaian->id_kriteria==$value_kriteria->id_kriteria) && $value_penilaian->tanggal==$value_duplicate->tanggal )
@@ -72,7 +72,7 @@
                                   
                                 } else {
                                   $next_td .= '<tr>';
-                                  $next_td .= '<td>'.$duplicate->tanggal_indo.'</td>';
+                                  $next_td .= '<td>'.$value_duplicate->tanggal_indo.'</td>';
                                   foreach ($kriteria as $key_kriteria => $value_kriteria) {
                                     foreach ($penilaian as $key_penilaian => $value_penilaian) {
                                       if ( ($value_penilaian->id_user==$value->id_user) && ($value_penilaian->id_kriteria==$value_kriteria->id_kriteria) && $value_penilaian->tanggal==$value_duplicate->tanggal )
