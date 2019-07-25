@@ -46,7 +46,7 @@
                                 $thead= '';
                                 foreach ($kriteria as $key => $value) {
                                   $thead .= '
-                                    <th style="min-width: 120px">'.$value->nama_kriteria.'</th>
+                                    <th>'.$value->nama_kriteria.'</th>
                                   ';
                                 }
                                 echo $thead;
