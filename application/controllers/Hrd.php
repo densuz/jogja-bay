@@ -487,6 +487,7 @@
         public function hasil_akhir()
         {
             $this->content['karyawan']= $this->M_hrd->show_karyawan();
+            $this->content['start_end_penilaian']= $this->M_hrd->start_end_penilaian();
             $this->view = $this->session->userdata('level') .'/hasil_akhir';
             $this->render_pages();
         }

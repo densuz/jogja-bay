@@ -351,4 +351,20 @@ class M_hrd extends CI_Model{
         return $this->db->query('SELECT DISTINCT tanggal, DATE_FORMAT(tanggal, "%a,  %d %b %Y %h:%i:%s") AS tanggal_mod FROM penilaian')->result_object();
     }
     /* ==================== End Laporan: Penilaian ==================== */
+
+    /* ==================== Start Laporan: Hasil Akhir ==================== */
+    public function start_end_penilaian()
+    {
+        return $this->db->query('
+            SELECT
+                (SELECT tanggal FROM penilaian ORDER BY tanggal ASC LIMIT 1 ) AS start_penilaian,
+                (SELECT tanggal FROM penilaian ORDER BY tanggal DESC LIMIT 1 ) AS end_penilaian,
+                (SELECT DATE_FORMAT(tanggal, "%Y") FROM penilaian ORDER BY tanggal ASC LIMIT 1 ) AS start_tahun,
+                (SELECT DATE_FORMAT(tanggal, "%Y") FROM penilaian ORDER BY tanggal DESC LIMIT 1 ) AS end_tahun,
+                (SELECT DATE_FORMAT(tanggal, "%M") FROM penilaian ORDER BY tanggal ASC LIMIT 1 ) AS start_bulan,
+                (SELECT DATE_FORMAT(tanggal, "%M") FROM penilaian ORDER BY tanggal DESC LIMIT 1 ) AS end_bulan
+            FROM penilaian WHERE 1 LIMIT 1
+        ')->row();
+    }
+    /* ==================== End Laporan: Hasil Akhir ==================== */
 }
