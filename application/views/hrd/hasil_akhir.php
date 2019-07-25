@@ -68,7 +68,7 @@
                         <?php
                           $tes='';
                           foreach ($bulan_penilaian as $key => $value) {
-                            $tes .= '<td>0.'.$value->id_bulan.'</td>'
+                            $tes .= '<td>0.'.$value->id_bulan.'</td>';
                           }
                           $no = 1;
                           $tbody= '';
