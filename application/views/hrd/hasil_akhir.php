@@ -7,12 +7,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Laporan Penilaian Karyawan</h1>
+          <h1>Laporan Hasil Akhir Penilaian</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="<?php echo base_url( $this->session->userdata('level') ) ?>">Beranda</a></li>
-            <li class="breadcrumb-item active">Laporan Penilaian Karyawan</li>
+            <li class="breadcrumb-item active">Laporan Hasil Akhir Penilaian</li>
           </ol>
         </div>
       </div>
