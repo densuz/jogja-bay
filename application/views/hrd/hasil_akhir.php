@@ -35,17 +35,31 @@
               <!-- /.card-header -->
               <div class="card-body">
               <div class="table-responsive">
-                  <table id="example1" class="table table-bordered table-striped">
+                  <table id="example1X" class="table table-bordered table-striped">
                       <thead>
-                          <tr>
-                              <th>No</th>
-                              <th>Name</th>
-                              <th>Divisi</th>
-                              <th>Tanggal&nbspPenilaian</th>
-                          </tr>
+                        <tr>
+                          <th>No</th>
+                          <th>Name</th>
+                          <th>Divisi</th>
+                          <th>Bulan</th>
+                        </tr>
                       </thead>
                       <tbody>
-                          
+                        <?php
+                          $no = 1;
+                          $tbody= '';
+                          foreach ($karyawan as $key => $value) {
+                            $tbody .= "
+                              <tr>
+                                <td>{$no}</td>
+                                <td>{$value->nama}</td>
+                                <td>{$value->nama_divisi}</td>
+                                <td>{$value->nama_divisi}</td>
+                              </tr>
+                            ";
+                            $no++;
+                          }
+                        ?>
                       </tbody>
                       <tfoot>
                         <tr>
