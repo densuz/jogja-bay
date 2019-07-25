@@ -366,5 +366,22 @@ class M_hrd extends CI_Model{
             FROM penilaian WHERE 1 LIMIT 1
         ')->row();
     }
+    public function tahun_penilaian()
+    {
+        return $this->db->query('
+            SELECT DATE_FORMAT(tanggal,"%Y") AS tahun_penilaian FROM penilaian GROUP BY YEAR(tanggal) ORDER BY tanggal ASC
+        ')->result_object();
+    }
+    public function bulan_penilaian()
+    {
+        return $this->db->query('
+            SELECT
+                tanggal,
+                DATE_FORMAT(tanggal,"%Y") AS tahun_penilaian,
+                DATE_FORMAT(tanggal,"%M") AS bulan_penilaian,
+                DATE_FORMAT(tanggal,"%c") AS id_bulan
+            FROM penilaian GROUP BY YEAR(tanggal),MONTH(tanggal) ORDER BY tanggal ASC
+        ')->result_object();
+    }
     /* ==================== End Laporan: Hasil Akhir ==================== */
 }
