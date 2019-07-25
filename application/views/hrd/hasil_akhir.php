@@ -55,6 +55,7 @@
                               <th rowspan='2'>Name</th>
                               <th rowspan='2'>Divisi</th>
                               {$th_tahun}
+                              <th rowspan='2'>Nilai</th>
                               <th rowspan='2'>&nbsp</th>
                             </tr>
                             <tr>
@@ -75,6 +76,7 @@
                                 <td>{$value->nama_divisi}</td>
                                 <td>0.7(contoh)</td>
                                 <td>0.8(contoh)</td>
+                                <td>1.5(contoh)</td>
                                 <td>
                                   <div class='btn-group'>
                                     <button type='button' class='btn btn-default'>Action</button>
