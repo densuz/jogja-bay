@@ -59,7 +59,7 @@
                               $count_duplicate= count($duplicate);
                               $next_td= '';
                               foreach ($duplicate as $key_duplicate => $value_duplicate) {
-                                if ( $key_kriteria==0 ) {
+                                if ( $key_duplicate==0 ) {
                                   foreach ($kriteria as $key_kriteria => $value_kriteria) {
                                     foreach ($penilaian as $key_penilaian => $value_penilaian) {
                                       if ( ($value_penilaian->id_user==$value->id_user) && ($value_penilaian->id_kriteria==$value_kriteria->id_kriteria) && $value_penilaian->tanggal==$value_duplicate->tanggal )
@@ -67,9 +67,16 @@
                                     }
                                   }
                                   $next_td .= '</tr>';
-
+                                  
                                 } else {
-                                  # code...
+                                  $next_td .= '<tr>';
+                                  foreach ($kriteria as $key_kriteria => $value_kriteria) {
+                                    foreach ($penilaian as $key_penilaian => $value_penilaian) {
+                                      if ( ($value_penilaian->id_user==$value->id_user) && ($value_penilaian->id_kriteria==$value_kriteria->id_kriteria) && $value_penilaian->tanggal==$value_duplicate->tanggal )
+                                      $next_td .= '<td>'.$value_penilaian->nilai.'</td>';
+                                    }
+                                  }
+                                  $next_td .= '</tr>';
                                 }
                                 
                               }
