@@ -75,8 +75,8 @@
                                 <td>{$no}</td>
                                 <td>{$value->nama}</td>
                                 <td>{$value->nama_divisi}</td>
-                                <td>0.7</td>
-                                <td>0.8</td>
+                                <td>0.7(contoh)</td>
+                                <td>0.8(contoh)</td>
                               </tr>
                             ";
                             $no++;
@@ -84,14 +84,14 @@
                           echo $tbody;
                         ?>
                       </tbody>
-                      <tfoot>
+                      <!-- <tfoot>
                         <tr>
                           <th>No</th>
                           <th>Name</th>
                           <th>Divisi</th>
                           <th>Tanggal&nbspPenilaian</th>
                         </tr>
-                      </tfoot>
+                      </tfoot> -->
                   </table>
               </div>
               </div>
