@@ -19,12 +19,9 @@
     </div><!-- /.container-fluid -->
   </section>
   <?php
-  // echo '<pre>';
-  // print_r($karyawan);
-  // print_r($kriteria);
-  // print_r($penilaian);
-  // print_r($duplicate);
-  // echo '</pre>';
+  echo '<pre>';
+  print_r($bulan_penilaian);
+  echo '</pre>';
   ?>
   <!-- Main content -->
   <section class="content">
