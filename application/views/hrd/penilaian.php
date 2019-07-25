@@ -23,6 +23,7 @@
   print_r($karyawan);
   print_r($kriteria);
   print_r($penilaian);
+  print_r($duplicate);
   echo '</pre>';
   ?>
   <!-- Main content -->
@@ -55,22 +56,29 @@
                           <?php
                             $no= 1;
                             foreach ($karyawan as $key => $value) {
-                              $form_sub= '';
-                              foreach ($kriteria as $key_sub => $value_sub) {
-                                $form_sub .= '
-                                  <td>
-                                      <input required="" value="" type="number" name="id_kriteria_'.$value->id_user.'['.$value_sub->id_kriteria.']" placeholder="0.1 s.d 1" step="0.01" min="0.1" max="1" class="form-control" >
-                                  </td>
-                                ';
+                              $count_duplicate= count($duplicate);
+                              $next_td= '';
+                              foreach ($duplicate as $key_duplicate => $value_duplicate) {
+                                if ( $key_kriteria==0 ) {
+                                  foreach ($kriteria as $key_kriteria => $value_kriteria) {
+                                    foreach ($penilaian as $key_penilaian => $value_penilaian) {
+                                      if ( ($value_penilaian->id_user==$value->id_user) && ($value_penilaian->id_kriteria==$value_kriteria->id_kriteria) && $value_penilaian->tanggal==$value_duplicate->tanggal )
+                                      $next_td .= '<td>'.$value_penilaian->nilai.'</td>';
+                                    }
+                                  }
+                                  $next_td .= '</tr>';
+
+                                } else {
+                                  # code...
+                                }
+                                
                               }
                               echo '
-                                  <tr>
-                                      <input class="id_user" name="id_user[]" type="hidden" value="'.$value->id_user.'">
-                                      <td>'.$no.'</td>
-                                      <td>'.$value->nama.'</td>
-                                      <td>'.$value->nama_divisi.'</td>
-                                      '.$form_sub.'
-                                  </tr>
+                                <tr>
+                                  <td rowspan="'.$count_duplicate.'">'.$no.'</td>
+                                  <td rowspan="'.$count_duplicate.'">'.$value->nama.'</td>
+                                  <td rowspan="'.$count_duplicate.'">'.$value->nama_divisi.'</td>
+                                  '.$next_td.'
                               ';
                               $no++;
                             }

@@ -346,5 +346,9 @@ class M_hrd extends CI_Model{
     {
         return $this->db->get('penilaian')->result_object();
     }
+    public function show_penilaian_distinct_tanggal()
+    {
+        return $this->db->query('SELECT DISTINCT tanggal FROM penilaian')->result_object();
+    }
     /* ==================== End Laporan: Penilaian ==================== */
 }

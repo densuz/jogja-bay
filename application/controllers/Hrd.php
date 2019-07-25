@@ -477,6 +477,7 @@
             $this->content['karyawan']= $this->M_hrd->show_karyawan();
             $this->content['kriteria']= $this->M_hrd->show_kriteria();
             $this->content['penilaian']= $this->M_hrd->show_penilaian();
+            $this->content['duplicate']= $this->M_hrd->show_penilaian_distinct_tanggal();
             $this->view = $this->session->userdata('level') .'/penilaian';
             $this->render_pages();
         }
