@@ -57,40 +57,58 @@
                           <?php
                             $no= 1;
                             foreach ($karyawan as $key => $value) {
-                              $count_duplicate= count($duplicate);
+                              // $count_duplicate= count($duplicate);
+                              // $next_td= '';
+                              // foreach ($duplicate as $key_duplicate => $value_duplicate) {
+                              //   if ( $key_duplicate==0 ) {
+                              //     $next_td .= '<td>'.$value_duplicate->tanggal_mod.'</td>';
+                              //     foreach ($kriteria as $key_kriteria => $value_kriteria) {
+                              //       foreach ($penilaian as $key_penilaian => $value_penilaian) {
+                              //         if ( ($value_penilaian->id_user==$value->id_user) && ($value_penilaian->id_kriteria==$value_kriteria->id_kriteria) && $value_penilaian->tanggal==$value_duplicate->tanggal )
+                              //         $next_td .= '<td>'.$value_penilaian->nilai.'</td>';
+                              //       }
+                              //     }
+                              //     $next_td .= '</tr>';
+                                  
+                              //   } else {
+                              //     $next_td .= '<tr>';
+                              //     $next_td .= '<td>'.$value_duplicate->tanggal_mod.'</td>';
+                              //     foreach ($kriteria as $key_kriteria => $value_kriteria) {
+                              //       foreach ($penilaian as $key_penilaian => $value_penilaian) {
+                              //         if ( ($value_penilaian->id_user==$value->id_user) && ($value_penilaian->id_kriteria==$value_kriteria->id_kriteria) && $value_penilaian->tanggal==$value_duplicate->tanggal )
+                              //         $next_td .= '<td>'.$value_penilaian->nilai.'</td>';
+                              //       }
+                              //     }
+                              //     $next_td .= '</tr>';
+                              //   }
+                                
+                              // }
+                              // echo '
+                              //   <tr>
+                              //     <td rowspan="'.$count_duplicate.'">'.$no.'</td>
+                              //     <td rowspan="'.$count_duplicate.'">'.$value->nama.'</td>
+                              //     <td rowspan="'.$count_duplicate.'">'.$value->nama_divisi.'</td>
+                              //     '.$next_td.'
+                              // ';
+                              // $no++;
+                              
                               $next_td= '';
                               foreach ($duplicate as $key_duplicate => $value_duplicate) {
-                                if ( $key_duplicate==0 ) {
-                                  $next_td .= '<td>'.$value_duplicate->tanggal_mod.'</td>';
-                                  foreach ($kriteria as $key_kriteria => $value_kriteria) {
-                                    foreach ($penilaian as $key_penilaian => $value_penilaian) {
-                                      if ( ($value_penilaian->id_user==$value->id_user) && ($value_penilaian->id_kriteria==$value_kriteria->id_kriteria) && $value_penilaian->tanggal==$value_duplicate->tanggal )
-                                      $next_td .= '<td>'.$value_penilaian->nilai.'</td>';
-                                    }
+                                $next_td .= '<tr>';
+                                $next_td .= '<td>'.$no.'</td>';
+                                $next_td .= '<td>'.$value->nama.'</td>';
+                                $next_td .= '<td>'.$value->nama_divisi.'</td>';
+                                $next_td .= '<td>'.$value_duplicate->tanggal_mod.'</td>';
+                                foreach ($kriteria as $key_kriteria => $value_kriteria) {
+                                  foreach ($penilaian as $key_penilaian => $value_penilaian) {
+                                    if ( ($value_penilaian->id_user==$value->id_user) && ($value_penilaian->id_kriteria==$value_kriteria->id_kriteria) && $value_penilaian->tanggal==$value_duplicate->tanggal )
+                                    $next_td .= '<td>'.$value_penilaian->nilai.'</td>';
                                   }
-                                  $next_td .= '</tr>';
-                                  
-                                } else {
-                                  $next_td .= '<tr>';
-                                  $next_td .= '<td>'.$value_duplicate->tanggal_mod.'</td>';
-                                  foreach ($kriteria as $key_kriteria => $value_kriteria) {
-                                    foreach ($penilaian as $key_penilaian => $value_penilaian) {
-                                      if ( ($value_penilaian->id_user==$value->id_user) && ($value_penilaian->id_kriteria==$value_kriteria->id_kriteria) && $value_penilaian->tanggal==$value_duplicate->tanggal )
-                                      $next_td .= '<td>'.$value_penilaian->nilai.'</td>';
-                                    }
-                                  }
-                                  $next_td .= '</tr>';
                                 }
-                                
+                                $next_td .= '</tr>';
+                                $no++;
                               }
-                              echo '
-                                <tr>
-                                  <td rowspan="'.$count_duplicate.'">'.$no.'</td>
-                                  <td rowspan="'.$count_duplicate.'">'.$value->nama.'</td>
-                                  <td rowspan="'.$count_duplicate.'">'.$value->nama_divisi.'</td>
-                                  '.$next_td.'
-                              ';
-                              $no++;
+                              echo $next_td;
                             }
                           ?>
                       </tbody>
