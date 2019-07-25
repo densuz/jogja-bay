@@ -348,7 +348,7 @@ class M_hrd extends CI_Model{
     }
     public function show_penilaian_distinct_tanggal()
     {
-        return $this->db->query('SELECT DISTINCT tanggal FROM penilaian')->result_object();
+        return $this->db->query('SELECT DISTINCT tanggal, DATE_FORMAT(tanggal, "%a,  %d %b %Y %h:%i:%s") AS tanggal_mod FROM penilaian')->result_object();
     }
     /* ==================== End Laporan: Penilaian ==================== */
 }
