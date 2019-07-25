@@ -39,7 +39,7 @@
                           $tr_bulan= '';
                           $th_bulan= '';
                           foreach ($tahun_penilaian as $key => $value) {
-                            $col_tahun= 1;
+                            $col_tahun= 0;
                             foreach ($bulan_penilaian as $key_bulan => $value_bulan) {
                               if ( $value_bulan->tahun_penilaian==$value->tahun_penilaian ) {
                                 $col_tahun++;
