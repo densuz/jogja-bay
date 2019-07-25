@@ -47,9 +47,9 @@
                               if ( $value_bulan->tahun_penilaian==$value->tahun_penilaian ) {
                                 $col_tahun++;
                               }
-                              $th_bulan .= "<th>{$value_bulan->bulan_penilaian}</th>";
+                              $th_bulan .= "<th>Bulan {$value_bulan->bulan_penilaian}</th>";
                             }
-                            $th_tahun .= "<th colspan='{$col_tahun}'>{$value->tahun_penilaian}</th>";
+                            $th_tahun .= "<th colspan='{$col_tahun}'>Tahun {$value->tahun_penilaian}</th>";
                           }
 
                           echo "
