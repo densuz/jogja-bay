@@ -38,18 +38,28 @@
                   <table id="example1X" class="table table-bordered table-striped">
                       <thead>
                         <tr>
-                          <th rowspan="2">No</th>
-                          <th rowspan="2">Name</th>
-                          <th rowspan="2">Divisi</th>
+                          <th rowspan="4">No</th>
+                          <th rowspan="4">Name</th>
+                          <th rowspan="4">Divisi</th>
                           <th colspan="<?php echo count($bulan_penilaian) ?>">Tahun</th>
                         </tr>
-                        <tr>
-                          <?php
-                            foreach ($tahun_penilaian as $key => $value) {
-                              echo "<td>{$value->tahun_penilaian}</td>";
+
+                        <?php
+                          $tr_tahun= '';
+                          $tr_bulan= '';
+                          foreach ($tahun_penilaian as $key => $value) {
+                            $col_tahun= 1;
+                            foreach ($bulan_penilaian as $key_bulan => $value_bulan) {
+                              if ( $value_bulan->tahun_penilaian==$value->tahun_penilaian ) {
+                                $col_tahun++;
+                                // $tr_bulan
+                              }
+                              // echo "<th>{$value->bulan_penilaian}</th>";
                             }
-                          ?>
-                        </tr>
+                            $tr_tahun .= "<th colspan='{$col_tahun}'>{$value->tahun_penilaian}</th>";
+                          }
+                          echo "<tr>{$tr_tahun}</tr>";
+                        ?>
                       </thead>
                       <tbody>
                         <?php
