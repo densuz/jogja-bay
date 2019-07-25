@@ -474,6 +474,7 @@
         /* ==================== Start Laporan: penilaian ==================== */
         public function penilaian()
         {
+            $this->content['start_end_penilaian']= $this->M_hrd->start_end_penilaian();
             $this->content['karyawan']= $this->M_hrd->show_karyawan();
             $this->content['kriteria']= $this->M_hrd->show_kriteria();
             $this->content['penilaian']= $this->M_hrd->show_penilaian();
@@ -486,8 +487,8 @@
         /* ==================== Start Laporan: Hasil Akhir ==================== */
         public function hasil_akhir()
         {
-            $this->content['karyawan']= $this->M_hrd->show_karyawan();
             $this->content['start_end_penilaian']= $this->M_hrd->start_end_penilaian();
+            $this->content['karyawan']= $this->M_hrd->show_karyawan();
             $this->view = $this->session->userdata('level') .'/hasil_akhir';
             $this->render_pages();
         }
