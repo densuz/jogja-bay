@@ -19,9 +19,9 @@
     </div><!-- /.container-fluid -->
   </section>
   <?php
-  echo '<pre>';
-  print_r($bulan_penilaian);
-  echo '</pre>';
+  // echo '<pre>';
+  // print_r($bulan_penilaian);
+  // echo '</pre>';
   ?>
   <!-- Main content -->
   <section class="content">
