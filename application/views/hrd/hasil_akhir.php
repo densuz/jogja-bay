@@ -66,6 +66,10 @@
                       </thead>
                       <tbody>
                         <?php
+                          $tes='';
+                          foreach ($bulan_penilaian as $key => $value) {
+                            $tes .= '<td>0.'.$value->id_bulan.'</td>'
+                          }
                           $no = 1;
                           $tbody= '';
                           foreach ($karyawan as $key => $value) {
@@ -74,8 +78,7 @@
                                 <td>{$no}</td>
                                 <td>{$value->nama}</td>
                                 <td>{$value->nama_divisi}</td>
-                                <td>0.7(contoh)</td>
-                                <td>0.8(contoh)</td>
+                                {$tes}
                                 <td>1.5(contoh)</td>
                                 <td>
                                   <div class='btn-group'>
