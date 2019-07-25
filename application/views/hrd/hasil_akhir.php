@@ -45,20 +45,21 @@
                         </tr>
 
                         <?php
-                          $tr_tahun= '';
+                          $th_tahun= '';
                           $tr_bulan= '';
                           foreach ($tahun_penilaian as $key => $value) {
                             $col_tahun= 1;
                             foreach ($bulan_penilaian as $key_bulan => $value_bulan) {
                               if ( $value_bulan->tahun_penilaian==$value->tahun_penilaian ) {
                                 $col_tahun++;
-                                // $tr_bulan
                               }
                               // echo "<th>{$value->bulan_penilaian}</th>";
                             }
-                            $tr_tahun .= "<th colspan='{$col_tahun}'>{$value->tahun_penilaian}</th>";
+                            $th_tahun .= "<th colspan='{$col_tahun}'>{$value->tahun_penilaian}</th>";
+                            $tr_bulan .= "<tr><th colspan='{$col_tahun}'>Bulan</th></tr>";
                           }
-                          echo "<tr>{$tr_tahun}</tr>";
+                          echo "<tr>{$th_tahun}</tr>";
+                          echo "{$th_tahun}";
                         ?>
                       </thead>
                       <tbody>
