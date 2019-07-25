@@ -19,12 +19,12 @@
     </div><!-- /.container-fluid -->
   </section>
   <?php
-  echo '<pre>';
-  print_r($karyawan);
-  print_r($kriteria);
-  print_r($penilaian);
-  print_r($duplicate);
-  echo '</pre>';
+  // echo '<pre>';
+  // print_r($karyawan);
+  // print_r($kriteria);
+  // print_r($penilaian);
+  // print_r($duplicate);
+  // echo '</pre>';
   ?>
   <!-- Main content -->
   <section class="content">
@@ -107,9 +107,6 @@
               </div>
               </div>
               <!-- /.card-body -->
-              <div class="card-footer">
-                  <button type="submit" class="btn btn-primary float-right" >Simpan Penilaian</button>
-              </div>
           </form>
         </div>
         <!-- /.card -->
