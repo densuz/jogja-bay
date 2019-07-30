@@ -522,7 +522,7 @@
                 ];
             }
             echo '<pre>';
-            print_r($this->data);
+            print_r($this->M_hrd->nilai_mean('2019','06'));
             echo '</pre>';
 
         }
