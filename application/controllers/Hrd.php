@@ -496,7 +496,11 @@
         }
         public function detail_hasil_akhir()
         {
-            
+            $this->data = $this->M_hrd->show_penilaian_distinct_tanggal();
+            echo '<pre>';
+            print_r($this->data);
+            echo '</pre>';
+
         }
         /* ==================== End Laporan: Hasil Akhir ==================== */
         
