@@ -506,15 +506,15 @@
                 /* loop data kriteria */
                 $mod_rows= [];
                 foreach ($this->M_hrd->nilai_mean($value->tahun_penilaian,$value->bulan_penilaian) as $key_mean => $value_mean) {
-                    foreach ($this->data->kriteria as $key_kriteria => $value_kriteria) {
-                        if( ($value_mean->id_user==$this->data->id_user) && ($value_mean->id_kriteria==$value_kriteria->id_kriteria) ){
+                    // foreach ($this->data->kriteria as $key_kriteria => $value_kriteria) {
+                        // if( ($value_mean->id_user==$this->data->id_user) && ($value_mean->id_kriteria==$value_kriteria->id_kriteria) ){
                             $mod_rows[]= [
-                                'id_kriteria'=> $value_kriteria->id_kriteria,
-                                'nama_kriteria'=> $value_kriteria->nama_kriteria,
+                                // 'id_kriteria'=> $value_kriteria->id_kriteria,
+                                // 'nama_kriteria'=> $value_kriteria->nama_kriteria,
                                 'nilai_mean'=> $value_mean->nilai_mean
                             ];
-                        }
-                    }
+                        // }
+                    // }
                 }
                 $this->data->rows[]= [
                     'bulan' => "{$value->bulan_penilaian} {$value->tahun_penilaian}",
