@@ -500,7 +500,6 @@
 
             /* loop data berdasarkan penilaian  perbulan*/
             foreach ($this->M_hrd->bulan_penilaian() as $key => $value) {
-                print_r( $this->M_hrd->nilai_mean($value->tahun_penilaian,$value->bulan_penilaian) );
                 /* loop data kriteria */
                 /* $mod_rows= [];
                 foreach ($this->M_hrd->nilai_mean($value->tahun_penilaian,$value->bulan_penilaian) as $key_mean => $value_mean) {
@@ -516,7 +515,7 @@
                 } */
                 $this->data->rows[]= [
                     'bulan' => "{$value->bulan_penilaian} {$value->tahun_penilaian}",
-                    'penilaian' => $this->M_hrd->nilai_mean($value->tahun_penilaian,$value->bulan_penilaian)
+                    'penilaian' => $this->M_hrd->nilai_mean($value->tahun_penilaian,$value->id_bulan)
                 ];
             }
             echo '<pre>';
