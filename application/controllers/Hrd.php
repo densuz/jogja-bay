@@ -505,7 +505,7 @@
             foreach ($this->data->bulan_penilaian as $key => $value) {
                 /* loop data kriteria */
                 $mod_rows= [];
-                foreach ($this->data->nilai_mean($value->tahun_penilaian,$value->bulan_penilaian) as $key_mean => $value_mean) {
+                foreach ($this->M_hrd->nilai_mean($value->tahun_penilaian,$value->bulan_penilaian) as $key_mean => $value_mean) {
                     foreach ($this->data->kriteria as $key_kriteria => $value_kriteria) {
                         if( ($value_mean->id_user==$this->data->id_user) && ($value_mean->id_kriteria==$value_kriteria->id_kriteria) )
                             $mod_rows[]= [
