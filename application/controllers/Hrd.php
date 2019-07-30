@@ -497,15 +497,17 @@
         public function detail_hasil_akhir()
         {
             $this->data->rows= [] ;
+            $this->data->tahun_penilaian= $this->M_hrd->tahun_penilaian();
+            $this->data->bulan_penilaian= $this->M_hrd->bulan_penilaian();
             $this->data->penilaian_per_bulan= $this->M_hrd->show_penilaian_distinct_tanggal();
             $this->data->kriteria= $this->M_hrd->show_kriteria();
 
             /* loop data berdasarkan tanggal penilaian  perbulan*/
-            foreach ($this->data->penilaian_per_bulan as $key => $value) {
-                $this->data->rows[]= [
-                    'bulan' => $value,
-                ];
-            }
+            // foreach ($this->data->penilaian_per_bulan as $key => $value) {
+            //     $this->data->rows[]= [
+            //         'bulan' => $value,
+            //     ];
+            // }
             echo '<pre>';
             print_r($this->data);
             echo '</pre>';
