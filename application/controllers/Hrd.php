@@ -518,7 +518,7 @@
                 }
                 $this->data->rows[]= [
                     'bulan' => "{$value->bulan_penilaian} {$value->tahun_penilaian}",
-                    'penilaian' => $mod_rows
+                    'penilaian' => $this->M_hrd->nilai_mean($value->tahun_penilaian,$value->bulan_penilaian)
                 ];
             }
             echo '<pre>';
