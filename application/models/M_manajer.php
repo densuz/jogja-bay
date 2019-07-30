@@ -44,7 +44,7 @@ class M_manajer extends CI_Model{
         return $this->db->query('
             SELECT
                 DISTINCT tanggal,
-                DATE_FORMAT(tanggal, "%a,  %d %b %Y %T") AS mod_tanggal
+                DATE_FORMAT(tanggal, "%%W,  %d %b %Y %T") AS mod_tanggal
             FROM penilaian
                 ORDER BY tanggal DESC LIMIT 1
         ')->row();
@@ -106,7 +106,7 @@ class M_manajer extends CI_Model{
                     'id_user'=> $value,
                     'id_kriteria'=> $key_sub,
                     'nilai'=> $value_sub,
-                    'tanggal'=> date('Y-m-d h:i:s')
+                    'tanggal'=> $this->post['tanggal'].date('h:i:s')
                 ]; 
             }
         }
