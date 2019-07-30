@@ -520,7 +520,7 @@
                     'penilaian' => $mod_rows
                 ];
             }
-
+            $this->data->html = '';
             foreach ($this->data->rows as $key => $value) {
                 $this->data->html.= '<label>'.$value['bulan'].'</label>';
                 $this->data->html.= '<div class="table-responsive">';
