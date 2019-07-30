@@ -504,7 +504,7 @@
             /* loop data berdasarkan penilaian  perbulan*/
             foreach ($this->data->bulan_penilaian as $key => $value) {
                 /* loop data kriteria */
-                $mod_rows= [];
+                /* $mod_rows= [];
                 foreach ($this->M_hrd->nilai_mean($value->tahun_penilaian,$value->bulan_penilaian) as $key_mean => $value_mean) {
                     // foreach ($this->data->kriteria as $key_kriteria => $value_kriteria) {
                         // if( ($value_mean->id_user==$this->data->id_user) && ($value_mean->id_kriteria==$value_kriteria->id_kriteria) ){
@@ -515,14 +515,14 @@
                             ];
                         // }
                     // }
-                }
+                } */
                 $this->data->rows[]= [
                     'bulan' => "{$value->bulan_penilaian} {$value->tahun_penilaian}",
                     'penilaian' => $this->M_hrd->nilai_mean($value->tahun_penilaian,$value->bulan_penilaian)
                 ];
             }
             echo '<pre>';
-            print_r($this->M_hrd->nilai_mean('2019','06'));
+            print_r($this->data);
             echo '</pre>';
 
         }
