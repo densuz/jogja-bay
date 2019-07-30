@@ -393,8 +393,8 @@ class M_hrd extends CI_Model{
                 FROM penilaian
                 WHERE id_user=iduser
                     AND id_kriteria=idkriteria
-                    AND YEAR(tanggal)='2019'
-                    AND MONTH(tanggal)='06'
+                    AND YEAR(tanggal)='{$tahun}'
+                    AND MONTH(tanggal)='{$bulan}'
                 ) AS nilai_mean
             FROM penilaian
             WHERE
