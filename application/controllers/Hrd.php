@@ -494,6 +494,10 @@
             $this->view = $this->session->userdata('level') .'/hasil_akhir';
             $this->render_pages();
         }
+        public function detail_hasil_akhir()
+        {
+            
+        }
         /* ==================== End Laporan: Hasil Akhir ==================== */
         
     }
