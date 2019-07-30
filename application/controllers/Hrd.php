@@ -497,29 +497,31 @@
         public function detail_hasil_akhir()
         {
             $this->data->rows= [] ;
+            $this->data->id_user= $this->uri->segment(3);
+            $this->data->bulan_penilaian= $this->M_hrd->bulan_penilaian();
+            $this->data->kriteria= $this->M_hrd->show_kriteria();
 
             /* loop data berdasarkan penilaian  perbulan*/
-            foreach ($this->M_hrd->bulan_penilaian() as $key => $value) {
+            foreach ($this->data->bulan_penilaian as $key => $value) {
                 /* loop data kriteria */
-                /* $mod_rows= [];
-                foreach ($this->M_hrd->nilai_mean($value->tahun_penilaian,$value->bulan_penilaian) as $key_mean => $value_mean) {
-                    // foreach ($this->M_hrd->show_kriteria() as $key_kriteria => $value_kriteria) {
-                        // if( ($value_mean->id_user==$this->uri->segment(3)) && ($value_mean->id_kriteria==$value_kriteria->id_kriteria) ){
+                $mod_rows= [];
+                foreach ($this->M_hrd->nilai_mean($value->tahun_penilaian,$value->id_bulan) as $key_mean => $value_mean) {
+                    foreach ($this->data->kriteria as $key_kriteria => $value_kriteria) {
+                        if( ($value_mean->id_user==$this->data->id_user) && ($value_mean->id_kriteria==$value_kriteria->id_kriteria) )
                             $mod_rows[]= [
-                                // 'id_kriteria'=> $value_kriteria->id_kriteria,
-                                // 'nama_kriteria'=> $value_kriteria->nama_kriteria,
+                                'id_kriteria'=> $value_kriteria->id_kriteria,
+                                'nama_kriteria'=> $value_kriteria->nama_kriteria,
                                 'nilai_mean'=> $value_mean->nilai_mean
                             ];
-                        // }
-                    // }
-                } */
+                    }
+                }
                 $this->data->rows[]= [
                     'bulan' => "{$value->bulan_penilaian} {$value->tahun_penilaian}",
-                    'penilaian' => $this->M_hrd->nilai_mean($value->tahun_penilaian,$value->id_bulan)
+                    'penilaian' => $mod_rows
                 ];
             }
             echo '<pre>';
-            print_r($this->data->rows);
+            print_r($this->data);
             echo '</pre>';
 
         }
