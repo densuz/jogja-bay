@@ -82,7 +82,10 @@
               </div>
               <!-- /.card-body -->
               <div class="card-footer">
-                <input type="date" name="tanggal" required>  
+                <div class="form-inline">
+                  <label>Pilih Tanggal Penilaian: </label>
+                  <input type="date" class="form-control" name="tanggal" required>  
+                </div>
                 <button type="submit" class="btn btn-primary float-right" >Simpan Penilaian</button>
               </div>
           </form>
