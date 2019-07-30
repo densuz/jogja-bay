@@ -522,7 +522,7 @@
                 ];
             }
             echo '<pre>';
-            print_r($this->data);
+            print_r($this->data->rows);
             echo '</pre>';
 
         }
