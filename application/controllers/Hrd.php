@@ -497,22 +497,38 @@
         public function detail_hasil_akhir()
         {
             $this->data->rows= [] ;
-            $this->data->tahun_penilaian= $this->M_hrd->tahun_penilaian();
+            $this->data->id_user= $this->uri->segment(3);
             $this->data->bulan_penilaian= $this->M_hrd->bulan_penilaian();
-            $this->data->penilaian_per_bulan= $this->M_hrd->show_penilaian_distinct_tanggal();
             $this->data->kriteria= $this->M_hrd->show_kriteria();
 
-            /* loop data berdasarkan tanggal penilaian  perbulan*/
-            // foreach ($this->data->penilaian_per_bulan as $key => $value) {
-            //     $this->data->rows[]= [
-            //         'bulan' => $value,
-            //     ];
-            // }
+            /* loop data berdasarkan penilaian  perbulan*/
+            foreach ($this->data->bulan_penilaian as $key => $value) {
+                /* loop data kriteria */
+                $mod_rows= [];
+                foreach ($this->data->nilai_mean($value->tahun_penilaian,$value->bulan_penilaian) as $key_mean => $value_mean) {
+                    foreach ($this->data->kriteria as $key_kriteria => $value_kriteria) {
+                        if( ($value_mean->id_user==$this->data->id_user) && ($value_mean->id_kriteria==$value_kriteria->id_kriteria) )
+                            $mod_rows[]= [
+                                'id_kriteria'=> $value_kriteria->id_kriteria,
+                                'nama_kriteria'=> $value_kriteria->nama_kriteria,
+                                'nilai_mean'=> $value_mean->nilai_mean
+                            ];
+                    }
+                }
+                $this->data->rows[]= [
+                    'bulan' => "{$value->bulan_penilaian} {$value->tahun_penilaian}",
+                    'penilaian' => $mod_rows
+                ];
+            }
             echo '<pre>';
             print_r($this->data);
             echo '</pre>';
 
         }
+        // public function mean_penilaian($tahun,)
+        // {
+        //     return $this->
+        // }
         /* ==================== End Laporan: Hasil Akhir ==================== */
         
     }

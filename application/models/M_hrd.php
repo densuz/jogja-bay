@@ -383,5 +383,25 @@ class M_hrd extends CI_Model{
             FROM penilaian GROUP BY YEAR(tanggal),MONTH(tanggal) ORDER BY tanggal ASC
         ')->result_object();
     }
+    public function nilai_mean($tahun,$bulan){
+        return $this->db->query("
+            SELECT *,
+                id_user AS iduser,
+                id_kriteria AS idkriteria,
+                (SELECT
+                    AVG(nilai)
+                FROM penilaian
+                WHERE id_user=iduser
+                    AND id_kriteria=idkriteria
+                    AND YEAR(tanggal)='2019'
+                    AND MONTH(tanggal)='06'
+                ) AS nilai_mean
+            FROM penilaian
+            WHERE
+                YEAR(tanggal)='{$tahun}'
+                AND MONTH(tanggal)='{$bulan}'
+                GROUP BY id_user,id_kriteria
+        ")->result_object();
+    }
     /* ==================== End Laporan: Hasil Akhir ==================== */
 }
