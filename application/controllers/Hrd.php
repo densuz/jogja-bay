@@ -521,7 +521,7 @@
                 ];
             }
 
-            foreach ($this->rows as $key => $value) {
+            foreach ($this->data->rows as $key => $value) {
                 $this->data->html= '<label>'.$value['bulan'].'</label>';
                 $this->data->html= '<div class="table-responsive">';
                 $this->data->html= '    <table id="example1X" class="table table-bordered table-striped">';
