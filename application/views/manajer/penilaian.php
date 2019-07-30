@@ -1,6 +1,6 @@
 <div class="content-wrapper">
   <div class="bg-success" style="padding: 20px 30px; z-index: 999999; font-size: 16px; font-weight: 600;">
-    <a href="" style="color: rgba(255, 255, 255, 0.9); display: inline-block; margin-right: 10px; text-decoration: none;"><b>Info Histori Penilaian !</b> Belum Pernah Ada Penilaian</a>
+    <a href="" style="color: rgba(255, 255, 255, 0.9); display: inline-block; margin-right: 10px; text-decoration: none;"><b>Info Histori Penilaian !</b> <?php echo (!empty($last_penilaian) ? $last_penilaian->mod_tanggal : 'Belum Pernah Ada Penilaian')  ?></a>
   </div>
   <!-- Content Header (Page header) -->
   <section class="content-header">

@@ -129,6 +129,7 @@
         /* ==================== Start Menu Penilaian ==================== */
         public function penilaian()
         {
+            $this->content['last_penilaian']= $this->M_manajer->show_last_penilaian();
             $this->content['karyawan']= $this->M_manajer->show_karyawan();
             $this->content['kriteria']= $this->M_manajer->show_kriteria();
             $this->view = $this->session->userdata('level') .'/penilaian';

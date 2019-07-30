@@ -38,7 +38,17 @@ class M_manajer extends CI_Model{
 	}
     /* ==================== End Informasi Profil ==================== */
     
-    /* ==================== End Penilaian ==================== */
+    /* ==================== Start Penilaian ==================== */
+    public function show_last_penilaian()
+    {
+        return $this->db->query('
+            SELECT
+                DISTINCT tanggal,
+                DATE_FORMAT(tanggal, "%a,  %d %b %Y %T") AS mod_tanggal
+            FROM penilaian
+                ORDER BY tanggal DESC LIMIT 1
+        ')->row();
+    }
     public function show_karyawan($id=NULL)
     {
         if ( ! empty($id) ) {
