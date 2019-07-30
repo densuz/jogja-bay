@@ -522,30 +522,30 @@
             }
 
             foreach ($this->data->rows as $key => $value) {
-                $this->data->html= '<label>'.$value['bulan'].'</label>';
-                $this->data->html= '<div class="table-responsive">';
-                $this->data->html= '    <table id="example1X" class="table table-bordered table-striped">';
-                $this->data->html= '        <thead>';
-                $this->data->html= '            <tr>';
+                $this->data->html.= '<label>'.$value['bulan'].'</label>';
+                $this->data->html.= '<div class="table-responsive">';
+                $this->data->html.= '    <table id="example1X" class="table table-bordered table-striped">';
+                $this->data->html.= '        <thead>';
+                $this->data->html.= '            <tr>';
                 foreach ($value['penilaian'] as $key_sub => $value_sub) {
-                    $this->data->html= '<th>'.$value_sub['nama_kriteria'].'</th>';
+                    $this->data->html.= '<th>'.$value_sub['nama_kriteria'].'</th>';
                 }
-                $this->data->html= '            <tr>';
-                $this->data->html= '        </thead>';
-                $this->data->html= '        <tbody>';
-                $this->data->html= '            <tr>';
+                $this->data->html.= '            <tr>';
+                $this->data->html.= '        </thead>';
+                $this->data->html.= '        <tbody>';
+                $this->data->html.= '            <tr>';
                 foreach ($value['penilaian'] as $key_sub => $value_sub) {
-                    $this->data->html= '<td>'.$value_sub['nilai_mean'].'</td>';
+                    $this->data->html.= '<td>'.$value_sub['nilai_mean'].'</td>';
                 }
-                $this->data->html= '            <tr>';
-                $this->data->html= '        </tbody>';
-                $this->data->html= '    </table>';
-                $this->data->html= '</div>';
+                $this->data->html.= '            <tr>';
+                $this->data->html.= '        </tbody>';
+                $this->data->html.= '    </table>';
+                $this->data->html.= '</div>';
             }
-            // echo json_encode($this->data);
-            echo '<pre>';
-            print_r($this->data->rows);
-            echo '</pre>';
+            echo json_encode($this->data);
+            // echo '<pre>';
+            // print_r($this->data->rows);
+            // echo '</pre>';
         }
         // public function mean_penilaian($tahun,)
         // {
