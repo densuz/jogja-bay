@@ -88,7 +88,7 @@
                                       <span class='sr-only'>Toggle Dropdown</span>
                                     </button>
                                     <div class='dropdown-menu' role='menu' x-placement='top-start' style='position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(67px, -165px, 0px);'>
-                                      <a class='dropdown-item form-load' href='".base_url( $this->session->userdata('level') .'/detail-hasil-akhir/' .$value->id_user)."' title='Detail Hasil Akhir'>Detail Nilai Akhir</a>
+                                      <a class='dropdown-item form-loadX' href='".base_url( $this->session->userdata('level') .'/detail-hasil-akhir/' .$value->id_user)."' title='Detail Hasil Akhir'>Detail Nilai Akhir</a>
                                     </div>
                                   </div>
                                 </td>
