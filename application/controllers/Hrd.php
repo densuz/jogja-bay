@@ -542,7 +542,10 @@
                 $this->data->html= '    </table>';
                 $this->data->html= '</div>';
             }
-            echo json_encode($this->data);
+            // echo json_encode($this->data);
+            echo '<pre>';
+            print_r($this->data->rows);
+            echo '</pre>';
         }
         // public function mean_penilaian($tahun,)
         // {
