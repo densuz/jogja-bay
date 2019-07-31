@@ -500,7 +500,7 @@
             $this->data->rows= $this->data_penilaian($this->data->id_user);
             $this->data->all= $this->data_penilaian();
             
-            /* $this->data->html = '';
+            $this->data->html = '';
             foreach ($this->data->rows as $key => $value) {
                 $this->data->html.= '<hr>';
                 $this->data->html.= '<h2 class="text-bold text-center">'.$value['bulan'].'</h2>';
@@ -526,12 +526,13 @@
                 $this->data->html.= '</div>';
                 foreach ($value['penilaian'] as $key_sub => $value_sub) {
                     $this->data->html.= '<label>Normalisasi Pada Kriteria '.$value_sub['nama_kriteria'].':</label>';
+                    
                 }
             }
-            echo json_encode($this->data); */
-            echo '<pre>';
-            print_r($this->data);
-            echo '</pre>';
+            echo json_encode($this->data);
+            // echo '<pre>';
+            // print_r($this->data);
+            // echo '</pre>';
         }
         public function data_penilaian($id=NULL)
         {
