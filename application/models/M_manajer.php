@@ -106,7 +106,7 @@ class M_manajer extends CI_Model{
                     'id_user'=> $value,
                     'id_kriteria'=> $key_sub,
                     'nilai'=> $value_sub,
-                    'tanggal'=> $this->post['tanggal'].date('h:i:s'),
+                    'tanggal'=> $this->post['tanggal'].' '.date('h:i:s'),
                 ]; 
             }
         }
