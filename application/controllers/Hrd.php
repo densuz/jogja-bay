@@ -544,6 +544,9 @@
                 $this->data->html.= '        </tbody>';
                 $this->data->html.= '    </table>';
                 $this->data->html.= '</div>';
+                foreach ($value['penilaian'] as $key_sub => $value_sub) {
+                    $this->data->html.= '<label>Normalisasi Pada Kriteria '.$value_sub['nama_kriteria'].':</label>';
+                }
             }
             echo json_encode($this->data);
             // echo '<pre>';
