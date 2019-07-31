@@ -106,7 +106,7 @@
                                   array_push($id_kriteria,$value_penilaian->id_kriteria);
                                 }
                               }
-                              if ( ! in_array($id_kriteria,$value_kriteria->id_kriteria) ) {
+                              if ( ! in_array($value_kriteria->id_kriteria,$id_kriteria) ) {
                                 $next_td .= '<td>0</td>';
                               }
                             }
