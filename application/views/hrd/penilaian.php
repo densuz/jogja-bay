@@ -107,7 +107,7 @@
                                 }
                               }
                               if ( ! in_array($value_kriteria->id_kriteria,$id_kriteria) ) {
-                                $next_td .= '<td>0</td>';
+                                $next_td .= '<td>-</td>';
                               }
                             }
                             $next_td .= '</tr>';
