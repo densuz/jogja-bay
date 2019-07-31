@@ -497,7 +497,7 @@
         public function detail_hasil_akhir()
         {
             $this->data->id_user= $this->uri->segment(3);
-            $this->data->rows= data_penilaian($this->data->id_user);
+            $this->data->rows= $this->data_penilaian($this->data->id_user);
             
             /* $this->data->html = '';
             foreach ($this->data->rows as $key => $value) {
