@@ -555,8 +555,15 @@
                                 ];
 
                         }else {
-                            if( $value_mean->id_kriteria==$value_kriteria->id_kriteria )
-                            array_push($mod_rows[$value_kriteria->id_kriteria], $value_mean->id_user);
+                            if( $value_mean->id_kriteria==$value_kriteria->id_kriteria ){
+                                if ( ! empty( $mod_rows[$value_kriteria->id_kriteria] ) ) {
+                                    array_push($mod_rows[$value_kriteria->id_kriteria], $value_mean->id_user);
+                                } else {
+                                    $mod_rows[$value_kriteria->id_kriteria]= $value_mean->id_user;
+                                }
+                                
+                            }
+                                
 
                         }
                     }
