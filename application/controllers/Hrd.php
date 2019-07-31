@@ -653,7 +653,9 @@
         {
             $rows=[];
             foreach ($this->M_hrd->show_karyawan() as $key => $value) {
-                $rows[]=$value;
+                $rows[$value->id_user]= [
+                    'penilaian'=> []
+                ];
             }
             echo '<pre>';
             print_r($rows);
