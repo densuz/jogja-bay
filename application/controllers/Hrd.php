@@ -576,7 +576,26 @@
                 $this->data->html.= '</div>';
                 /* end normalisasi */
                 
+                /* start perhitunngan menggunakan saw */
                 $this->data->html.= '<label>Pehitungan Dengan Bobot SAW:</label>';
+                $this->data->html.= '<div class="table-responsive">';
+                $this->data->html.= '    <table id="example1X" class="table table-bordered table-striped">';
+                $this->data->html.= '        <tbody>';
+                $this->data->html.= '           <tr>';
+                $this->data->html.= '               <td>Perhitungan</td>';
+                    $hasil_saw= 0;
+                    $rumus_saw= '';
+                    foreach ($hasil as $key_hasil => $value_hasil) {
+                        $rumus_saw.= "({$value_hasil['nilai_bobot']}*{$value_hasil['hasil']}) + ";
+                    }
+                    $this->data->html.= '            <td>'.$rumus_saw.'</td>';
+                $this->data->html.= '            </tr>';
+                /* end hasil */
+
+                $this->data->html.= '        </tbody>';
+                $this->data->html.= '    </table>';
+                $this->data->html.= '</div>';
+                /* start perhitunngan menggunakan saw */
 
             }
             echo json_encode($this->data);
