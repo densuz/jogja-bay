@@ -541,7 +541,7 @@
                 
                 /* start rumus */
                 $this->data->html.= '            <tr>';
-                $this->data->html.= '<td>Rumus</td>';
+                $this->data->html.= '<td>Perhitungan</td>';
                 foreach ($value['penilaian'] as $key_sub => $value_sub) {
                     foreach ($this->data->all as $key_all => $value_all) {
                         if ( $value_all['bulan'] == $value['bulan'] ) {
@@ -587,7 +587,7 @@
                     $rumus_saw= '';
                     foreach ($hasil as $key_hasil => $value_hasil) {
                         $rumus_saw.= "({$value_hasil['nilai_bobot']}*{$value_hasil['hasil']}) + ";
-                        $hasil_saw+= ($value_hasil['nilai_bobot']}*{$value_hasil['hasil']});
+                        $hasil_saw+= ($value_hasil['nilai_bobot']*$value_hasil['hasil']);
                     }
                     $this->data->html.= '            <td>'.(rtrim($rumus_saw,"+ ")).'</td>';
                 $this->data->html.= '            </tr>';
