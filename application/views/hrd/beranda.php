@@ -39,7 +39,7 @@
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3><?php echo $count_kriteria ?><sup style="font-size: 20px">%</sup></h3>
+                <h3><?php echo $count_kriteria ?></h3>
 
                 <p>Informasi Kriteria</p>
               </div>

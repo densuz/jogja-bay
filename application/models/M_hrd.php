@@ -3,7 +3,7 @@ class M_hrd extends CI_Model{
     public $post = null;
     public function count_penilaian($tahun=NULL,$bulan=NULL)
     {
-        if ( ! empty($tahun) ) {
+        if ( ! empty($tahun) && ! empty($bulan) ) {
             return $this->db->query("SELECT DISTINCT tanggal FROM `penilaian` WHERE YEAR(tanggal)='{$tahun}' AND MONTH(tanggal)='{$bulan}'")->num_rows();
         } else {
             return $this->db->query("SELECT DISTINCT tanggal FROM `penilaian` WHERE 1")->num_rows();
