@@ -498,6 +498,7 @@
         {
             $this->data->id_user= $this->uri->segment(3);
             $this->data->rows= $this->data_penilaian($this->data->id_user);
+            $this->data->all= $this->data_penilaian();
             
             /* $this->data->html = '';
             foreach ($this->data->rows as $key => $value) {
@@ -543,7 +544,6 @@
             foreach ($bulan_penilaian as $key => $value) {
                 /* loop data kriteria */
                 $mod_rows= [];
-                $mod_rows_all= [];
                 foreach ($this->M_hrd->nilai_mean($value->tahun_penilaian,$value->id_bulan) as $key_mean => $value_mean) {
                     foreach ($kriteria as $key_kriteria => $value_kriteria) {
                         if ( ! empty($id) ) {
