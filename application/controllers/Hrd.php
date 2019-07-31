@@ -541,7 +541,7 @@
                 foreach ($value['penilaian'] as $key_sub => $value_sub) {
                     foreach ($this->data->all as $key_all => $value_all) {
                         if ( $value_all['bulan'] == $value['bulan'] ) {
-                            $this->data->html.= "<td>{$value_sub['nilai_mean']}/MAX(".implode($value_all['penilaian'][$value_sub['id_kriteria']]).")</td>";
+                            $this->data->html.= "<td>{$value_sub['nilai_mean']}/MAX(".implode(', ',$value_all['penilaian'][$value_sub['id_kriteria']]).")</td>";
                         }
                     }
                 }
