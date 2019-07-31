@@ -654,12 +654,41 @@
             $rows=[];
             foreach ($this->M_hrd->show_karyawan() as $key => $value) {
                 $rows[$value->id_user]= [
-                    'penilaian'=> []
+                    'penilaian'=> $this->data_hasil_akhir($value->id_user)
                 ];
             }
             echo '<pre>';
             print_r($rows);
             echo '</pre>';
+        }
+        public function data_hasil_akhir($id)
+        {
+            $this->data->id_user= $id;
+            $this->data->rows= $this->data_penilaian($this->data->id_user);
+            $this->data->all= $this->data_penilaian();
+            
+            $this->data->penilaian = [];
+            foreach ($this->data->rows as $key => $value) {
+                $hasil=[];
+                foreach ($value['penilaian'] as $key_sub => $value_sub) {
+                    foreach ($this->data->all as $key_all => $value_all) {
+                        if ( $value_all['bulan'] == $value['bulan'] ) {
+                            $hasil_normalisasi= ($value_sub['nilai_mean'] / max($value_all['penilaian'][$value_sub['id_kriteria']]) );
+                            $hasil[]= [
+                                'hasil'=> $hasil_normalisasi,
+                                'nilai_bobot'=> $value_sub['bobot'],
+                            ];
+                        }
+                    }
+                }
+                $hasil_saw= 0;
+                foreach ($hasil as $key_hasil => $value_hasil) {
+                    $hasil_saw+= ($value_hasil['nilai_bobot']*$value_hasil['hasil']);
+                }
+                $this->data->penilaian[]= $value;
+
+            }
+            return $this->data->penilaian;
         }
         /* ==================== End Laporan: Hasil Akhir ==================== */
         
