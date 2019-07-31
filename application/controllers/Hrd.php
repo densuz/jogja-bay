@@ -644,6 +644,8 @@
                 }
                 $rows[]= [
                     'bulan' => "{$value->bulan_penilaian} {$value->tahun_penilaian}",
+                    'tahun' => $value->tahun_penilaian,
+                    'id_bulan' => $value->id_bulan,
                     'penilaian' => $mod_rows
                 ];
             }
