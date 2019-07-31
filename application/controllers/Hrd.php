@@ -653,7 +653,7 @@
         {
             $rows=[];
             foreach ($this->M_hrd->show_karyawan() as $key => $value) {
-                $row[]=$value;
+                $rows[]=$value;
             }
             echo '<pre>';
             print_r($rows);
