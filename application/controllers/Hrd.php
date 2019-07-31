@@ -555,10 +555,16 @@
                 /* start hasil */
                 $this->data->html.= '            <tr>';
                 $this->data->html.= '<td>Hasil</td>';
+                $hasil=[];
                 foreach ($value['penilaian'] as $key_sub => $value_sub) {
                     foreach ($this->data->all as $key_all => $value_all) {
                         if ( $value_all['bulan'] == $value['bulan'] ) {
-                            $this->data->html.= "<td>".($value_sub['nilai_mean'] / max($value_all['penilaian'][$value_sub['id_kriteria']]) )."</td>";
+                            $hasil_normalisasi= ($value_sub['nilai_mean'] / max($value_all['penilaian'][$value_sub['id_kriteria']]) );
+                            $hasil[]= [
+                                'hasil'=> $hasil_normalisasi,
+                                'nilai_bobot'=> $value_sub->bobot,
+                            ];
+                            $this->data->html.= "<td>{$hasil_normalisasi}</td>";
                         }
                     }
                 }
@@ -569,6 +575,9 @@
                 $this->data->html.= '    </table>';
                 $this->data->html.= '</div>';
                 /* end normalisasi */
+                
+                $this->data->html.= '<label>Pehitungan Dengan Bobot SAW:</label>';
+
             }
             echo json_encode($this->data);
             // echo '<pre>';
@@ -592,7 +601,8 @@
                                 $mod_rows[]= [
                                     'id_kriteria'=> $value_kriteria->id_kriteria,
                                     'nama_kriteria'=> $value_kriteria->nama_kriteria,
-                                    'nilai_mean'=> $value_mean->nilai_mean
+                                    'bobot'=> $value_kriteria->bobot,
+                                    'nilai_mean'=> $value_mean->nilai_mean,
                                 ];
 
                         }else {
