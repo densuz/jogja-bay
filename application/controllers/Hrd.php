@@ -522,7 +522,9 @@
             }
             $this->data->html = '';
             foreach ($this->data->rows as $key => $value) {
-                $this->data->html.= '<label>'.$value['bulan'].'</label>';
+                $this->data->html.= '<hr>';
+                $this->data->html.= '<h2 class="text-bold text-center">'.$value['bulan'].'</h2>';
+                $this->data->html.= '<hr>';
                 $this->data->html.= '<div class="table-responsive">';
                 $this->data->html.= '    <table id="example1X" class="table table-bordered table-striped">';
                 $this->data->html.= '        <thead>';
