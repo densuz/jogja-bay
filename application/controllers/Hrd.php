@@ -652,7 +652,7 @@
         public function hasil_per_bulan()
         {
             $rows=[];
-            foreach ($this->M_hrd->show_karyawan(); as $key => $value) {
+            foreach ($this->M_hrd->show_karyawan() as $key => $value) {
                 # code...
             }
             echo '<pre>';
