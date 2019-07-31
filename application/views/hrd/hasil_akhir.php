@@ -55,7 +55,8 @@
                               <th rowspan='2'>Name</th>
                               <th rowspan='2'>Divisi</th>
                               {$th_tahun}
-                              <th rowspan='2'>Nilai</th>
+                              <th rowspan='2'>Total</th>
+                              <th rowspan='2'>Mean</th>
                               <th rowspan='2'>&nbsp</th>
                             </tr>
                             <tr>
@@ -66,20 +67,29 @@
                       </thead>
                       <tbody>
                         <?php
-                          $tes='';
-                          foreach ($bulan_penilaian as $key => $value) {
-                            $tes .= '<td>0.'.$value->id_bulan.'</td>';
-                          }
                           $no = 1;
                           $tbody= '';
                           foreach ($karyawan as $key => $value) {
+                            /* start generate nilai saw perbulan */
+                            $tes='';
+                            $nilai= $hasil_per_bulan[$value->id_user]['penilaian'];
+                            $nilai_total= 0;
+                            $nilai_rows= count($nilai);
+                            foreach ($nilai as $key_nilai => $value_nilai) {
+                              $tes .= '<td>'.$value_nilai['nilai'].'</td>';
+                              $nilai_total += $value_nilai['nilai'];
+                            }
+                            $nilai_mean= ($nilai_total/$nilai_rows);
+                            /* end generate nilai saw perbulan */
+
                             $tbody .= "
                               <tr>
                                 <td>{$no}</td>
                                 <td>{$value->nama}</td>
                                 <td>{$value->nama_divisi}</td>
                                 {$tes}
-                                <td>1.5(contoh)</td>
+                                <td>{$nilai_total}</td>
+                                <td>{$nilai_mean}</td>
                                 <td>
                                   <div class='btn-group'>
                                     <button type='button' class='btn btn-default'>Action</button>

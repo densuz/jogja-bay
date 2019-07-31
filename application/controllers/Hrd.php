@@ -490,6 +490,7 @@
             $this->content['start_end_penilaian']= $this->M_hrd->start_end_penilaian();
             $this->content['tahun_penilaian']= $this->M_hrd->tahun_penilaian();
             $this->content['bulan_penilaian']= $this->M_hrd->bulan_penilaian();
+            $this->content['hasil_perbulan']= $this->hasil_per_bulan();
             $this->content['karyawan']= $this->M_hrd->show_karyawan();
             $this->view = $this->session->userdata('level') .'/hasil_akhir';
             $this->render_pages();
@@ -659,9 +660,7 @@
                     'penilaian'=> $this->data_hasil_akhir($value->id_user)
                 ];
             }
-            echo '<pre>';
-            print_r($rows);
-            echo '</pre>';
+            return $rows;
         }
         public function data_hasil_akhir($id)
         {
