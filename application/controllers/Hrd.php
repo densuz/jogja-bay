@@ -664,7 +664,7 @@
         public function data_hasil_akhir($id)
         {
             $id_user= $id;
-            $rows= $this->data_penilaian($this->data->id_user);
+            $rows= $this->data_penilaian($id_user);
             $all= $this->data_penilaian();
             
             // $penilaian = [];
