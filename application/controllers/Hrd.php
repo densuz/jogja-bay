@@ -669,27 +669,31 @@
             $rows= $this->data_penilaian($id_user);
             $all= $this->data_penilaian();
             
-            // $penilaian = [];
-            // foreach ($rows as $key => $value) {
-            //     $hasil=[];
-            //     foreach ($value['penilaian'] as $key_sub => $value_sub) {
-            //         foreach ($this->data->all as $key_all => $value_all) {
-            //             if ( $value_all['bulan'] == $value['bulan'] ) {
-            //                 $hasil_normalisasi= ($value_sub['nilai_mean'] / max($value_all['penilaian'][$value_sub['id_kriteria']]) );
-            //                 $hasil[]= [
-            //                     'hasil'=> $hasil_normalisasi,
-            //                     'nilai_bobot'=> $value_sub['bobot'],
-            //                 ];
-            //             }
-            //         }
-            //     }
-            //     $hasil_saw= 0;
-            //     foreach ($hasil as $key_hasil => $value_hasil) {
-            //         $hasil_saw+= ($value_hasil['nilai_bobot']*$value_hasil['hasil']);
-            //     }
-            //     $this->data->penilaian[]= $value;
+            $penilaian = [];
+            foreach ($rows as $key => $value) {
+                $hasil=[];
+                foreach ($value['penilaian'] as $key_sub => $value_sub) {
+                    foreach ($this->data->all as $key_all => $value_all) {
+                        if ( $value_all['bulan'] == $value['bulan'] ) {
+                            $hasil_normalisasi= ($value_sub['nilai_mean'] / max($value_all['penilaian'][$value_sub['id_kriteria']]) );
+                            $hasil[]= [
+                                'hasil'=> $hasil_normalisasi,
+                                'nilai_bobot'=> $value_sub['bobot'],
+                            ];
+                        }
+                    }
+                }
+                $hasil_saw= 0;
+                foreach ($hasil as $key_hasil => $value_hasil) {
+                    $hasil_saw+= ($value_hasil['nilai_bobot']*$value_hasil['hasil']);
+                }
+                $this->data->penilaian[]= [
+                    'tahun'=> $value->tahun,
+                    'id_bulan'=> $value->id_bulan,
+                    'nilai'=> $hasil_saw,
+                ];
 
-            // }
+            }
             return $rows;
         }
         /* ==================== End Laporan: Hasil Akhir ==================== */
