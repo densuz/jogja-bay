@@ -562,7 +562,7 @@
                             $hasil_normalisasi= ($value_sub['nilai_mean'] / max($value_all['penilaian'][$value_sub['id_kriteria']]) );
                             $hasil[]= [
                                 'hasil'=> $hasil_normalisasi,
-                                'nilai_bobot'=> $value_sub->bobot,
+                                'nilai_bobot'=> $value_sub['bobot'],
                             ];
                             $this->data->html.= "<td>{$hasil_normalisasi}</td>";
                         }
