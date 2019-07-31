@@ -55,12 +55,13 @@
                               <th rowspan='2'>Name</th>
                               <th rowspan='2'>Divisi</th>
                               {$th_tahun}
-                              <th rowspan='2'>Total</th>
-                              <th rowspan='2'>Mean</th>
+                              <th colspan='2'>Nilai</th>
                               <th rowspan='2'>&nbsp</th>
                             </tr>
                             <tr>
                               {$th_bulan}
+                              <th>Total</th>
+                              <th>Mean(rata-rata)</th>
                             </tr>
                           ";
                         ?>
