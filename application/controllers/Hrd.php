@@ -538,7 +538,6 @@
             $rows= [] ;
             $bulan_penilaian= $this->M_hrd->bulan_penilaian();
             $kriteria= $this->M_hrd->show_kriteria();
-            // $this->data->karyawan= $this->M_hrd->show_karyawan();
 
             /* loop data berdasarkan penilaian  perbulan*/
             foreach ($bulan_penilaian as $key => $value) {
@@ -557,9 +556,9 @@
                         }else {
                             if( $value_mean->id_kriteria==$value_kriteria->id_kriteria ){
                                 if ( ! empty( $mod_rows[$value_kriteria->id_kriteria] ) ) {
-                                    array_push($mod_rows[$value_kriteria->id_kriteria], $value_mean->id_user);
+                                    array_push($mod_rows[$value_kriteria->id_kriteria], $value_mean->nilai_mean);
                                 } else {
-                                    $mod_rows[$value_kriteria->id_kriteria]= [$value_mean->id_user];
+                                    $mod_rows[$value_kriteria->id_kriteria]= [$value_mean->nilai_mean];
                                 }
                                 
                             }
