@@ -649,6 +649,16 @@
             }
             return $rows;
         }
+        public function hasil_per_bulan()
+        {
+            $rows=[];
+            foreach ($this->M_hrd->show_karyawan(); as $key => $value) {
+                # code...
+            }
+            echo '<pre>';
+            print_r($rows);
+            echo '</pre>';
+        }
         /* ==================== End Laporan: Hasil Akhir ==================== */
         
     }
