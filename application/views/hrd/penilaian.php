@@ -102,7 +102,7 @@
                               foreach ($penilaian as $key_penilaian => $value_penilaian) {
                                 if ( ($value_penilaian->id_user==$value->id_user) && ($value_penilaian->id_kriteria==$value_kriteria->id_kriteria) && $value_penilaian->tanggal==$value_duplicate->tanggal ){
                                   $next_td .= '<td>'.$value_penilaian->nilai.'</td>';
-                                }else {
+                                }elseif ($value_kriteria->id_kriteria != $value_penilaian->id_kriteria) {
                                   $next_td .= '<td>0</td>';
                                 }
                               }
