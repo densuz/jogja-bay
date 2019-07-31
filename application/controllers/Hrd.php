@@ -588,7 +588,7 @@
                     foreach ($hasil as $key_hasil => $value_hasil) {
                         $rumus_saw.= "({$value_hasil['nilai_bobot']}*{$value_hasil['hasil']}) + ";
                     }
-                    $this->data->html.= '            <td>'.$rumus_saw.'</td>';
+                    $this->data->html.= '            <td>'.(rtrim($rumus_saw,"+ ")).'</td>';
                 $this->data->html.= '            </tr>';
                 /* end hasil */
 
