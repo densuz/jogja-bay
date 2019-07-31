@@ -99,12 +99,15 @@
                             $next_td .= '<td>'.$value->nama_divisi.'</td>';
                             $next_td .= '<td>'.$value_duplicate->tanggal_mod.'</td>';
                             foreach ($kriteria as $key_kriteria => $value_kriteria) {
+                              $id_kriteria=[];
                               foreach ($penilaian as $key_penilaian => $value_penilaian) {
                                 if ( ($value_penilaian->id_user==$value->id_user) && ($value_penilaian->id_kriteria==$value_kriteria->id_kriteria) && $value_penilaian->tanggal==$value_duplicate->tanggal ){
                                   $next_td .= '<td>'.$value_penilaian->nilai.'</td>';
-                                }elseif ($value_kriteria->id_kriteria != $value_penilaian->id_kriteria) {
-                                  $next_td .= '<td>0</td>';
+                                  array_push($id_kriteria,$value_penilaian->id_kriteria);
                                 }
+                              }
+                              if ( ! in_array($id_kriteria,$value_kriteria->id_kriteria) ) {
+                                $next_td .= '<td>0</td>';
                               }
                             }
                             $next_td .= '</tr>';
