@@ -21,14 +21,14 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>150</h3>
+                <h3><?php echo $count_karyawan ?></h3>
 
-                <p>New Orders</p>
+                <p>Informasi Karyawan</p>
               </div>
               <div class="icon">
-                <i class="ion ion-bag"></i>
+                <i class="ion ion-android-contacts"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+              <!-- <a href="<?php echo base_url( $this->session->userdata('level') ) ?>/karyawan" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a> -->
             </div>
           </div>
           <!-- ./col -->
@@ -36,14 +36,14 @@
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>53<sup style="font-size: 20px">%</sup></h3>
+                <h3><?php echo $count_kriteria ?></h3>
 
-                <p>Bounce Rate</p>
+                <p>Informasi Kriteria</p>
               </div>
               <div class="icon">
-                <i class="ion ion-stats-bars"></i>
+                <i class="ion ion-android-list"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+              <!-- <a href="<?php echo base_url( $this->session->userdata('level') ) ?>/kriteria" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a> -->
             </div>
           </div>
           <!-- ./col -->
@@ -51,14 +51,14 @@
             <!-- small box -->
             <div class="small-box bg-warning">
               <div class="inner">
-                <h3>44</h3>
+                <h3><?php echo $count_total ?></h3>
 
-                <p>User Registrations</p>
+                <p>Total Penilaian</p>
               </div>
               <div class="icon">
-                <i class="ion ion-person-add"></i>
+                <i class="ion ion-android-done-all"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+              <!-- <a href="<?php echo base_url( $this->session->userdata('level') ) ?>/penilaian" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a> -->
             </div>
           </div>
           <!-- ./col -->
@@ -66,14 +66,14 @@
             <!-- small box -->
             <div class="small-box bg-danger">
               <div class="inner">
-                <h3>65</h3>
+                <h3><?php echo $count_bulan ?></h3>
 
-                <p>Unique Visitors</p>
+                <p>Penilaian Bulan Ini</p>
               </div>
               <div class="icon">
-                <i class="ion ion-pie-graph"></i>
+                <i class="ion ion-android-alarm-clock"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+              <!-- <a href="<?php echo base_url( $this->session->userdata('level') ) ?>/penilaian" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a> -->
             </div>
           </div>
           <!-- ./col -->

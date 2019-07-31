@@ -49,7 +49,7 @@
           </li>
           <li class="nav-item">
             <a href="<?php echo base_url( $this->session->userdata('level') ) ?>/penilaian" class="nav-link <?php echo ( $this->uri->segment(2)=='penilaian' ) ? 'active' : null ?>">
-              <i class="nav-icon fa fa-user-circle-o"></i>
+              <i class="nav-icon fa fa-tasks"></i>
               <p>
                 Penilaian
               </p>
