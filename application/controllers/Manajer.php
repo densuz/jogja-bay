@@ -15,10 +15,10 @@
         /* ==================== Start Menu Beranda ==================== */
         public function index()
         {
-            $this->content['count_karyawan']= count($this->M_hrd->show_karyawan());
-            $this->content['count_kriteria']= count($this->M_hrd->show_kriteria());
-            $this->content['count_total']= $this->M_hrd->count_penilaian();
-            $this->content['count_bulan']= $this->M_hrd->count_penilaian( date('Y'),date('m') );
+            $this->content['count_karyawan']= count($this->M_manajer->show_karyawan());
+            $this->content['count_kriteria']= count($this->M_manajer->show_kriteria());
+            $this->content['count_total']= $this->M_manajer->count_penilaian();
+            $this->content['count_bulan']= $this->M_manajer->count_penilaian( date('Y'),date('m') );
             $this->view = $this->session->userdata('level') .'/beranda';
             $this->render_pages();
         }
