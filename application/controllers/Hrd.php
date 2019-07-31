@@ -494,7 +494,7 @@
             $this->view = $this->session->userdata('level') .'/hasil_akhir';
             $this->render_pages();
         }
-        public function detail_hasil_akhir()
+        public function detail_hasil_akhir($id=NULL)
         {
             $this->data->id_user= $this->uri->segment(3);
             $this->data->rows= $this->data_penilaian($this->data->id_user);
