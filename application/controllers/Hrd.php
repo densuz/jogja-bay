@@ -687,14 +687,14 @@
                 foreach ($hasil as $key_hasil => $value_hasil) {
                     $hasil_saw+= ($value_hasil['nilai_bobot']*$value_hasil['hasil']);
                 }
-                $this->data->penilaian[]= [
+                $penilaian[]= [
                     'tahun'=> $value['tahun'],
                     'id_bulan'=> $value['id_bulan'],
                     'nilai'=> $hasil_saw,
                 ];
 
             }
-            return $rows;
+            return $penilaian;
         }
         /* ==================== End Laporan: Hasil Akhir ==================== */
         
