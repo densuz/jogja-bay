@@ -90,10 +90,10 @@
           </li>
           <li class="nav-item has-treeview <?php echo ($this->uri->segment(2)=='penilaian' || $this->uri->segment(2)=='hasil-akhir')  ? 'menu-open' : null ?>">
             <a href="#" class="nav-link">
-              <i class="nav-icon fa fa-user"></i>
+              <i class="nav-icon fa fa-book"></i>
               <p>
                 Laporan
-                <i class="right fa fa-book"></i>
+                <i class="right fa fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">

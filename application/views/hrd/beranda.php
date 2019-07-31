@@ -31,7 +31,7 @@
               <div class="icon">
                 <i class="ion ion-android-contacts"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+              <a href="<?php echo base_url( $this->session->userdata('level') ) ?>/karyawan" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -46,7 +46,7 @@
               <div class="icon">
                 <i class="ion ion-android-list"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+              <a href="<?php echo base_url( $this->session->userdata('level') ) ?>/kriteria" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -61,7 +61,7 @@
               <div class="icon">
                 <i class="ion ion-android-done-all"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+              <a href="<?php echo base_url( $this->session->userdata('level') ) ?>/penilaian" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -76,7 +76,7 @@
               <div class="icon">
                 <i class="ion ion-android-alarm-clock"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+              <a href="<?php echo base_url( $this->session->userdata('level') ) ?>/penilaian" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
