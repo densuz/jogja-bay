@@ -543,17 +543,21 @@
             foreach ($bulan_penilaian as $key => $value) {
                 /* loop data kriteria */
                 $mod_rows= [];
+                $mod_rows_all= [];
                 foreach ($this->M_hrd->nilai_mean($value->tahun_penilaian,$value->id_bulan) as $key_mean => $value_mean) {
                     foreach ($kriteria as $key_kriteria => $value_kriteria) {
                         if ( ! empty($id) ) {
-
-                        }else {
                             if( ($value_mean->id_user==$id) && ($value_mean->id_kriteria==$value_kriteria->id_kriteria) )
                                 $mod_rows[]= [
                                     'id_kriteria'=> $value_kriteria->id_kriteria,
                                     'nama_kriteria'=> $value_kriteria->nama_kriteria,
                                     'nilai_mean'=> $value_mean->nilai_mean
                                 ];
+
+                        }else {
+                            if( $value_mean->id_kriteria==$value_kriteria->id_kriteria )
+                                $mod_rows[$value_kriteria->id_kriteria]['id_user'] = $value_mean->id_user;
+
                         }
                     }
                 }
