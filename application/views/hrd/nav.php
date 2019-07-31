@@ -49,7 +49,7 @@
           </li>
           <li class="nav-item has-treeview <?php echo ($this->uri->segment(2)=='karyawan' || $this->uri->segment(2)=='manajer' || $this->uri->segment(2)=='kategori' || $this->uri->segment(2)=='kriteria' || $this->uri->segment(2)=='divisi')  ? 'menu-open' : null ?>">
             <a href="#" class="nav-link">
-              <i class="nav-icon fa fa-user"></i>
+              <i class="nav-icon fa fa-archive"></i>
               <p>
                 Master Data
                 <i class="right fa fa-angle-left"></i>
@@ -93,7 +93,7 @@
               <i class="nav-icon fa fa-user"></i>
               <p>
                 Laporan
-                <i class="right fa fa-angle-left"></i>
+                <i class="right fa fa-book"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
