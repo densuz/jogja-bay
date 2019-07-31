@@ -587,10 +587,14 @@
                     $rumus_saw= '';
                     foreach ($hasil as $key_hasil => $value_hasil) {
                         $rumus_saw.= "({$value_hasil['nilai_bobot']}*{$value_hasil['hasil']}) + ";
+                        $hasil_saw+= ($value_hasil['nilai_bobot']}*{$value_hasil['hasil']});
                     }
                     $this->data->html.= '            <td>'.(rtrim($rumus_saw,"+ ")).'</td>';
                 $this->data->html.= '            </tr>';
-                /* end hasil */
+                $this->data->html.= '            <tr>';
+                $this->data->html.= '               <td>Hasil</td>';
+                $this->data->html.= '               <td>'.$hasil_saw.'</td>';
+                $this->data->html.= '            </tr>';
 
                 $this->data->html.= '        </tbody>';
                 $this->data->html.= '    </table>';
