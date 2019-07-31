@@ -688,8 +688,8 @@
                     $hasil_saw+= ($value_hasil['nilai_bobot']*$value_hasil['hasil']);
                 }
                 $this->data->penilaian[]= [
-                    'tahun'=> $value->tahun,
-                    'id_bulan'=> $value->id_bulan,
+                    'tahun'=> $value['tahun'],
+                    'id_bulan'=> $value['id_bulan'],
                     'nilai'=> $hasil_saw,
                 ];
 
