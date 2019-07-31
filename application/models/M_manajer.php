@@ -113,7 +113,7 @@ class M_manajer extends CI_Model{
         // $this->db->insert_batch($table,$data);
         // return TRUE;
         $this->session->set_flashdata('msg', $this->post );
-        return FALSE;
+        return TRUE;
 	}
     /* ==================== End Penilaian ==================== */
 
