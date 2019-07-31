@@ -531,12 +531,27 @@
                 $this->data->html.= '    <table id="example1X" class="table table-bordered table-striped">';
                 $this->data->html.= '        <thead>';
                 $this->data->html.= '            <tr>';
+                $this->data->html.= '<th>Rumus</th>';
                 foreach ($value['penilaian'] as $key_sub => $value_sub) {
                     $this->data->html.= '<th>'.$value_sub['nama_kriteria'].'</th>';
                 }
                 $this->data->html.= '            <tr>';
                 $this->data->html.= '        </thead>';
                 $this->data->html.= '        <tbody>';
+                
+                /* start rumus */
+                $this->data->html.= '            <tr>';
+                foreach ($value['penilaian'] as $key_sub => $value_sub) {
+                    foreach ($this->data->all as $key_all => $value_all) {
+                        if ( $value_all['bulan'] == $value['bulan'] ) {
+                            $this->data->html.= "<td>".($value_sub['nilai_mean'] / max($value_all['penilaian'][$value_sub['id_kriteria']]) )."</td>";
+                        }
+                    }
+                }
+                $this->data->html.= '            <tr>';
+                /* end rumus */
+
+                /* start hasil */
                 $this->data->html.= '            <tr>';
                 foreach ($value['penilaian'] as $key_sub => $value_sub) {
                     foreach ($this->data->all as $key_all => $value_all) {
@@ -546,6 +561,8 @@
                     }
                 }
                 $this->data->html.= '            <tr>';
+                /* end hasil */
+
                 $this->data->html.= '        </tbody>';
                 $this->data->html.= '    </table>';
                 $this->data->html.= '</div>';
