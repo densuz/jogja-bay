@@ -160,7 +160,7 @@
     $('.date-picker').datepicker( {
         changeMonth: true,
         changeYear: true,
-        yearRange: '2019:'+(new Date).getFullYear(),
+        yearRange: '2019:2029',
         showButtonPanel: true,
         dateFormat: 'MM yy',
         onClose: function(dateText, inst) { 
