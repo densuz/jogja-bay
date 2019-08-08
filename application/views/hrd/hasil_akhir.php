@@ -51,19 +51,36 @@
                         $th_tahun= '';
                         $tr_bulan= '';
                         $th_bulan= '';
-                        echo '<pre>';
-                        print_r(hasil_akhir_mod($_GET['start_date'],$_GET['end_date']));
-                        echo '</pre>';
-                        foreach ($tahun_penilaian as $key => $value) {
-                          $col_tahun= 0;
-                          foreach ($bulan_penilaian as $key_bulan => $value_bulan) {
-                            if ( $value_bulan->tahun_penilaian==$value->tahun_penilaian ) {
-                              $col_tahun++;
+                        if ( empty($_GET['start_date']) ) {
+                          foreach ($tahun_penilaian as $key => $value) {
+                            $col_tahun= 0;
+                            foreach ($bulan_penilaian as $key_bulan => $value_bulan) {
+                              if ( $value_bulan->tahun_penilaian==$value->tahun_penilaian ) {
+                                $col_tahun++;
+                              }
+                              $th_bulan .= "<th>{$value_bulan->bulan_penilaian}</th>";
                             }
-                            $th_bulan .= "<th>{$value_bulan->bulan_penilaian}</th>";
+                            $th_tahun .= "<th colspan='{$col_tahun}'>Tahun {$value->tahun_penilaian}</th>";
                           }
-                          $th_tahun .= "<th colspan='{$col_tahun}'>Tahun {$value->tahun_penilaian}</th>";
+                          
+                        } else {
+                          
+                          $tahun_penilaian= hasil_akhir_mod($_GET['start_date'],$_GET['end_date'],'year');
+                          $bulan_penilaian= hasil_akhir_mod($_GET['start_date'],$_GET['end_date'],'month');
+
+                          foreach ($tahun_penilaian as $key => $value) {
+                            $col_tahun= 0;
+                            foreach ($bulan_penilaian as $key_bulan => $value_bulan) {
+                              if ( $value_bulan->tahun_penilaian==$value->tahun_penilaian ) {
+                                $col_tahun++;
+                              }
+                              $th_bulan .= "<th>{$value_bulan->bulan_penilaian}</th>";
+                            }
+                            $th_tahun .= "<th colspan='{$col_tahun}'>Tahun {$value->tahun_penilaian}</th>";
+                          }
+
                         }
+                        
 
                         echo "
                           <tr>
