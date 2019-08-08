@@ -32,11 +32,12 @@
           <div class="card-body">
             <form class="form-inline" action="">
               <label>Pilih Periode : </label>
-              <input name="start_date" id="startDate" class="date-picker form-control" />
+              <input name="start_date" id="startDate" class="date-picker form-control ml-3 mr-3" />
               <label>Sampai</label>
-              <input name="end_date" id="endDate" class="date-picker form-control" />
+              <input name="end_date" id="endDate" class="date-picker form-control ml-3 mr-3" />
               <button type="submit" class="btn btn-primary">Submit</button>
             </form>
+            <hr>
             <div class="table-responsive">
                 <table id="example1" class="table table-bordered table-striped">
                     <thead class="text-center">
