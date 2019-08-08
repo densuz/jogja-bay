@@ -103,9 +103,9 @@
                       <?php
                         $no = 1;
                         $tbody= '';
-                        echo '<pre>';
-                        print_r($hasil_per_bulan);
-                        echo '</pre>';
+                        // echo '<pre>';
+                        // print_r($hasil_per_bulan);
+                        // echo '</pre>';
                         foreach ($karyawan as $key => $value) {
                           if ( empty($_GET['start_date']) ) {
                             /* start generate nilai saw perbulan */
@@ -137,8 +137,11 @@
                               }
                               $data_mod[$key_mod]= $found;
                             }
+                            foreach ($data_mod as $key_dm => $value_dm) {
+                              $tes .= '<td>'.$value_dm.'</td>';
+                              $nilai_total += $value_dm;
+                            }
                             $nilai_mean= ($nilai_total/$nilai_rows);
-                            print_r($data_mod);
   
                           }
 
