@@ -167,7 +167,7 @@
         }
     });
   });
-  </script>
+</script>
 </body>
 
 </html>

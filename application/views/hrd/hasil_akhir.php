@@ -36,7 +36,7 @@
         <div class="card">
           <!-- /.card-header -->
           <div class="card-body">
-            <form class="form-inline" action="">
+            <form class="form-inline" action="" autocomplete="off">
               <label>Pilih Periode : </label>
               <input name="start_date" id="startDate" class="date-picker form-control ml-3 mr-3" />
               <label>Sampai</label>
