@@ -51,6 +51,8 @@
                         $th_tahun= '';
                         $tr_bulan= '';
                         $th_bulan= '';
+                        print_r($tahun_penilaian);
+                        print_r($bulan_penilaian);
                         foreach ($tahun_penilaian as $key => $value) {
                           $col_tahun= 0;
                           foreach ($bulan_penilaian as $key_bulan => $value_bulan) {
