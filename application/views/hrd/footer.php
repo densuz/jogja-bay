@@ -153,6 +153,9 @@
         dataType: 'json'
     });
   });
+</script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
   $(function() {
     $('.date-picker').datepicker( {
         changeMonth: true,
@@ -164,7 +167,7 @@
         }
     });
   });
-</script>
+  </script>
 </body>
 
 </html>
