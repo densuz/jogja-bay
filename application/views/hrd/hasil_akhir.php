@@ -52,8 +52,7 @@
                         $tr_bulan= '';
                         $th_bulan= '';
                         echo '<pre>';
-                        print_r($tahun_penilaian);
-                        print_r($bulan_penilaian);
+                        print_r(hasil_akhir_mod($_GET['start_date'],$_GET['end_date']));
                         echo '</pre>';
                         foreach ($tahun_penilaian as $key => $value) {
                           $col_tahun= 0;
