@@ -107,17 +107,36 @@
                         print_r($hasil_per_bulan);
                         echo '</pre>';
                         foreach ($karyawan as $key => $value) {
-                          /* start generate nilai saw perbulan */
-                          $tes='';
-                          $nilai= $hasil_per_bulan[$value->id_user]['penilaian'];
-                          $nilai_total= 0;
-                          $nilai_rows= count($nilai);
-                          foreach ($nilai as $key_nilai => $value_nilai) {
-                            $tes .= '<td>'.$value_nilai['nilai'].'</td>';
-                            $nilai_total += $value_nilai['nilai'];
+                          if ( empty($_GET['start_date']) ) {
+                            /* start generate nilai saw perbulan */
+                            $tes='';
+                            $nilai= $hasil_per_bulan[$value->id_user]['penilaian'];
+                            $nilai_total= 0;
+                            $nilai_rows= count($nilai);
+                            foreach ($nilai as $key_nilai => $value_nilai) {
+                              $tes .= '<td>'.$value_nilai['nilai'].'</td>';
+                              $nilai_total += $value_nilai['nilai'];
+                            }
+                            $nilai_mean= ($nilai_total/$nilai_rows);
+                            /* end generate nilai saw perbulan */
+                          } else {
+                            $bulan_penilaian= hasil_akhir_mod($_GET['start_date'],$_GET['end_date'],'month');
+  
+                            $tes='';
+                            foreach ($tahun_penilaian as $key_mod => $value_mod) {                              
+                              /* start generate nilai saw perbulan */
+                              // $nilai= $hasil_per_bulan[$value->id_user]['penilaian'];
+                              // $nilai_total= 0;
+                              // $nilai_rows= count($bulan_penilaian);
+                              // foreach ($nilai as $key_nilai => $value_nilai) {
+                              //   $tes .= '<td>'.$value_nilai['nilai'].'</td>';
+                              //   $nilai_total += $value_nilai['nilai'];
+                              // }
+                              // $nilai_mean= ($nilai_total/$nilai_rows);
+                              /* end generate nilai saw perbulan */
+                            }
+  
                           }
-                          $nilai_mean= ($nilai_total/$nilai_rows);
-                          /* end generate nilai saw perbulan */
 
                           $tbody .= "
                             <tr>
