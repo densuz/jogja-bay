@@ -491,6 +491,7 @@
         /* ==================== Start Laporan: Hasil Akhir ==================== */
         public function hasil_akhir()
         {
+            $this->load->helper('periode');
             $this->content['start_end_penilaian']= $this->M_hrd->start_end_penilaian();
             $this->content['tahun_penilaian']= $this->M_hrd->tahun_penilaian();
             $this->content['bulan_penilaian']= $this->M_hrd->bulan_penilaian();
