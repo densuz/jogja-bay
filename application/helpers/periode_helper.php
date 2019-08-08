@@ -70,7 +70,7 @@ function hasil_akhir_mod($start,$end,$differenceFormat='year')
     $end = strtotime("+1 {$differenceFormat}", strtotime($end) );
 
     $data=[];
-    while($month < $end)
+    while( ($differenceFormat=='year'? date('Y',$month) : $month) < ($differenceFormat=='year'? date('Y',$end) : $end))
     {
         switch ( $differenceFormat ) {
             case 'year':
