@@ -64,7 +64,7 @@
                           }
                           
                         } else {
-                          
+
                           $tahun_penilaian= hasil_akhir_mod($_GET['start_date'],$_GET['end_date'],'year');
                           $bulan_penilaian= hasil_akhir_mod($_GET['start_date'],$_GET['end_date'],'month');
 
@@ -106,6 +106,7 @@
                         foreach ($karyawan as $key => $value) {
                           /* start generate nilai saw perbulan */
                           $tes='';
+                          print_r($hasil_per_bulan);
                           $nilai= $hasil_per_bulan[$value->id_user]['penilaian'];
                           $nilai_total= 0;
                           $nilai_rows= count($nilai);
