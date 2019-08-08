@@ -129,13 +129,13 @@
                               $nilai_total= 0;
                               $nilai_rows= count($bulan_penilaian);
                               foreach ($nilai as $key_nilai => $value_nilai) {
-                                if ( ($value_nilai['tahun']==$value_mod->tahun_penilaian) && $value_nilai['id_bulan']==$value_mod->id_bulan ) {
-                                  $tes .= '<td>'.$value_nilai['nilai'].'</td>';
-                                  $nilai_total += $value_nilai['nilai'];
-                                } else {
-                                  $tes .= '<td>0</td>';
-                                  $nilai_total += 0;
-                                }
+                                // if ( ($value_nilai['tahun']==$value_mod->tahun_penilaian) && $value_nilai['id_bulan']==$value_mod->id_bulan ) {
+                                //   $tes .= '<td>'.$value_nilai['nilai'].'</td>';
+                                //   $nilai_total += $value_nilai['nilai'];
+                                // } else {
+                                //   $tes .= '<td>0</td>';
+                                //   $nilai_total += 0;
+                                // }
                                 
                               }
                               $nilai_mean= ($nilai_total/$nilai_rows);
