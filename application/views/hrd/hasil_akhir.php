@@ -36,11 +36,11 @@
         <div class="card">
           <!-- /.card-header -->
           <div class="card-body">
-            <form class="form-inline" action="" autocomplete="off">
+            <form class="form-inline" action="" autocomplete="off" method="GET">
               <label>Pilih Periode : </label>
-              <input name="start_date" id="startDate" class="date-picker form-control ml-3 mr-3" required="" />
+              <input value="<?php echo ( empty($_GET['start_date']) ? NULL : $_GET['start_date'] )?>" name="start_date" id="startDate" class="date-picker form-control ml-3 mr-3" required="" />
               <label>Sampai</label>
-              <input name="end_date" id="endDate" class="date-picker form-control ml-3 mr-3" required="" />
+              <input value="<?php echo ( empty($_GET['end_date']) ? NULL : $_GET['end_date'] )?>" name="end_date" id="endDate" class="date-picker form-control ml-3 mr-3" required="" />
               <button type="submit" class="btn btn-primary">Submit</button>
             </form>
             <hr>
