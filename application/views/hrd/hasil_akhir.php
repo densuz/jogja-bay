@@ -103,10 +103,12 @@
                       <?php
                         $no = 1;
                         $tbody= '';
+                        echo '<pre>';
+                        print_r($hasil_per_bulan);
+                        echo '</pre>';
                         foreach ($karyawan as $key => $value) {
                           /* start generate nilai saw perbulan */
                           $tes='';
-                          print_r($hasil_per_bulan);
                           $nilai= $hasil_per_bulan[$value->id_user]['penilaian'];
                           $nilai_total= 0;
                           $nilai_rows= count($nilai);
