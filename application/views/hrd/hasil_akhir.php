@@ -123,7 +123,7 @@
                             $bulan_penilaian= hasil_akhir_mod($_GET['start_date'],$_GET['end_date'],'month');
   
                             $tes='';
-                            foreach ($tahun_penilaian as $key_mod => $value_mod) {                              
+                            foreach ($bulan_penilaian as $key_mod => $value_mod) {                              
                               /* start generate nilai saw perbulan */
                               $nilai= $hasil_per_bulan[$value->id_user]['penilaian'];
                               $nilai_total= 0;
