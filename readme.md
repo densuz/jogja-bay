@@ -21,4 +21,5 @@
 - create new database on your phpmyadmin or sqlYog  with name "iskandar_ta"
 - Importt database, sql file : "{project_path}/sql_dump/iskandar_ta.sql"
 
-tes
+features:
+- periode hasil akhir penilaian
