@@ -154,6 +154,19 @@
                               <td>{$nilai_total}</td>
                               <td>{$nilai_mean}</td>
                               <td>
+                                <a class='dropdown-item form-load' href='".base_url( $this->session->userdata('level') .'/detail-hasil-akhir/' .$value->id_user)."' title='Detail Hasil Akhir'>Detail Nilai Akhir</a>
+                              </td>
+                            </tr>
+                          ";
+                          /* $tbody .= "
+                            <tr>
+                              <td>{$no}</td>
+                              <td>{$value->nama}</td>
+                              <td>{$value->nama_divisi}</td>
+                              {$tes}
+                              <td>{$nilai_total}</td>
+                              <td>{$nilai_mean}</td>
+                              <td>
                                 <div class='btn-group'>
                                   <button type='button' class='btn btn-default'>Action</button>
                                   <button type='button' class='btn btn-default dropdown-toggle' data-toggle='dropdown' aria-expanded='false'>
@@ -166,7 +179,7 @@
                                 </div>
                               </td>
                             </tr>
-                          ";
+                          "; */
                           $no++;
                         }
                         echo $tbody;
