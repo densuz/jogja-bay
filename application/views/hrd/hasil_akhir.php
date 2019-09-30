@@ -154,7 +154,7 @@
                               <td>{$nilai_total}</td>
                               <td>{$nilai_mean}</td>
                               <td>
-                                <a class='dropdown-item form-load' href='".base_url( $this->session->userdata('level') .'/detail-hasil-akhir/' .$value->id_user)."' title='Detail Hasil Akhir'>Detail Nilai Akhir</a>
+                                <a class='btn btn-primary form-load' href='".base_url( $this->session->userdata('level') .'/detail-hasil-akhir/' .$value->id_user)."' title='Detail Hasil Akhir'>Detail Nilai Akhir</a>
                               </td>
                             </tr>
                           ";
