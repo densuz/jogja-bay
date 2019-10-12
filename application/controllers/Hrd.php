@@ -711,15 +711,11 @@
             echo '</pre>';
         }
         public function total_penilaian_karyawan_terbaik($variable){
-            $temp_total_penilaian= 0;
-            $temp_index= 0;
+            $temp_total_penilaian= [];
             foreach ($variable as $key => $value) {
-                if ( $value['total_penilaian'] > $temp_total_penilaian ) {
-                    $temp_index = $key;
-                }
-                
+                $temp_total_penilaian[] = $value['total_penilaian'];
             }
-            return $variable;
+            return $temp_total_penilaian;
         }
         public function mean_karyawan_terbaik($array)
         {
