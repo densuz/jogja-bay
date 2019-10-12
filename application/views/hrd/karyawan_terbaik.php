@@ -53,7 +53,7 @@
 											<!-- /.col -->
 											<div class="col-sm-2 border-right">
 												<div class="description-block">
-													<?php echo "<a class='btn btn-primary form-load' href='".base_url( $this->session->userdata('level') .'/detail-hasil-akhir/' .$value->id_user)."' title='Detail Hasil Akhir'>Detail Nilai Akhir</a>" ?>
+													<?php echo "<a class='btn btn-primary form-load' href='".base_url( $this->session->userdata('level') .'/detail-hasil-akhir/' .$total['id_user'])."' title='Detail Hasil Akhir'>Detail</a>" ?>
 												</div>
 												<!-- /.description-block -->
 											</div>
