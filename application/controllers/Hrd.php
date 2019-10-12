@@ -710,14 +710,14 @@
             echo '<br><br>'.json_encode($this->total_penilaian_karyawan_terbaik($rows));
             echo '</pre>';
         }
-        public function total_penilaian_karyawan_terbaik($variable){
+        public function total_penilaian_karyawan_terbaik($rows){
             $temp_total_penilaian= [];
-            foreach ($variable as $key => $value) {
+            foreach ($rows as $key => $value) {
                 $temp_total_penilaian[] = $value['total_penilaian'];
             }
-            return $variable[array_keys($temp_total_penilaian, max($temp_total_penilaian))];
+            return $rows[ array_keys($temp_total_penilaian, max($temp_total_penilaian)) ];
         }
-        public function mean_karyawan_terbaik($variable)
+        public function mean_karyawan_terbaik($rows)
         {
 
         }
