@@ -778,9 +778,6 @@
                         $nilai_total += $value_nilai['nilai'];
                     }
                     $nilai_mean= ($nilai_total/$nilai_rows);
-                    echo '<pre>';
-                    print_r($nilai);
-                    echo '</pre>';
                     /* end generate nilai saw perbulan */
                 } else {
                     $bulan_penilaian= hasil_akhir_mod($_GET['start_date'],$_GET['end_date'],'month');
@@ -813,6 +810,7 @@
                     "nama" => $value->nama,
                     "nama_divisi" => $value->nama_divisi,
                     "penilaian" => $tes,
+                    "total_penilaian" => $nilai_total,
                     "mean" => $nilai_mean,
                 ];
                 $no++;
