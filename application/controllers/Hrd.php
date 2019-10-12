@@ -719,7 +719,7 @@
                 }
                 
             }
-            return $variable[$temp_index];
+            return $temp_index;
         }
         public function mean_karyawan_terbaik($array)
         {
