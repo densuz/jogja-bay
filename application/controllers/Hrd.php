@@ -753,22 +753,16 @@
 
             }
                         
-
-            echo "
-                <tr>
-                <th rowspan='2'>No</th>
-                <th rowspan='2'>Name</th>
-                <th rowspan='2'>Divisi</th>
-                {$th_tahun}
-                <th colspan='2'>Nilai</th>
-                <th rowspan='2'>&nbsp</th>
-                </tr>
-                <tr>
-                {$th_bulan}
-                <th>Total</th>
-                <th>Mean(rata-rata)</th>
-                </tr>
-            ";
+            $rows_header= [
+                'no',
+                'name',
+                'divisi',
+                'nilai',
+                'tahun'=>$th_tahun,
+                'bulan'=>$th_bulan,
+                'total',
+                'mean'
+            ];
 
             $no = 1;
             $tbody= '';
