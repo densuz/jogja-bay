@@ -734,6 +734,7 @@
                 }
                 $th_tahun .= "<th colspan='{$col_tahun}'>Tahun {$value->tahun_penilaian}</th>";
                 }
+                echo 'cuk';
                 
             } else {
 
