@@ -805,7 +805,7 @@
 
                 }
 
-                $rows[$nilai_mean]= [
+                $rows[]= [
                     "no" => $no,
                     "nama" => $value->nama,
                     "nama_divisi" => $value->nama_divisi,
