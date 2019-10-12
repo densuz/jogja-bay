@@ -710,6 +710,8 @@
             echo '<br><br>'.json_encode($this->total_penilaian_karyawan_terbaik($rows));
             echo '<br><br>'.json_encode($this->mean_karyawan_terbaik($rows));
             echo '</pre>';
+            $this->view = $this->session->userdata('level') .'/karyawan_terbaik';
+            $this->render_pages();
         }
         public function total_penilaian_karyawan_terbaik($rows){
             $temp_total_penilaian= [];
