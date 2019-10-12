@@ -734,7 +734,6 @@
                 }
                 $th_tahun .= "<th colspan='{$col_tahun}'>Tahun {$value->tahun_penilaian}</th>";
                 }
-                echo 'cuk';
                 
             } else {
 
@@ -779,6 +778,9 @@
                         $nilai_total += $value_nilai['nilai'];
                     }
                     $nilai_mean= ($nilai_total/$nilai_rows);
+                    echo '<pre>';
+                    print_r($nilai);
+                    echo '</pre>';
                     /* end generate nilai saw perbulan */
                 } else {
                     $bulan_penilaian= hasil_akhir_mod($_GET['start_date'],$_GET['end_date'],'month');
