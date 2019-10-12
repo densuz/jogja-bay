@@ -706,6 +706,16 @@
             foreach ($this->get_karyawan_terbaik() as $key => $value) {
                 echo json_encode($value).'<br>';
             }
+            $ages = array("Peter" => "35", "Ben" => "37", "Joe" => "43", "Rob" => "43");
+            $new = array();
+
+            foreach ($ages as $name => $age) {
+            $new[$age][] = $name;
+            }
+
+            uksort($new, function($ka, $kb) { return $kb - $ka; }); // or just krsort($new);
+            $new = array_values($new)[0];
+            print_r($new);
             echo '</pre>';
         }
         public function get_karyawan_terbaik()
