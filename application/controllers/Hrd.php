@@ -704,6 +704,125 @@
         {
             
         }
+        public function get_karyawan_terbaik()
+        {
+            $this->content= [];
+            $this->load->helper('periode');
+            $this->content['start_end_penilaian']= $this->M_hrd->start_end_penilaian();
+            $this->content['tahun_penilaian']= $this->M_hrd->tahun_penilaian();
+            $this->content['bulan_penilaian']= $this->M_hrd->bulan_penilaian();
+            $this->content['hasil_per_bulan']= $this->hasil_per_bulan();
+            $this->content['karyawan']= $this->M_hrd->show_karyawan();
+
+            $rows= [];
+
+            $th_tahun= '';
+            $tr_bulan= '';
+            $th_bulan= '';
+            if ( empty($_GET['start_date']) ) {
+                foreach ($tahun_penilaian as $key => $value) {
+                $col_tahun= 0;
+                foreach ($bulan_penilaian as $key_bulan => $value_bulan) {
+                    if ( $value_bulan->tahun_penilaian==$value->tahun_penilaian ) {
+                    $col_tahun++;
+                    }
+                    $th_bulan .= "<th>{$value_bulan->bulan_penilaian}</th>";
+                }
+                $th_tahun .= "<th colspan='{$col_tahun}'>Tahun {$value->tahun_penilaian}</th>";
+                }
+                
+            } else {
+
+                $tahun_penilaian= hasil_akhir_mod($_GET['start_date'],$_GET['end_date'],'year');
+                $bulan_penilaian= hasil_akhir_mod($_GET['start_date'],$_GET['end_date'],'month');
+
+                foreach ($tahun_penilaian as $key => $value) {
+                $col_tahun= 0;
+                foreach ($bulan_penilaian as $key_bulan => $value_bulan) {
+                    if ( $value_bulan->tahun_penilaian==$value->tahun_penilaian ) {
+                    $col_tahun++;
+                    }
+                    $th_bulan .= "<th>{$value_bulan->bulan_penilaian}</th>";
+                }
+                $th_tahun .= "<th colspan='{$col_tahun}'>Tahun {$value->tahun_penilaian}</th>";
+                }
+
+            }
+                        
+
+                        echo "
+                          <tr>
+                            <th rowspan='2'>No</th>
+                            <th rowspan='2'>Name</th>
+                            <th rowspan='2'>Divisi</th>
+                            {$th_tahun}
+                            <th colspan='2'>Nilai</th>
+                            <th rowspan='2'>&nbsp</th>
+                          </tr>
+                          <tr>
+                            {$th_bulan}
+                            <th>Total</th>
+                            <th>Mean(rata-rata)</th>
+                          </tr>
+                        ";
+            $no = 1;
+            $tbody= '';
+            foreach ($karyawan as $key => $value) {
+                if ( empty($_GET['start_date']) ) {
+                /* start generate nilai saw perbulan */
+                $tes='';
+                $nilai= $hasil_per_bulan[$value->id_user]['penilaian'];
+                $nilai_total= 0;
+                $nilai_rows= count($nilai);
+                foreach ($nilai as $key_nilai => $value_nilai) {
+                    $tes .= '<td>'.$value_nilai['nilai'].'</td>';
+                    $nilai_total += $value_nilai['nilai'];
+                }
+                $nilai_mean= ($nilai_total/$nilai_rows);
+                /* end generate nilai saw perbulan */
+                } else {
+                $bulan_penilaian= hasil_akhir_mod($_GET['start_date'],$_GET['end_date'],'month');
+
+                $tes='';
+                $nilai= $hasil_per_bulan[$value->id_user]['penilaian'];
+                $nilai_total= 0;
+                $nilai_rows= count($bulan_penilaian);
+
+                $data_mod=[];
+                foreach ($bulan_penilaian as $key_mod => $value_mod) {
+                    $found=0; 
+                    foreach ($nilai as $key_nilai => $value_nilai) {
+                    if ( ($value_nilai['tahun']==$value_mod->tahun_penilaian) && ($value_nilai['id_bulan']==$value_mod->id_bulan) ) {
+                        $found = $value_nilai['nilai'];
+                    }
+                    }
+                    $data_mod[$key_mod]= $found;
+                }
+                foreach ($data_mod as $key_dm => $value_dm) {
+                    $tes .= '<td>'.$value_dm.'</td>';
+                    $nilai_total += $value_dm;
+                }
+                $nilai_mean= ($nilai_total/$nilai_rows);
+
+                }
+
+                $tbody .= "
+                <tr>
+                    <td>{$no}</td>
+                    <td>{$value->nama}</td>
+                    <td>{$value->nama_divisi}</td>
+                    {$tes}
+                    <td>{$nilai_total}</td>
+                    <td>{$nilai_mean}</td>
+                    <td>
+                    <a class='btn btn-primary form-load' href='".base_url( $this->session->userdata('level') .'/detail-hasil-akhir/' .$value->id_user)."' title='Detail Hasil Akhir'>Detail Nilai Akhir</a>
+                    </td>
+                </tr>
+                ";
+                $no++;
+            }
+            echo $tbody;
+        }
         /* ==================== End Laporan: Hasil Akhir ==================== */
         
     }
