@@ -707,6 +707,7 @@
                 echo json_encode($value).'<br>';
             }
             $ages = array("Peter" => "35", "Ben" => "37", "Joe" => "43", "Rob" => "43");
+            print_r($ages);
             $new = array();
 
             foreach ($ages as $name => $age) {
