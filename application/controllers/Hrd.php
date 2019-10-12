@@ -830,6 +830,7 @@
                     "penilaian" => $tes,
                     "total_penilaian" => $nilai_total,
                     "mean" => $nilai_mean,
+                    "id_user" => $value->id_user,
                 ];
                 $no++;
             }
