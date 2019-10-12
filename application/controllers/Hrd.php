@@ -702,22 +702,28 @@
         }
         public function karyawan_terbaik()
         {
+            $rows= $this->get_karyawan_terbaik();
             echo '<pre>';
-            foreach ($this->get_karyawan_terbaik() as $key => $value) {
+            foreach ($rows as $key => $value) {
                 echo json_encode($value).'<br>';
             }
-            $ages = array("Peter" => "35", "Ben" => "37", "Joe" => "43", "Rob" => "43");
-            print_r($ages);
-            $new = array();
-
-            foreach ($ages as $name => $age) {
-            $new[$age][] = $name;
-            }
-
-            uksort($new, function($ka, $kb) { return $kb - $ka; }); // or just krsort($new);
-            $new = array_values($new)[0];
-            print_r($new);
+            echo json_encode($this->total_penilaian_karyawan_terbaik($rows));
             echo '</pre>';
+        }
+        public function total_penilaian_karyawan_terbaik($variable){
+            $temp_total_penilaian= 0;
+            $temp_index= NULL;
+            foreach ($variable as $key => $value) {
+                if ( $value['total_penilaian'] > $temp_total_penilaian ) {
+                    $temp_index = $key;
+                }
+                
+            }
+            return $variable[$temp_index];
+        }
+        public function mean_karyawan_terbaik($array)
+        {
+
         }
         public function get_karyawan_terbaik()
         {
