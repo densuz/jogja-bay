@@ -702,7 +702,9 @@
         }
         public function karyawan_terbaik()
         {
-            $this->get_karyawan_terbaik();
+            echo '<pre>';
+            echo json_encode($this->get_karyawan_terbaik());
+            echo '</pre>';
         }
         public function get_karyawan_terbaik()
         {
@@ -806,22 +808,16 @@
 
                 }
 
-                $tbody .= "
-                <tr>
-                    <td>{$no}</td>
-                    <td>{$value->nama}</td>
-                    <td>{$value->nama_divisi}</td>
-                    {$tes}
-                    <td>{$nilai_total}</td>
-                    <td>{$nilai_mean}</td>
-                    <td>
-                    <a class='btn btn-primary form-load' href='".base_url( $this->session->userdata('level') .'/detail-hasil-akhir/' .$value->id_user)."' title='Detail Hasil Akhir'>Detail Nilai Akhir</a>
-                    </td>
-                </tr>
-                ";
+                $rows[$nilai_mean]= [
+                    "no" => $no,
+                    "nama" => $value->nama,
+                    "nama_divisi" => $value->nama_divisi,
+                    "penilaian" => $tes,
+                    "mean" => $nilai_mean,
+                ];
                 $no++;
             }
-            echo $tbody;
+            return $rows;
         }
         /* ==================== End Laporan: Hasil Akhir ==================== */
         
