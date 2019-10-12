@@ -715,8 +715,9 @@
             foreach ($rows as $key => $value) {
                 $temp_total_penilaian[] = $value['total_penilaian'];
             }
-            // return $rows[ array_keys($temp_total_penilaian, max($temp_total_penilaian)) ];
-            return $rows[ 0 ];
+            $index= array_keys($temp_total_penilaian, max($temp_total_penilaian));
+            // return $rows[  ];
+            return $rows[ $index ];
         }
         public function mean_karyawan_terbaik($rows)
         {
