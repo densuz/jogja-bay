@@ -30,31 +30,23 @@
 								<div class="card card-widget widget-user">
 									<!-- Add the bg color to the header using any of the bg-* classes -->
 									<div class="widget-user-header bg-info-active">
-										<h3 class="widget-user-username"><?php echo $total['nama'].'('.$total['nama_divisi'].')' ?></h3>
+										<h3 class="widget-user-username"><?php echo $total['nama'].' ('.$total['nama_divisi'].')' ?></h3>
 										<h5 class="widget-user-desc">Karyawan dengan total nilai terbaik</h5>
 									</div>
 									<div class="card-footer">
 										<div class="row">
-											<div class="col-sm-4 border-right">
+											<div class="col-sm-6 border-right">
 												<div class="description-block">
-													<h5 class="description-header">3,200</h5>
-													<span class="description-text">SALES</span>
+													<h5 class="description-header"><?php echo $total['total_penilaian'] ?></h5>
+													<span class="description-text">Total</span>
 												</div>
 												<!-- /.description-block -->
 											</div>
 											<!-- /.col -->
-											<div class="col-sm-4 border-right">
+											<div class="col-sm-6 border-right">
 												<div class="description-block">
-													<h5 class="description-header">13,000</h5>
-													<span class="description-text">FOLLOWERS</span>
-												</div>
-												<!-- /.description-block -->
-											</div>
-											<!-- /.col -->
-											<div class="col-sm-4">
-												<div class="description-block">
-													<h5 class="description-header">35</h5>
-													<span class="description-text">PRODUCTS</span>
+													<h5 class="description-header"><?php echo $total['mean'] ?></h5>
+													<span class="description-text">Mean</span>
 												</div>
 												<!-- /.description-block -->
 											</div>
