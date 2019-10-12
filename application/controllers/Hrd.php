@@ -702,7 +702,7 @@
         }
         public function karyawan_terbaik()
         {
-            
+            $this->get_karyawan_terbaik();
         }
         public function get_karyawan_terbaik()
         {
