@@ -708,6 +708,7 @@
                 echo json_encode($value).'<br>';
             }
             echo '<br><br>'.json_encode($this->total_penilaian_karyawan_terbaik($rows));
+            echo '<br><br>'.json_encode($this->mean_karyawan_terbaik($rows));
             echo '</pre>';
         }
         public function total_penilaian_karyawan_terbaik($rows){
@@ -719,7 +720,11 @@
         }
         public function mean_karyawan_terbaik($rows)
         {
-
+            $temp_total_mean= [];
+            foreach ($rows as $key => $value) {
+                $temp_total_mean[] = $value['mean'];
+            }
+            return $rows[ array_keys($temp_total_mean, max($temp_total_mean))[0] ];
         }
         public function get_karyawan_terbaik()
         {
