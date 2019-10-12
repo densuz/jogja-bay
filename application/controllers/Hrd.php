@@ -783,7 +783,7 @@
                     $bulan_penilaian= hasil_akhir_mod($_GET['start_date'],$_GET['end_date'],'month');
 
                     $tes='';
-                    $nilai= $hasil_per_bulan[$value->id_user]['penilaian'];
+                    $nilai= $this->content['hasil_per_bulan'][$value->id_user]['penilaian'];
                     $nilai_total= 0;
                     $nilai_rows= count($bulan_penilaian);
 
