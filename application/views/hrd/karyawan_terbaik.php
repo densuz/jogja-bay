@@ -65,6 +65,46 @@
 								<!-- /.widget-user -->
 							</div>
 							<!-- /.col -->
+							<div class="col-md-6">
+								<!-- Widget: user widget style 1 -->
+								<div class="card card-widget widget-user">
+									<!-- Add the bg color to the header using any of the bg-* classes -->
+									<div class="widget-user-header bg-info-active">
+										<h3 class="widget-user-username"><?php echo $mean['nama'].' ('.$mean['nama_divisi'].')' ?></h3>
+										<h5 class="widget-user-desc">Karyawan dengan rata-rata nilai terbaik</h5>
+									</div>
+									<div class="card-footer">
+										<div class="row">
+											<div class="col-sm-5 border-right">
+												<div class="description-block">
+													<h5 class="description-header"><?php echo $mean['total_penilaian'] ?></h5>
+													<span class="description-text">Total</span>
+												</div>
+												<!-- /.description-block -->
+											</div>
+											<!-- /.col -->
+											<div class="col-sm-5 border-right">
+												<div class="description-block">
+													<h5 class="description-header"><?php echo $mean['mean'] ?></h5>
+													<span class="description-text">Mean</span>
+												</div>
+												<!-- /.description-block -->
+											</div>
+											<!-- /.col -->
+											<div class="col-sm-2 border-right">
+												<div class="description-block">
+													<?php echo "<a class='btn btn-primary form-load' href='".base_url( $this->session->userdata('level') .'/detail-hasil-akhir/' .$mean['id_user'])."' title='Detail Hasil Akhir'>Detail</a>" ?>
+												</div>
+												<!-- /.description-block -->
+											</div>
+											<!-- /.col -->
+										</div>
+										<!-- /.row -->
+									</div>
+								</div>
+								<!-- /.widget-user -->
+							</div>
+							<!-- /.col -->
 						</div>
             </div>
             <!-- /.card-body -->
