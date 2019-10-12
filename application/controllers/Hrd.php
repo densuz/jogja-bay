@@ -767,7 +767,7 @@
                         ";
             $no = 1;
             $tbody= '';
-            foreach ($karyawan as $key => $value) {
+            foreach ($this->content['karyawan'] as $key => $value) {
                 if ( empty($_GET['start_date']) ) {
                 /* start generate nilai saw perbulan */
                 $tes='';
