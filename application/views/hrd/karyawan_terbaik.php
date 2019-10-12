@@ -30,8 +30,8 @@
 								<div class="card card-widget widget-user">
 									<!-- Add the bg color to the header using any of the bg-* classes -->
 									<div class="widget-user-header bg-info-active">
-										<h3 class="widget-user-username">Alexander Pierce</h3>
-										<h5 class="widget-user-desc">Founder &amp; CEO</h5>
+										<h3 class="widget-user-username"><?php echo $total['nama'].'('.$total['nama_divisi'].')' ?></h3>
+										<h5 class="widget-user-desc">Karyawan dengan total nilai terbaik</h5>
 									</div>
 									<div class="card-footer">
 										<div class="row">

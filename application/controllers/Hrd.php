@@ -703,13 +703,15 @@
         public function karyawan_terbaik()
         {
             $rows= $this->get_karyawan_terbaik();
-            echo '<pre>';
-            foreach ($rows as $key => $value) {
-                echo json_encode($value).'<br>';
-            }
-            echo '<br><br>'.json_encode($this->total_penilaian_karyawan_terbaik($rows));
-            echo '<br><br>'.json_encode($this->mean_karyawan_terbaik($rows));
-            echo '</pre>';
+            // echo '<pre>';
+            // foreach ($rows as $key => $value) {
+            //     echo json_encode($value).'<br>';
+            // }
+            // echo '<br><br>'.json_encode($this->total_penilaian_karyawan_terbaik($rows));
+            // echo '<br><br>'.json_encode($this->mean_karyawan_terbaik($rows));
+            // echo '</pre>';
+            $this->content['total'] = $this->total_penilaian_karyawan_terbaik($rows);
+            $this->content['mean'] = $this->mean_karyawan_terbaik($rows);
             $this->view = $this->session->userdata('level') .'/karyawan_terbaik';
             $this->render_pages();
         }
