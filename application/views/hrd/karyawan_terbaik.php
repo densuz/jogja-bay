@@ -35,7 +35,7 @@
 									</div>
 									<div class="card-footer">
 										<div class="row">
-											<div class="col-sm-6 border-right">
+											<div class="col-sm-5 border-right">
 												<div class="description-block">
 													<h5 class="description-header"><?php echo $total['total_penilaian'] ?></h5>
 													<span class="description-text">Total</span>
@@ -43,10 +43,17 @@
 												<!-- /.description-block -->
 											</div>
 											<!-- /.col -->
-											<div class="col-sm-6 border-right">
+											<div class="col-sm-5 border-right">
 												<div class="description-block">
 													<h5 class="description-header"><?php echo $total['mean'] ?></h5>
 													<span class="description-text">Mean</span>
+												</div>
+												<!-- /.description-block -->
+											</div>
+											<!-- /.col -->
+											<div class="col-sm-2 border-right">
+												<div class="description-block">
+													<?php echo "<a class='btn btn-primary form-load' href='".base_url( $this->session->userdata('level') .'/detail-hasil-akhir/' .$value->id_user)."' title='Detail Hasil Akhir'>Detail Nilai Akhir</a>" ?>
 												</div>
 												<!-- /.description-block -->
 											</div>
