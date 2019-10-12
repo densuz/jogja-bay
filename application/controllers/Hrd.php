@@ -707,7 +707,7 @@
             foreach ($rows as $key => $value) {
                 echo json_encode($value).'<br>';
             }
-            echo json_encode($this->total_penilaian_karyawan_terbaik($rows));
+            echo '<br><br>'.json_encode($this->total_penilaian_karyawan_terbaik($rows));
             echo '</pre>';
         }
         public function total_penilaian_karyawan_terbaik($variable){
