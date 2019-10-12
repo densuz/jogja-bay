@@ -700,6 +700,10 @@
             }
             return $penilaian;
         }
+        public function karyawan_terbaik()
+        {
+            
+        }
         /* ==================== End Laporan: Hasil Akhir ==================== */
         
     }
