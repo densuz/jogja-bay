@@ -703,7 +703,9 @@
         public function karyawan_terbaik()
         {
             echo '<pre>';
-            echo json_encode($this->get_karyawan_terbaik());
+            foreach ($this->get_karyawan_terbaik() as $key => $value) {
+                echo json_encode($value).'<br>';
+            }
             echo '</pre>';
         }
         public function get_karyawan_terbaik()
