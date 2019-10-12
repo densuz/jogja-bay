@@ -112,7 +112,7 @@
               <li class="nav-item">
                 <a href="<?php echo base_url( $this->session->userdata('level') ) ?>/karyawan-terbaik" class="nav-link <?php echo ($this->uri->segment(2)=='karyawan-terbaik') ? 'active' : null ?>">
                   <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Karywan Terbaik</p>
+                  <p>Karyawan Terbaik</p>
                 </a>
               </li>
             </ul>
