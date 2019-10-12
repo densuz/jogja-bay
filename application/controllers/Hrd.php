@@ -771,7 +771,7 @@
                 if ( empty($_GET['start_date']) ) {
                 /* start generate nilai saw perbulan */
                 $tes='';
-                $nilai= $hasil_per_bulan[$value->id_user]['penilaian'];
+                $nilai= $this->content['hasil_per_bulan'][$value->id_user]['penilaian'];
                 $nilai_total= 0;
                 $nilai_rows= count($nilai);
                 foreach ($nilai as $key_nilai => $value_nilai) {
