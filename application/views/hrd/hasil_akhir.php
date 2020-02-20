@@ -54,6 +54,7 @@
                         if ( empty($_GET['start_date']) ) {
                           foreach ($tahun_penilaian as $key => $value) {
                             $col_tahun= 0;
+                            $th_bulan= '';
                             foreach ($bulan_penilaian as $key_bulan => $value_bulan) {
                               if ( $value_bulan->tahun_penilaian==$value->tahun_penilaian ) {
                                 $col_tahun++;
@@ -70,6 +71,7 @@
 
                           foreach ($tahun_penilaian as $key => $value) {
                             $col_tahun= 0;
+                            $th_bulan= '';
                             foreach ($bulan_penilaian as $key_bulan => $value_bulan) {
                               if ( $value_bulan->tahun_penilaian==$value->tahun_penilaian ) {
                                 $col_tahun++;
@@ -158,41 +160,11 @@
                               </td>
                             </tr>
                           ";
-                          /* $tbody .= "
-                            <tr>
-                              <td>{$no}</td>
-                              <td>{$value->nama}</td>
-                              <td>{$value->nama_divisi}</td>
-                              {$tes}
-                              <td>{$nilai_total}</td>
-                              <td>{$nilai_mean}</td>
-                              <td>
-                                <div class='btn-group'>
-                                  <button type='button' class='btn btn-default'>Action</button>
-                                  <button type='button' class='btn btn-default dropdown-toggle' data-toggle='dropdown' aria-expanded='false'>
-                                    <span class='caret'></span>
-                                    <span class='sr-only'>Toggle Dropdown</span>
-                                  </button>
-                                  <div class='dropdown-menu' role='menu' x-placement='top-start' style='position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(67px, -165px, 0px);'>
-                                    <a class='dropdown-item form-load' href='".base_url( $this->session->userdata('level') .'/detail-hasil-akhir/' .$value->id_user)."' title='Detail Hasil Akhir'>Detail Nilai Akhir</a>
-                                  </div>
-                                </div>
-                              </td>
-                            </tr>
-                          "; */
                           $no++;
                         }
                         echo $tbody;
                       ?>
                     </tbody>
-                    <!-- <tfoot>
-                      <tr>
-                        <th>No</th>
-                        <th>Name</th>
-                        <th>Divisi</th>
-                        <th>Tanggal&nbspPenilaian</th>
-                      </tr>
-                    </tfoot> -->
                 </table>
             </div>
           </div>
